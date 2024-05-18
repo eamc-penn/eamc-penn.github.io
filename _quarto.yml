@@ -1,0 +1,38 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Ethical Algorithms for the Modern Clinician"
+  navbar:
+    right:
+      - href: src/index.qmd
+        text: Home
+      - text: Modules
+        menu:
+          - href: src/ml.qmd
+            text: Intro to Machine Learning
+          - href: src/bias.qmd
+            text: Algorithmic Bias
+          - href: src/anonymization.qmd
+            text: Anonymization
+          - href: src/privacy.qmd
+            text: Data Privacy
+          - href: src/genai.qmd
+            text: Generative AI
+      - href: src/changelog.qmd
+        text: Changelog
+    tools:
+      - icon: twitter
+        href: https://github.com
+      - icon: bug
+        href: https://google.com
+
+format:
+  html:
+    theme:
+      light: [cerulean, styles/default.scss]
+      dark: [cerulean, styles/dark-theme.scss]
+    toc: true
+    smooth-scroll: true
+    anchor-sections: true

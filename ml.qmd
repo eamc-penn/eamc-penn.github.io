@@ -1,5 +1,7 @@
 ---
 title: "Introduction to Machine Learning"
+reference-location: margin
+citation-location: margin
 ---
 
 ## Learning Objectives
@@ -45,29 +47,27 @@ Computers can run algorithms that can be written down exactly. But how can we te
 
 Computers can learn by observation, much like how medical students learn! Consider some of the following scenarios:
 
-**A Database of Genomes**
+#### A Database of Genomes
 
 During your clinical research year, your advisor gives you a large dataset of many different patient genomes. We can denote this dataset of $n$ patients as the variable $\mathcal{D}_n$. By analyzing $\mathcal{D}_n$, we try to gain insights into which genes make individuals unique, and which ones all patients share in common.
 
-**A Randomized Control Trial**
+#### A Randomized Control Trial
 
 Your research mentor is impressed with your analysis and gives you a new project: investigating if a new drug ***abastatin*** lowers patient cholesterol levels. He gives you a large dataset of anonymized patient data containing two variables: whether the patient was given abastatin or placebo ($x$), and whether the patient had a reduction in their cholesterol levels ($y$). By analyzing this dataset, we try to learn whether or not abastatin is an effective drug for hypercholesterolemia.
 
-**A Patient with Sepsis**
+#### A Patient with Sepsis
 
 ::: column-margin
 {{< fa lightbulb >}} For those of you with a machine learning background, **A Database of Genomes** is an *unsupervised learning problem*, **A Randomized Control Trial** is a *supervised learning problem*, and **A Patient with Sepsis** is a *reinforcement learning problem*. You can learn more about each of these types of machine learning problems [here](https://www.coursera.org/articles/types-of-machine-learning)!
 :::
 
-A 52 year-old male presents with acute-onset altered mental status and fever. Vitals are notable for BP 90/60 and T 103.4. We can denote the patient as a variable $x$ consisting of all of the relevant attributes of the patient: their HPI, past medical history, current lab values and vitals, etc. Every patient in the world can be expressed in terms of these features - we can write the set of all possible patients in the world as $\mathcal{X}$ (a set which is obviously incredibly large). $x\sim \mathcal{X}$, which means that our particular 52 year-old patient in front of us is *sampled from* the population $\mathcal{X}$ of all patients.
+A 52 year-old male presents with acute-onset altered mental status and fever. Vitals are notable for BP 90/60 and T 103.4. We can denote the patient as a variable $x$ consisting of all of the relevant attributes of the patient: their HPI, past medical history, current lab values and vitals, etc.
 
-On our first day as a medical student, we might not know what to do with this patient. Do we admit them and start them on IV antibiotics? Do we call a neurology consult? Do we just send the patient home? Each of these clinical interventions can be thought of as an action $a$, which is similarly sampled from the space of all possible actions $\mathcal{A}$ that we can take to try to help the patient get better.
+On our first day as a medical student, we might not know what to do with this patient. Do we admit them and start them on IV antibiotics? Do we call a neurology consult? Do we just send the patient home? Each of these clinical interventions can be thought of as an action $a$ that we can take to try to help the patient get better.
 
-After observing a patient $x$ and performing an action $a$, we monitor the patient to see if they improve. The patient's outcome can be denoted as a variable $y$ (for example, $y=0$ if the patient deteriorates and $y=1$ if the patient gets better). We observe the clinical outcome $y$ sampled from the set of all possible outcomes $\mathcal{R}$.
+After observing a patient $x$ and performing an action $a$, we monitor the patient to see if they improve. The patient's outcome can be denoted as a variable $y$ (for example, $y=0$ if the patient deteriorates and $y=1$ if the patient gets better). We observe the clinical outcome $y$, and use it to learn a better algorithm so that next time we see a similar patient, we can take a better action that leads to a more favorable outcome.
 
-Over the course of medical school, we see hundreds if not thousands of tuples $(x, a, y)$ sampled from $\mathcal{X}\times\mathcal{A}\times\mathcal{R}$ through clerkships, sub-Is, exams, and UWorld, and use this dataset of patient-outcome pairs to learn hard-to-write-down algorithms for choosing the best clinical intervention $a$ given a patient $x$.
-
-In other words, **we learn by observation**.
+Over the course of medical school, we see hundreds (if not thousands) of tuples $(x, a, y)$ through clerkships, sub-Is, exams, and UWorld, and use this dataset of patient-outcome pairs to learn *hard-to-write-down algorithms* for choosing the best clinical intervention $a$ given a patient $x$ to maximize the outcome $y$. In other words, **we learn by observation**.
 
 ### What does it mean to "learn"?
 
@@ -90,7 +90,7 @@ Machine learning (ML) uses the *exact same* framework of **learning through obse
 The fundamental goal of machine learning is to learn **hard-to-write-down** algorithms from past observations to hopefully make accurate predictions for future observations.
 
 ::: {.callout-tip collapse="true" icon="false"}
-### What problems might cause algorithms to generalize poorly to new patients?
+#### What problems might cause algorithms to generalize poorly to new patients?
 
 There are a number of reasons. Here are a couple:
   
@@ -105,43 +105,33 @@ What other problems did you think of? Are there any ways to fix the problems tha
 Consider the following example cases. Would you want to use machine learning in each of these cases?
 
 ::: {.callout-tip collapse="true" icon="false"}
-
-### 1. Given patient lab values and health record data, ML predicts the age of a patient.
+#### 1. Given patient lab values and health record data, ML predicts the age of a patient.
 
 **No**, it’s easy to just look up the age of a patient from the patient chart.
-
 :::
 
 ::: {.callout-tip collapse="true" icon="false"}
-
-### 2. Given patient blood pressure values, ML predicts the patient’s MAP.
+#### 2. Given patient blood pressure values, ML predicts the patient’s MAP.
 
 **No**, computing MAP is an easy-to-write-down algorithm.
-
 :::
 
 ::: {.callout-tip collapse="true" icon="false"}
-
-### 3. Given patient lab values, imaging data, genomic data, and other attributes, ML predicts whether the patient is at risk for a cancer with no known cure.
+#### 3. Given patient lab values, imaging data, genomic data, and other attributes, ML predicts whether the patient is at risk for a cancer with no known cure.
 
 **No**, even if ML derives an algorithm for this task, there is nothing actionable that we can do about it.
-
 :::
 
 ::: {.callout-tip collapse="true" icon="false"}
-
-### 4. Given patient bowel sound recordings, ML predicts the probability a patient has an SBO.
+#### 4. Given patient bowel sound recordings, ML predicts the probability a patient has an SBO.
 
 **No**, we don’t have any datasets of patient bowel sounds mapping to the presence/absence of an SBO, so there are no prior observations for ML to learn from.
-
 :::
 
 ::: {.callout-tip collapse="true" icon="false"}
-
-### 5. Given patient lab values, ML predicts the probability a patient has ribose-5-phosphate isomerase (RPI) deficiency, the second rarest disease in the world.
+#### 5. Given patient lab values, ML predicts the probability a patient has ribose-5-phosphate isomerase (RPI) deficiency, the second rarest disease in the world.
 
 **No**, we don’t have nearly enough observations of patients with RPI deficiency. Even if we did have enough data to learn this algorithm, we also would rarely/never even need to use this algorithm.
-
 :::
 
 **In summary**, ML is useful for tasks that are

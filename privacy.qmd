@@ -1,0 +1,16 @@
+---
+title: "Patient Privacy"
+reference-location: margin
+citation-location: margin
+---
+
+## Learning Objectives
+
+1. TODO
+
+2. TODO
+
+3. TODO
+
+All of Us
+https://pubmed.ncbi.nlm.nih.gov/36809550/

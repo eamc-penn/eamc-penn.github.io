@@ -1,0 +1,16 @@
+---
+title: "Generative AI"
+reference-location: margin
+citation-location: margin
+---
+
+## Learning Objectives
+
+1. **Define** generative AI and **describe** its applications in clinical medicine and the life sciences.
+
+2. **List** the new challenges facing patients and clinicians as a result of generative AI software.
+
+## Generative AI
+
+TODO
+https://www.amazon.science/blog/responsible-ai-in-the-generative-era

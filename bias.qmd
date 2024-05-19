@@ -179,7 +179,7 @@ Which strategy is more biased? Is using race as an input into algorithms (as in 
 :::
 
 ::: column-margin
-How would your answer to this question change (or not) if instead we were deciding whether a patient was a lung transplant candidate? How about if we were deciding whether to start losartan therapy for newly diagnosed hypertension?
+{{< fa lightbulb >}} How would your answer to this question change (or not) if instead we were deciding whether a patient was a lung transplant candidate? How about if we were deciding whether to start losartan therapy for newly diagnosed hypertension?
 :::
 
 ## Discussion Questions

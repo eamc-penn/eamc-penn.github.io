@@ -5,28 +5,32 @@ project:
 website:
   title: "Ethical Algorithms for the Modern Clinician"
   navbar:
+    search: true
     right:
-      - href: src/index.qmd
+      - href: index.qmd
         text: Home
       - text: Modules
         menu:
-          - href: src/ml.qmd
+          - href: ml.qmd
             text: Intro to Machine Learning
-          - href: src/bias.qmd
+          - href: bias.qmd
             text: Algorithmic Bias
-          - href: src/anonymization.qmd
+          - href: anonymization.qmd
             text: Anonymization
-          - href: src/privacy.qmd
-            text: Data Privacy
-          - href: src/genai.qmd
+          - href: privacy.qmd
+            text: Patient Privacy
+          - href: genai.qmd
             text: Generative AI
-      - href: src/changelog.qmd
-        text: Changelog
     tools:
-      - icon: twitter
-        href: https://github.com
-      - icon: bug
-        href: https://google.com
+      - icon: github
+        menu:
+          - text: Source Code
+            href: https://github.com/eamc-penn/eamc
+          - text: Report a Bug
+            href: https://bugs.com
+      
+  body-footer: |
+    <p style="text-align: center;margin-top: 20px;">Made with &#x2764; by the EAMC Team &copy;2024.</p>
 
 format:
   html:

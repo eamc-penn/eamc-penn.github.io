@@ -161,8 +161,10 @@ Assume the role of a patient seeking mental health support and resources. How ac
 This particular model is hosted on [Hugging Face](https://huggingface.co/), which has become the *de-facto* website for publishing publicly available machine learning models like the one we're exploring here. Anyone can download a model and use it for applications such as mental health among others.
 :::
 
+```{=html}
 <iframe src="https://hf.co/chat/assistant/65bfce195560c1a5c0c9d5ad" width=100%, height=800px sandbox>
 </iframe>
+```
 
 ## Summary
 

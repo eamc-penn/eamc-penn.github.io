@@ -12,13 +12,13 @@ website:
       - text: Modules
         menu:
           - href: ml.qmd
-            text: Intro to Machine Learning
+            text: Introduction to Machine Learning
           - href: bias.qmd
-            text: Algorithmic Bias
-          - href: anonymization.qmd
-            text: Anonymization
+            text: Bias and Fairness
           - href: privacy.qmd
-            text: Patient Privacy
+            text: Privacy and Anonymization
+          - href: interpretability.qmd
+            text: Interpretability and Explainability
           - href: genai.qmd
             text: Generative AI
     tools:
@@ -26,8 +26,8 @@ website:
         menu:
           - text: Source Code
             href: https://github.com/eamc-penn/eamc
-          - text: Report a Bug
-            href: https://bugs.com
+          - text: Report an Issue
+            href: https://forms.gle/4hEf83U935U89HWg9
       
   body-footer: |
     <p style="text-align: center;margin-top: 20px;">Made with &#x2764; by the EAMC Team &copy;2024.</p>
@@ -40,3 +40,8 @@ format:
     toc: true
     smooth-scroll: true
     anchor-sections: true
+    fontsize: 16px
+    reference-location: margin
+    citation-location: margin
+    date: last-modified
+  pdf: default

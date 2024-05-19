@@ -1,7 +1,6 @@
 ---
-title: "Introduction to Machine Learning"
-reference-location: margin
-citation-location: margin
+title: Introduction to Machine Learning
+author: Michael Yao, Allison Chae
 ---
 
 ## Learning Objectives
@@ -15,7 +14,9 @@ citation-location: margin
 ## Food for Thought
 1. Are there tasks in healthcare for which automated methods–such as computer algorithms and artificial intelligence (AI)–should never be used for? Why or why not?
 
-::: column-margin
+::: {.callout-tip collapse="true" icon="false"}
+#### Food for Thought: Are there tasks in healthcare for which automated methods should never be used?
+
 {{< fa lightbulb >}} What if automated methods perform the task on par with humans? What if they perform *better than* humans?
 :::
 
@@ -157,9 +158,7 @@ Let’s explore how state-of-the-art AI models currently perform as mental healt
 Assume the role of a patient seeking mental health support and resources. How accurate is the model as a therapist? How empathetic is the model? Would you use this particular model for mental health support? Why or why not?
 
 ::: column-margin
-
 This particular model is hosted on [Hugging Face](https://huggingface.co/), which has become the *de-facto* website for publishing publicly available machine learning models like the one we're exploring here. Anyone can download a model and use it for applications such as mental health among others.
-
 :::
 
 <iframe src="https://hf.co/chat/assistant/65bfce195560c1a5c0c9d5ad" width=100%, height=800px>

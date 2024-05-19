@@ -1,7 +1,5 @@
 ---
-title: "Ethical Algorithms for the Modern Clinician"
-reference-location: margin
-citation-location: margin
+title: Ethical Algorithms for the Modern Clinician
 ---
 
 ## Overview
@@ -11,9 +9,9 @@ citation-location: margin
 In contrast to other tutorials available online, this resource is ***not*** intended to teach how machine learning algorithms work or how to build novel models. Instead, we introduce ML from clinical practitioner's perspective and discuss what ML does right, where it falls short, and how it will impact patient care. This short course focuses on five key aspects:
 
 1. **Introduction to Machine Learning**: What is machine learning? How is it similar to and different from conventional software?
-2. **Algorithmic Bias**: How can algorithms like machine learning be biased against certain patient sub-populations? How can we quantify, detect, and reduce bias in clinical decision making algorithms?
-3. **Anonymization**: How can we effectively anonymize patient data? Why does anonymization often fall short in protecting patient identities?
-4. **Patient Privacy**: How do machine learning algorithms preserve or break patient privacy? How can we ensure that clinicians use algorithms responsibly while maintaining patient privacy?
+2. **Bias and Fairness**: How can algorithms like machine learning be biased against certain patient sub-populations? How can we quantify, detect, and reduce bias in clinical decision making algorithms?
+3. **Privacy and Anonymization**: How can we effectively anonymize patient data? Why does anonymization often fall short in protecting patient identities? How can we ensure that clinicians use algorithms responsibly while maintaining patient privacy?
+4. **Interpretability and Explainability**: TODO
 5. **Generative AI**: What is generative AI, and how might it be used in the clinic? What are the new challenges and opportunities associated with generative AI models?
 
 Just as epidemiology was introduced in foundational component medical school curricula alongside the rise of evidence-based guidelines[^1], we firmly believe that **it is crucial for future clinicians to have a working understanding of machine learning algorithms** as they become increasingly adapted in clinical practice. Much of the curriculum has been inspired by the (much longer) ethical algorithm design course for computer scientists at Penn taught by [Michael Kearns](https://www.cis.upenn.edu/~mkearns/), a leading expert in the science of designing algorithms that embed social values. The material we present is intended as foundational knowledge for medical students **of all backgrounds** without assuming any prior experience with machine learning or algorithmic ethics.
@@ -23,6 +21,16 @@ Just as epidemiology was introduced in foundational component medical school cur
 ## How to Use This Book
 
 There are a number of different ways to learn this book. Some find it most helpful to directly self-study the material, which usually can be done in a weekend according to prior students. We believe the most effective and fruitful way to learn the content herein is in **small, discussion-based** classroom environments. Many of the discussion questions included in each module have *no single right answer*, and it is often helpful to hear from peers on how they're thinking about the material, too. To facilitate classroom implementation, the content has been broken down into five modules lasting approximately one-hour each.
+
+::: {.callout-caution collapse="true"}
+### What This Resource Is *Not*
+
+There are a lot of machine learning resources out there already... what makes *Ethical Algorithms for the Modern Clinician* different? This resource is ***not*** any of the following:
+
+1. **A introduction to theory of and programming for machine learning**: If you're interested in building ML models from scratch, the MedML@Emory Club has put together a fantastic tutorial [here](https://colab.research.google.com/drive/1eij5s6YoSthXUAWMUJ0-ouydIFK0D_1d?usp=sharing), and [Andrew Ng](https://www.andrewng.org/) also has a great curated list of technical tutorials [here](https://www.coursera.org/collections/machine-learning).
+2. **An overview of the computational techniques used to build machine learning models**: If you're looking for something like this, we recommend recent work by [Pfob et al. (2022)](https://pubmed.ncbi.nlm.nih.gov/36319956/) and [Sidey-Gibbons et al. (2019)](https://pubmed.ncbi.nlm.nih.gov/30890124/).
+3. **A mathematically rigorous foundation for assessing algorithmic fairness and privacy**: If this is something you're interested in, we highly recommend checking out [The Ethical Algorithm](https://www.amazon.com/Ethical-Algorithm-Science-Socially-Design/dp/0190948205) and the [Ethical Algorithm Design](https://www.cis.upenn.edu/~mkearns/teaching/EADSpring24/) course offered at Penn every year.
+:::
 
 ## About the Authors
 

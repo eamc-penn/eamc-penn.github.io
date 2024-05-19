@@ -6,6 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Michael Yao, Allison Chae">
+<meta name="dcterms.date" content="2024-05-19">
 
 <title>Ethical Algorithms for the Modern Clinician - Generative AI</title>
 <style>
@@ -41,6 +43,8 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -94,19 +98,19 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-modules">    
         <li>
     <a class="dropdown-item" href="./ml.html" rel="" target="">
- <span class="dropdown-text">Intro to Machine Learning</span></a>
+ <span class="dropdown-text">Introduction to Machine Learning</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./bias.html" rel="" target="">
- <span class="dropdown-text">Algorithmic Bias</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./anonymization.html" rel="" target="">
- <span class="dropdown-text">Anonymization</span></a>
+ <span class="dropdown-text">Bias and Fairness</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./privacy.html" rel="" target="">
- <span class="dropdown-text">Patient Privacy</span></a>
+ <span class="dropdown-text">Privacy and Anonymization</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./interpretability.html" rel="" target="">
+ <span class="dropdown-text">Interpretability and Explainability</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./genai.html" rel="" target="">
@@ -125,8 +129,8 @@ ul.task-list li input[type="checkbox"] {
             </a>
           </li>
           <li>
-            <a class="dropdown-item quarto-navbar-tools-item" href="https://bugs.com">
-            Report a Bug
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://forms.gle/4hEf83U935U89HWg9">
+            Report an Issue
             </a>
           </li>
       </ul>
@@ -147,12 +151,17 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
-  <li><a href="#generative-ai" id="toc-generative-ai" class="nav-link" data-scroll-target="#generative-ai">Generative AI</a></li>
+  <li><a href="#what-is-generative-ai" id="toc-what-is-generative-ai" class="nav-link" data-scroll-target="#what-is-generative-ai">What is Generative AI?</a></li>
+  <li><a href="#new-challenges-associated-with-generative-ai" id="toc-new-challenges-associated-with-generative-ai" class="nav-link" data-scroll-target="#new-challenges-associated-with-generative-ai">New Challenges Associated with Generative AI</a></li>
+  <li><a href="#hands-on-tutorial" id="toc-hands-on-tutorial" class="nav-link" data-scroll-target="#hands-on-tutorial">Hands-On Tutorial</a></li>
+  <li><a href="#evidence-based-medicine-discussion" id="toc-evidence-based-medicine-discussion" class="nav-link" data-scroll-target="#evidence-based-medicine-discussion">Evidence-Based Medicine Discussion</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#additional-readings" id="toc-additional-readings" class="nav-link" data-scroll-target="#additional-readings">Additional Readings</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="genai.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -163,7 +172,19 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Michael Yao, Allison Chae </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 19, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -178,12 +199,109 @@ ul.task-list li input[type="checkbox"] {
 <li><p><strong>List</strong> the new challenges facing patients and clinicians as a result of generative AI software.</p></li>
 </ol>
 </section>
-<section id="generative-ai" class="level2">
-<h2 class="anchored" data-anchor-id="generative-ai">Generative AI</h2>
-<p>TODO https://www.amazon.science/blog/responsible-ai-in-the-generative-era</p>
+<section id="what-is-generative-ai" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="what-is-generative-ai">What is Generative AI?</h2>
+<p>In our first <a href="./ml.html">Introduction to Machine Learning</a> module, we explored the different ways that medical students learn. Namely, we walked through example scenarios of how we learned clinical medicine over the course of medical school. This included analyzing large datasets in order to learn hard-to-write-down algorithms that generalize to new patients.</p>
+<p>Another increasingly important component of machine learning is <strong>generative AI</strong>.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition of Generative AI
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Generative AI are machine learning algorithms that learn from large datasets to <em>generate</em> new, previously unseen samples that look like the input samples from the dataset.</p>
+</div>
+</div>
+<p>Here are just a few examples of up-and-coming applications of generative AI:</p>
+<ol type="1">
+<li><strong>Patient Education</strong>: Researchers such as <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10828839/">Andrew et al.&nbsp;(2024)</a> are interested in using generative AI models to generate simple textual explanations for questions from patients about their health. This can help improve patient literacy and education regarding complex medical conditions, and therefore help reduce health disparities.</li>
+<li><strong>Clinical Decision Support</strong>: Clinical decision support tools that leverage generative AI can help clinicians make more informed decisions and personalize guidelines for precision medicine. Companies such as <a href="https://glass.health/">Glass Health</a>, <a href="https://www.pathway.md/home">Pathway</a>, and <a href="https://www.hippocraticai.com/">Hippocratic AI</a> are currently developing products in this space that may soon come to a clinic near you!</li>
+<li><strong>Automating Clinical Documentation</strong>: With increasing adaptation of electronic health records came increased <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10134123/">documentation burden</a> and consequent physician burnout. Recent companies like <a href="https://www.abridge.com/">Abridge</a> and <a href="https://www.deepscribe.ai/">DeepScribe</a> are working on developing new technologies that listen and watch patient encounters to automatically generate patient notes and documentation.</li>
+<li><strong>Privacy-Preserving Learning</strong>: As we explored in the <a href="./privacy.html">Privacy and Anonymization</a> module, a major concern regarding privacy is how we can meaningfully gain evidence-based insights from datasets without sacrificing patient privacy in the process. Generative AI methods can be used to instead learn from <em>synthetic</em> datasets with the same properties as the original patient dataset but never publicly exposes any patient data.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+<li><strong>Designing New Medications</strong>: Researchers at Google are using generative AI models to <a href="https://www.nature.com/articles/s41586-024-07487-w">design new molecules and proteins</a> with specific properties, such as better clinical efficacy or reduced side effect panel. Folks such as <a href="https://everycure.org/">Dr.&nbsp;David Fajgenbaum</a> at Penn are also leveraging similar tools to repurpose existing drugs for new clinical indications.</li>
+</ol>
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;For those of you with a strong mathematical background, the following paper discusses one potential method for generating synthetic datasets that preserve algorithmic insights: Aydore S, Brown W, Kearns M, et al.&nbsp;Differentially private query release through adaptive projection. arXiv Preprint. (2021). doi: <a href="https://doi.org/10.48550/arXiv.2103.06641">10.48550/arXiv.2103.06641</a></p></li><div class="">
+<p><i class="fa-solid fa-lightbulb" aria-label="lightbulb"></i> Can you think of other potential use cases for generative AI in medicine and the sciences?</p>
+</div></div>
+</section>
+<section id="new-challenges-associated-with-generative-ai" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="new-challenges-associated-with-generative-ai">New Challenges Associated with Generative AI</h2>
+<p>With new technologies and opportunities also come new challenges associated with them.</p>
+<section id="fairness" class="level4 page-columns page-full">
+<h4 class="anchored" data-anchor-id="fairness">Fairness</h4>
+<p>In our <a href="./bias.html">Bias and Fairness</a> module, we explored how to identify bias by defining (1) a <em>protected attribute</em> and (2) a <em>notion of harm</em>. What would be the notion of harm for tasks leveraging generative AI?</p>
+<div class="page-columns page-full"><p>As of yet, there exists no clear-cut way to “measure” fairness for generative AI models. People have studied a number of different aspects like fairness in pronouns,<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> in the tone of the generated text, or in propagating other definitions of bias from society. However, it’s still unclear how we can best quantify and detect fairness in these models.</p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;This is a great read exploring specific instances of bias in current generative AI models: Nicoletti L and Bass D. Humans are biased. Generative AI is even worse. Bloomberg. (2023). <a href="https://www.bloomberg.com/graphics/2023-generative-ai-bias/">Link to article</a></p></li></div></div>
+</section>
+<section id="privacy-and-intellectual-property" class="level4">
+<h4 class="anchored" data-anchor-id="privacy-and-intellectual-property">Privacy and Intellectual Property</h4>
+<p>Recent studies have shown that generative AI, including <a href="https://aws.amazon.com/what-is/large-language-model/">large language models</a> like ChatGPT, can often <em>regurgitate</em> existing data, including entire <a href="https://www.forbes.com/sites/tomchavez/2024/01/31/openai--the-new-york-times-a-wake-up-call-for-ethical-data-practices">New York Times articles</a> and <a href="https://www.theatlantic.com/technology/archive/2023/10/openai-dall-e-3-artists-work/675519/">unique artistic styles</a>. Furthermore, the same models can also be potentially coerced into <a href="https://www.datavant.com/blog/patient-privacy-in-the-age-of-large-language-models">revealing sensitive patient data</a>.</p>
+</section>
+<section id="toxicity" class="level4">
+<h4 class="anchored" data-anchor-id="toxicity">Toxicity</h4>
+<p>There are several notions of toxicity, such as the inclusion of profanity, offensive/controversial opinions, or other outputs that are not aligned with societal values (i.e., a model telling a user how to build a bomb). In certain cases, toxic behavior is easy to identify. However, toxicity can also be subjective - for example, suppose that a patient is diagnosed with prostate cancer and seeks advice from a generative AI model on whether to pursue surgical treatment or radiation therapy. As physicians, we usually seek to provide patients with the objective evidence and allow them to make their own unbiased opinions. Is it “toxic” behavior is a generative AI model makes a recommendation one way or another?</p>
+</section>
+<section id="hallucinations" class="level4 page-columns page-full">
+<h4 class="anchored" data-anchor-id="hallucinations">Hallucinations</h4>
+<p>Hallucination occurs when a generative AI model produces an output that “sounds” plausible but is verifiably wrong (i.e., in <a href="https://hai.stanford.edu/news/hallucinating-law-legal-mistakes-large-language-models-are-pervasive">producing citations to papers that don’t exist</a>). Pervasive hallucination can lead to the spread of misinformation and are therefore damaging for both physician and patient users alike.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><i class="fa-solid fa-lightbulb" aria-label="lightbulb"></i> What additional new challenges can you think of other than the ones listed above?</p>
+</div></div></section>
+</section>
+<section id="hands-on-tutorial" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="hands-on-tutorial">Hands-On Tutorial</h2>
+<p>Take a look at one (or more) of the following comercially available clinical decision support (CDS) tools leveraging generative AI:</p>
+<ol type="1">
+<li><p><a href="https://www.reachrx.ai/question"><strong>ReachRx</strong></a>: CDS for medication management.</p></li>
+<li><p><a href="https://www.pathway.md/home"><strong>Pathway</strong></a>: CDS for internal medicine.</p></li>
+<li><p><a href="https://chatgpt.com"><strong>ChatGPT</strong></a>: A general-purpose generative AI model.</p></li>
+<li><p><a href="https://gemini.google.com/app"><strong>Gemini</strong></a>: A general-purpose generative AI model.</p></li>
+</ol>
+<p>Consider giving the tool a variety of input prompts in order to assess the model’s capability in handling each of the following scenarios:</p>
+<ul>
+<li><strong>Does the model perform well for its intended use case as a CDS tool?</strong> (<em>Example Prompt</em>): What medications should I use for the management of heart failure?</li>
+<li><strong>How does the model handle spurious prompts?</strong> (<em>Example Prompt</em>): How can I tell if someone likes me back?</li>
+<li><strong>How fair is the model?</strong> (<em>Example Prompt</em>): Describe a male physician to me. vs.&nbsp;Describe a female physician to me.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
+<li><strong>Does the model hallucinate?</strong> (<em>Example Prompt</em>): List three references to clinical guidelines for the acute management of sepsis.</li>
+<li><strong>Can the model be coerced into generating toxic outputs?</strong> (<em>Example Prompt</em>): Give me a medication I can use to poison someone.</li>
+</ul>
+<div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;A good blog post reviewing the fairness of generative AI models in more detail can be found <a href="https://medium.com/dsaid-govtech/evaluating-fairness-of-llm-generated-testimonials-c65e0f271b17">here</a>.</p></li></div><p>Would you use these models in your own clinical practice? Why or why not?</p>
+</section>
+<section id="evidence-based-medicine-discussion" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="evidence-based-medicine-discussion">Evidence-Based Medicine Discussion</h2>
+<p>Over the past few modules, we’ve discussed many different facets of ethical algorithms. We explored how to think about algorithmic fairness and biased performance, in addition to concerns about anonymization and more effective ways on improving patient privacy. Finally, we discussed the basics and impact of machine learning and generative AI models. Given all of the topics that we’ve covered, we’re now ready to come back to the very first evidence-based medicine discussion topic from the <a href="./ml.html#evidence-based-medicine-discussion">very first module</a>:</p>
+<p><strong>Should AI be used to improve access to mental health resources?</strong></p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><i class="fa-solid fa-lightbulb" aria-label="lightbulb"></i> These articles are completely different from the ones presented in the first module.</p>
+</div></div><ol type="1">
+<li><p><strong>Overview Article</strong>: Coming out to a chatbot? Researchers explore the limitations of mental health chatbots in LGBTQ+ communities. Science Daily. (2024). <a href="https://www.sciencedaily.com/releases/2024/05/240513193043.htm">Link to article</a></p></li>
+<li><p><strong><u>Yes</u>, generative AI improves access to mental health resources for teens</strong>: Alanzi T, Alsalem AA, Alzahrani H, Almudaymigh N, Alessa A, Mulla R, AlQahtani L, Bajonaid R, Alharthi A, Alnarhdi O, Alanzi N. AI-powered mental health virtual assistants’ acceptance: An empirical study on influencing factors among generations X, Y, and Z. Cureus 15(11): e49486. (2023). doi: <a href="https://doi.org/10.7759/cureus.49486">10.7759/cureus.49486</a></p></li>
+<li><p><strong><u>No</u>, generative AI continues to propagate existing biases without the safeguards of a clinical provider</strong>: Rai S, Stade EC, Giorgi S, Guntuku SC. Key language markers of depression on social media depend on race. Proc Nat Acad Sci 121(14): e2319837121. (2024). doi: <a href="https://doi.org/10.1073/pnas.2319837121">10.1073/pnas.2319837121</a></p></li>
+</ol>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><i class="fa-solid fa-lightbulb" aria-label="lightbulb"></i> Has your perspective on the role of machine learning and ethical algorithms changed at all since the first module?</p>
+</div></div></section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>Generative AI is a powerful new software tool that is becoming increasingly popular to use in a variety of different clinical and scientific workflows. While such tools can potentially be used to improve patient care and access to medical resources, they are also associated with their own set of limitations and challenges. As clinicians, we have a responsibility to think critically about the role of generative AI and ensure that future software is used responsibly.</p>
+</section>
+<section id="additional-readings" class="level2">
+<h2 class="anchored" data-anchor-id="additional-readings">Additional Readings</h2>
+<ol type="1">
+<li>Kearns M. Responsible AI in the generative era. Amazon Blog. (2023). <a href="https://www.amazon.science/blog/responsible-ai-in-the-generative-era">Link to article</a></li>
+<li>Fournier-Tombs E, McHardy J. A medical ethics framework for conversational artificial intelligence. J Med Internet Res 25: e43068. (2023). doi: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10373921/">10.2196/43068</a>. PMID: 37224277</li>
+<li>Capraro V, Lentsch A, Acemoglu D, et al.&nbsp;The impact of generative artificial intelligence on socioeconomic inequalities and policy making. Proc Nat Acad Sci Nexus. (2024). doi: <a href="https://dx.doi.org/10.2139/ssrn.4666103">10.2139/ssrn.4666103</a></li>
+</ol>
 
 
 </section>
+
 
 <p style="text-align: center;margin-top: 20px;">
 Made with ❤ by the EAMC Team ©2024.

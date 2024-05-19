@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Michael Yao, Allison Chae">
+<meta name="dcterms.date" content="2024-05-19">
 
-<title>Ethical Algorithms for the Modern Clinician - Patient Privacy</title>
+<title>Ethical Algorithms for the Modern Clinician - Privacy and Anonymization</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -41,6 +43,8 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -63,6 +67,8 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -94,19 +100,19 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-modules">    
         <li>
     <a class="dropdown-item" href="./ml.html" rel="" target="">
- <span class="dropdown-text">Intro to Machine Learning</span></a>
+ <span class="dropdown-text">Introduction to Machine Learning</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./bias.html" rel="" target="">
- <span class="dropdown-text">Algorithmic Bias</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./anonymization.html" rel="" target="">
- <span class="dropdown-text">Anonymization</span></a>
+ <span class="dropdown-text">Bias and Fairness</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./privacy.html" rel="" target="">
- <span class="dropdown-text">Patient Privacy</span></a>
+ <span class="dropdown-text">Privacy and Anonymization</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./interpretability.html" rel="" target="">
+ <span class="dropdown-text">Interpretability and Explainability</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./genai.html" rel="" target="">
@@ -125,8 +131,8 @@ ul.task-list li input[type="checkbox"] {
             </a>
           </li>
           <li>
-            <a class="dropdown-item quarto-navbar-tools-item" href="https://bugs.com">
-            Report a Bug
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://forms.gle/4hEf83U935U89HWg9">
+            Report an Issue
             </a>
           </li>
       </ul>
@@ -147,22 +153,40 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#a-detailed-look-hipaa-phi" id="toc-a-detailed-look-hipaa-phi" class="nav-link" data-scroll-target="#a-detailed-look-hipaa-phi">A Detailed Look: HIPAA PHI</a></li>
+  <li><a href="#hands-on-tutorial" id="toc-hands-on-tutorial" class="nav-link" data-scroll-target="#hands-on-tutorial">Hands-On Tutorial</a></li>
+  <li><a href="#evidence-based-medicine-discussion" id="toc-evidence-based-medicine-discussion" class="nav-link" data-scroll-target="#evidence-based-medicine-discussion">Evidence-Based Medicine Discussion</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#additional-readings" id="toc-additional-readings" class="nav-link" data-scroll-target="#additional-readings">Additional Readings</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="privacy.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Patient Privacy</h1>
+<h1 class="title">Privacy and Anonymization</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Michael Yao, Allison Chae </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 19, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -170,17 +194,230 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="learning-objectives" class="level2">
+<section id="learning-objectives" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
 <ol type="1">
-<li><p>TODO</p></li>
-<li><p>TODO</p></li>
-<li><p>TODO</p></li>
+<li><p><strong>Define</strong> privacy and anonymity, and <strong>describe</strong> the techniques that can be used to anonymize patient medical data.</p></li>
+<li><p><strong>Identify</strong> key reasons why anonymization does not preserve patient identities in the real-world.</p></li>
+<li><p><strong>Analyze</strong> how current data acquisition practices and anonymization techniques may inadvertently harm minority patient populations.</p></li>
 </ol>
-<p>All of Us https://pubmed.ncbi.nlm.nih.gov/36809550/</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Food for Thought: What does data privacy mean to you?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Some potential answers might include:</p>
+<ol type="1">
+<li><strong>Control of Access</strong>: You should be able to control who accesses your data.</li>
+<li><strong>Control of Use</strong>: You should be able to have a say on how your data is used and for what purpose.</li>
+<li><strong>Knowledge of Access/Use</strong>: You should know when your data is used or accessed.</li>
+<li><strong>Opt In (and Out)</strong>: You should be able to add more data or remove your data at any point in time.</li>
+<li><strong>Anonymity</strong>: Your identity should be maintained even after giving up your data.</li>
+</ol>
+<p>What other answers did you think of? Do you think these notions of privacy are currently satisfied in academic research using patient data?</p>
+</div>
+</div>
+</div>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><i class="fa-solid fa-lightbulb" aria-label="lightbulb"></i> When you release your genomic data to the public, is the privacy of your parents and grandparents still preserved? What about the future privacy of your children and grandchildren?</p>
+</div></div></section>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>As clinicians, we deal with patient data every day, and have an ethical (and legal) responsibility to protect patient privacy and confidential information. At the same time, we often work alongside scientists to use patient data to advance our understanding of science. How can we gain meaningful insights from data while still protecting patient identity?</p>
+<p>According to the Health Insurance Portability and Accountability Act (HIPAA), one way to accomplish this is through <strong>data anonymization</strong>. In general, there are two main ways that researchers anonymize data:</p>
+<ol type="1">
+<li><strong>Coarsening</strong> means we decrease the granularity of the features. For example, using 5-digit zip codes may make it too easy to identify individuals from a dataset, so we might instead choose to coarsen the zip codes by removing the last two digits of each zip code. Instead of including the exact ages of patients, we often coarse the data to only include the decade of the age of the patient.</li>
+<li><strong>Reduction</strong> means we remove entire features altogether. For example, we might choose to remove all patient names and medical record numbers from a dataset before making it accessible to researchers.</li>
+</ol>
+<p>How can we be certain that a dataset is anonymized “<em>enough</em>”? Formally, a dataset is defined as <strong><span class="math inline">\(k\)</span>-anonymous</strong> if there are at least <span class="math inline">\(k\)</span> copies of any given row in a dataset. The concept of <span class="math inline">\(k\)</span>-anonymity is based in the idea of <em>anonymity in numbers</em> - if <span class="math inline">\(k\)</span> is sufficiently large, then it should (hopefully) be impossible to identify any singular individual as a particular row of the dataset because the patient could be any of at least <span class="math inline">\(k\)</span> rows.</p>
+</section>
+<section id="a-detailed-look-hipaa-phi" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="a-detailed-look-hipaa-phi">A Detailed Look: HIPAA PHI</h2>
+<p>Let’s take a look at the official list of <a href="https://cphs.berkeley.edu/hipaa/hipaa18.html">HIPAA-protected attributes</a> from the Health and Human Services Department:</p>
+<ol type="1">
+<li>Names;</li>
+<li>All geographical subdivisions smaller than a state (e.g., street address, city, county, precinct, ZIP code except for the initial three digits of a ZIP code).<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+<li>All dates (except year) directly related to an individual (e.g., birth date, admission date, exact ages in years over the ages of 90).<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
+<li>Phone numbers, fax numbers, email addresses.</li>
+<li>Social security numbers, health plan beneficiary numbers, driver license numbers, medical record numbers, etc.</li>
+<li>License plates</li>
+<li>IP addresses</li>
+<li>Biometric identifiers (i.e., finger prints, voice recordings, genomic data)</li>
+<li>Full-face photographic images</li>
+<li>Any other unique identifying number, characteristic, or code</li>
+</ol>
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;The initial three digits of a zip code is still considered PHI by HIPAA if the number of individuals residing in all zip codes with those initial three digits is less than 20,000. Why do you think this is the case? How do you think the cutoff of 20,000 individuals was determined?</p></li><li id="fn2"><p><sup>2</sup>&nbsp;Why are ages over 90 years-old considered PHI, but not younger ages?</p></li></div><p>Are there any attributes listed that you didn’t expect? How about attributes that aren’t listed above but <em>should</em> be included?</p>
+</section>
+<section id="hands-on-tutorial" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="hands-on-tutorial">Hands-On Tutorial</h2>
+<p>For this exercise, take a look at the following table:</p>
+<div id="tbl-dataset" class="anchored">
+<table class="table-striped table">
+<caption>Table&nbsp;1: <strong>A Sample Patient Dataset</strong></caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><code>PATIENT_ID</code></th>
+<th style="text-align: center;"><code>AGE</code></th>
+<th style="text-align: center;"><code>GENDER</code></th>
+<th style="text-align: center;"><code>BP</code></th>
+<th style="text-align: center;"><code>HIV_STATUS</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">P001</td>
+<td style="text-align: center;">45</td>
+<td style="text-align: center;">M</td>
+<td style="text-align: center;">120/80</td>
+<td style="text-align: center;">Negative</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">P002</td>
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">135/85</td>
+<td style="text-align: center;">Positive</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">P003</td>
+<td style="text-align: center;">33</td>
+<td style="text-align: center;">M</td>
+<td style="text-align: center;">128/82</td>
+<td style="text-align: center;">Negative</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">P004</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">142/90</td>
+<td style="text-align: center;">Negative</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">P005</td>
+<td style="text-align: center;">27</td>
+<td style="text-align: center;">M</td>
+<td style="text-align: center;">110/70</td>
+<td style="text-align: center;">Positive</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">P006</td>
+<td style="text-align: center;">38</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">125/78</td>
+<td style="text-align: center;">Negative</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">P007</td>
+<td style="text-align: center;">55</td>
+<td style="text-align: center;">M</td>
+<td style="text-align: center;">138/88</td>
+<td style="text-align: center;">Negative</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">P008</td>
+<td style="text-align: center;">43</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">132/84</td>
+<td style="text-align: center;">Positive</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">P009</td>
+<td style="text-align: center;">29</td>
+<td style="text-align: center;">M</td>
+<td style="text-align: center;">118/76</td>
+<td style="text-align: center;">Negative</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">P010</td>
+<td style="text-align: center;">61</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">145/92</td>
+<td style="text-align: center;">Negative</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><i class="fa-solid fa-lightbulb" aria-label="lightbulb"></i> Is <a href="#tbl-dataset">Table&nbsp;1</a> properly anonymized according to HIPAA regulations?</p>
+</div></div><p>Imagine that you’re a student working in a research lab and are tasked with analyzing this dataset of patients from the Philadelphia area. Your research mentor tells you that this dataset contains <u>all</u> of the inpatient admissions to HUP from the past week.</p>
+<div class="page-columns page-full"><p>Separately during your lunch break, you hear on the news that a famous celebrity - a 50 year-old female (in this hypothetical situation) - was recently admitted to HUP last week for a hypertensive crisis, and was just recently discharged from the hospital.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;In case it wasn’t already clear, this dataset and scenario is entirely fictional, and was actually generated using <a href="https://chatgpt.com">ChatGPT</a>! You can take a look at the generation process <a href="https://chatgpt.com/share/f48b4e45-e6f0-4b68-a982-3c288ab27f94">here</a> if you’re interested.</p></li></div></div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Given this information, can you identify which patient ID corresponds to the famous celebrity?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The only patient in the table above corresponding to a 50 year-old female with hypertension is patient <code>P004</code>.</p>
+</div>
+</div>
+</div>
+<p>Ignoring the fact that this was a small toy example, how difficult was it to <em>re-identify</em> a patient (namely, the famous celebrity) from the dataset? As a result of the successful re-identification of the patient, were you able to learn anything new about the patient (i.e., take a look at the <code>HIV_STATUS</code> column).</p>
+<div class="page-columns page-full"><p>It turns out that a very similar re-identification strategy was used by <a href="https://latanyasweeney.org/index.html">Dr.&nbsp;Latanya Sweeney</a> in 1997 where she successfully re-identified the then Governor of Massachusetts using publicly accessible, anonymized medical records released by the state of Massachusetts.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn4"><p><sup>4</sup>&nbsp;Sweeney is an excellent writer and we encourage you to check out two of her publications on this topic: [1] Sweeney L. Only you, your doctor, and many others may know. Tech Sci. (2015). <a href="https://techscience.org/a/2015092903">Link to article</a>; [2] Sweeney L. <span class="math inline">\(k\)</span>-Anonymity: A model for protecting privacy. Int J Uncertainty, Fuzziness, and Knowledge-based Systems 10(5): 557-70. (2002). <a href="https://epic.org/wp-content/uploads/privacy/reidentification/Sweeney_Article.pdf">Link to article</a></p></li></div></div>
+<p>Why were we and Dr.&nbsp;Sweeney able to re-identify patients from an anonymized dataset? The main reason is that in both situations, we correlated the information in the table with outside knowledge and other datasets <strong>in order to gain new, privileged information</strong> about patients by synthesizing datasets together. There are countless other examples of re-identifying individuals from anonymized datasets, from <a href="https://arxiv.org/abs/cs/0610105">identifying Netflix users from anonymized movie ratings</a> to even finally <a href="https://www.science.org/content/article/we-will-find-you-dna-search-used-nab-golden-state-killer-can-home-about-60-white">catching the notorious <em>Golden State Killer</em></a>.</p>
+<p>In summary, there are two key points that we hope you take away from this exercise:</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Problems with Anonymization
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Anonymization is <strong><em>not</em></strong> an effective tool to preserve patient privacy.</li>
+<li>The <em>reason</em> why anonymization fails is that it assumes there are no other datasets or sources of information in the world to cross-reference.</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="evidence-based-medicine-discussion" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="evidence-based-medicine-discussion">Evidence-Based Medicine Discussion</h2>
+<p><strong>Do current HIPAA-compliant anonymization standards effectively protect minorities and people of color?</strong></p>
+<ol type="1">
+<li><strong>Overview Article</strong>: <em>All of Us</em> Research Program Overview. National Institutes of Health. Accessed 19 May 2024. <a href="https://allofus.nih.gov/about/program-overview">Link to article</a><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></li>
+</ol>
+<div class="no-row-height column-margin column-container"><li id="fn5"><p><sup>5</sup>&nbsp;There’s a great 2-minute intro video to the <em>All of Us</em> Research program <a href="https://youtu.be/ti50nS7B5vI?si=UzV3skolOuFync9g">here</a>.</p></li></div><ol start="2" type="1">
+<li><p><strong><u>Yes</u>, the anonymization achieved by the All-of-Us dataset is sufficient</strong>: Xia W, Basford M, Carroll R, Clayton EW, Harris P, Kantacioglu M, Liu Y, Nyemba S, Vorobeychik Y, Wan Z, Malin BA. Managing re-identification risks while providing access to the <em>All of Us</em> research program. J Am Med Inf Assoc 30(5): 907-14. (2023). doi: <a href="https://doi.org/10.1093/jamia/ocad021">10.1093/jamia/ocad021</a>. PMID: 36809550</p></li>
+<li><p><strong><u>No</u>, the All-of-Us dataset hurts people of color</strong>: Kaiser J. Million-person U.S. study of genes and health stumbles over including Native American groups. Science. (2019). <a href="https://www.science.org/content/article/million-person-us-study-genes-and-health-stumbles-over-including-native-american-groups">Link to article</a></p></li>
+</ol>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><i class="fa-solid fa-lightbulb" aria-label="lightbulb"></i> There are other problems involving the All of Us research program, including a recent study <a href="https://www.statnews.com/2024/03/15/all-of-us-genomic-sequencing-results-umap-science-history-sociology/">inadvertently using “objective” mathematical techniques that inappropriately validates racist and xenophobic ideologies</a>.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> Even well-established data analysis techniques must be used and presented carefully!<li id="fn6"><p><sup>6</sup>&nbsp;The All of Us Research Program Genomics Investigators. Genomic data in the All of Us research program. Nature 627: 340-6. (2024). doi: <a href="https://www.nature.com/articles/s41586-023-06957-x">10.1038/s41586-023-06957-x</a>. PMID: 38374255</p></li></p>
+</div></div></section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>Anonymization is a common technique used to ensure that publicly released medical datasets are HIPAA-compliant and protect patient identities. Unfortunately, there is a growing body of evidence that shows that anonymization is no longer an effective technique for protecting patient data, and cannot provide any provable guarantees for patient privacy. At the end of the day, robustly guaranteeing patient privacy is a difficult task and requires conscious efforts from both clinicians and researchers alike.</p>
+</section>
+<section id="additional-readings" class="level2">
+<h2 class="anchored" data-anchor-id="additional-readings">Additional Readings</h2>
+<ol type="1">
+<li>Gille F, Brall C. Limits of data anonymity: Lack of public awareness risks trust in health system activities. Life Sciences, Society and Policy 17(7). (2021). doi: <a href="https://lsspjournal.biomedcentral.com/articles/10.1186/s40504-021-00115-9">10.1186/s40504-021-00115-9</a></li>
+<li>Savage N. Privacy: The myth of anonymity. Nature 537: S70-2. (2016). doi: <a href="https://www.nature.com/articles/537S70a">10.1038/537S70a</a>. PMID: 27602747</li>
+<li>Kapoor S. Revisiting HIPAA - Privacy concerns in healthcare tech. Berkeley Technology Law Journal. (2023). <a href="https://btlj.org/2023/01/revisiting-hipaa-privacy-concerns-in-healthcare-tech/">Link to article</a></li>
+<li>Ohm P. Broken promises of privacy: Responding to the surprising failure of anonymization. UCLA Law Review 57: 1701. (2010). <a href="https://ssrn.com/abstract=1450006">Link to article</a></li>
+<li>Pool J, Akhlaghpour S, Fatehi F, Burton-Jones A. A systematic analysis of failures in protecting personal health data: A scoping review. Int J Inf Manag 74: 102719. (2024). doi: <a href="https://doi.org/10.1016/j.ijinfomgt.2023.102719">10.1016/j.ijinfomgt.2023.102719</a></li>
+</ol>
 
 
 </section>
+
 
 <p style="text-align: center;margin-top: 20px;">
 Made with ❤ by the EAMC Team ©2024.

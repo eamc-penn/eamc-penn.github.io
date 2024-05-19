@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Michael Yao, Allison Chae">
+<meta name="dcterms.date" content="2024-05-19">
 
-<title>Ethical Algorithms for the Modern Clinician - Algorithmic Bias</title>
+<title>Ethical Algorithms for the Modern Clinician - Bias and Fairness</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -96,19 +98,19 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-modules">    
         <li>
     <a class="dropdown-item" href="./ml.html" rel="" target="">
- <span class="dropdown-text">Intro to Machine Learning</span></a>
+ <span class="dropdown-text">Introduction to Machine Learning</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./bias.html" rel="" target="">
- <span class="dropdown-text">Algorithmic Bias</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./anonymization.html" rel="" target="">
- <span class="dropdown-text">Anonymization</span></a>
+ <span class="dropdown-text">Bias and Fairness</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./privacy.html" rel="" target="">
- <span class="dropdown-text">Patient Privacy</span></a>
+ <span class="dropdown-text">Privacy and Anonymization</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./interpretability.html" rel="" target="">
+ <span class="dropdown-text">Interpretability and Explainability</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./genai.html" rel="" target="">
@@ -127,8 +129,8 @@ ul.task-list li input[type="checkbox"] {
             </a>
           </li>
           <li>
-            <a class="dropdown-item quarto-navbar-tools-item" href="https://bugs.com">
-            Report a Bug
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://forms.gle/4hEf83U935U89HWg9">
+            Report an Issue
             </a>
           </li>
       </ul>
@@ -170,21 +172,33 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#additional-readings" id="toc-additional-readings" class="nav-link" data-scroll-target="#additional-readings">Additional Readings</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="bias.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Algorithmic Bias</h1>
+<h1 class="title">Bias and Fairness</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Michael Yao, Allison Chae </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 19, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -393,7 +407,9 @@ Does a patient need supplemental oxygen?
 <ol type="1">
 <li>Nicoletti L and Bass D. Humans are biased. Generative AI is even worse. Bloomberg. (2023). <a href="https://www.bloomberg.com/graphics/2023-generative-ai-bias/">Link to article</a></li>
 <li>Kearns M, Roth A. Responsible AI in the wild: Lessons learned at AWS. Amazon Science Blog. (2023). <a href="https://www.amazon.science/blog/responsible-ai-in-the-wild-lessons-learned-at-aws">Link to article</a></li>
-<li>List JM, Palevsky P, Tamang S, et al.&nbsp;Eliminating algorithmic racial bias in clinical decision support algorithms: Use cases from the Veterans Health Administration. Health Equity 7(1): 809-16. (2023). doi: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10698768/">10.1089/heq.2023.0037</a>. PMID: 38076213 Mittermaier M, Raza MM, Kvedar JC. Bias in AI-based models for medical applications: Challenges and mitigation strategies. npj Digit Med 6(113). (2023). doi: <a href="https://pubmed.ncbi.nlm.nih.gov/37311802/">10.1038/s41746-023-00858-z</a>. PMID: 37311802</li>
+<li>Evaluating Model Fairness. Arize Blog. (2023). Accessed 19 May 2024. <a href="https://arize.com/blog/evaluating-model-fairness/">Link to article</a></li>
+<li>List JM, Palevsky P, Tamang S, et al.&nbsp;Eliminating algorithmic racial bias in clinical decision support algorithms: Use cases from the Veterans Health Administration. Health Equity 7(1): 809-16. (2023). doi: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10698768/">10.1089/heq.2023.0037</a>. PMID: 38076213</li>
+<li>Mittermaier M, Raza MM, Kvedar JC. Bias in AI-based models for medical applications: Challenges and mitigation strategies. npj Digit Med 6(113). (2023). doi: <a href="https://pubmed.ncbi.nlm.nih.gov/37311802/">10.1038/s41746-023-00858-z</a>. PMID: 37311802</li>
 </ol>
 
 

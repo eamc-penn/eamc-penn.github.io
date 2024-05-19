@@ -6,6 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Michael Yao, Allison Chae">
+<meta name="dcterms.date" content="2024-05-19">
 
 <title>Ethical Algorithms for the Modern Clinician - Introduction to Machine Learning</title>
 <style>
@@ -41,6 +43,8 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -96,19 +100,19 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-modules">    
         <li>
     <a class="dropdown-item" href="./ml.html" rel="" target="">
- <span class="dropdown-text">Intro to Machine Learning</span></a>
+ <span class="dropdown-text">Introduction to Machine Learning</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./bias.html" rel="" target="">
- <span class="dropdown-text">Algorithmic Bias</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./anonymization.html" rel="" target="">
- <span class="dropdown-text">Anonymization</span></a>
+ <span class="dropdown-text">Bias and Fairness</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./privacy.html" rel="" target="">
- <span class="dropdown-text">Patient Privacy</span></a>
+ <span class="dropdown-text">Privacy and Anonymization</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./interpretability.html" rel="" target="">
+ <span class="dropdown-text">Interpretability and Explainability</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./genai.html" rel="" target="">
@@ -127,8 +131,8 @@ ul.task-list li input[type="checkbox"] {
             </a>
           </li>
           <li>
-            <a class="dropdown-item quarto-navbar-tools-item" href="https://bugs.com">
-            Report a Bug
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://forms.gle/4hEf83U935U89HWg9">
+            Report an Issue
             </a>
           </li>
       </ul>
@@ -163,7 +167,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#additional-readings" id="toc-additional-readings" class="nav-link" data-scroll-target="#additional-readings">Additional Readings</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="ml.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
@@ -177,7 +181,19 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Michael Yao, Allison Chae </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 19, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -193,15 +209,28 @@ ul.task-list li input[type="checkbox"] {
 <li><p><strong>Identify</strong> key applications of machine learning and when computational tools can be helpful (and potentially harmful) for patient care.</p></li>
 </ol>
 </section>
-<section id="food-for-thought" class="level2 page-columns page-full">
+<section id="food-for-thought" class="level2">
 <h2 class="anchored" data-anchor-id="food-for-thought">Food for Thought</h2>
 <ol type="1">
 <li>Are there tasks in healthcare for which automated methods–such as computer algorithms and artificial intelligence (AI)–should never be used for? Why or why not?</li>
 </ol>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<p> What if automated methods perform the task on par with humans? What if they perform <em>better than</em> humans?</p>
-</div></div><ol start="2" type="1">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Food for Thought: Are there tasks in healthcare for which automated methods should never be used?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><i class="fa-solid fa-lightbulb" aria-label="lightbulb"></i> What if automated methods perform the task on par with humans? What if they perform <em>better than</em> humans?</p>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
 <li>Does understanding <strong><em>how</em></strong> automated methods arrive at their predictions change any of your answers to question 1?</li>
 </ol>
 </section>
@@ -235,7 +264,7 @@ ul.task-list li input[type="checkbox"] {
 <h4 class="anchored" data-anchor-id="a-patient-with-sepsis">A Patient with Sepsis</h4>
 
 <div class="no-row-height column-margin column-container"><div class="">
-<p> For those of you with a machine learning background, <strong>A Database of Genomes</strong> is an <em>unsupervised learning problem</em>, <strong>A Randomized Control Trial</strong> is a <em>supervised learning problem</em>, and <strong>A Patient with Sepsis</strong> is a <em>reinforcement learning problem</em>. You can learn more about each of these types of machine learning problems <a href="https://www.coursera.org/articles/types-of-machine-learning">here</a>!</p>
+<p><i class="fa-solid fa-lightbulb" aria-label="lightbulb"></i> For those of you with a machine learning background, <strong>A Database of Genomes</strong> is an <em>unsupervised learning problem</em>, <strong>A Randomized Control Trial</strong> is a <em>supervised learning problem</em>, and <strong>A Patient with Sepsis</strong> is a <em>reinforcement learning problem</em>. You can learn more about each of these types of machine learning problems <a href="https://www.coursera.org/articles/types-of-machine-learning">here</a>!</p>
 </div></div><p>A 52 year-old male presents with acute-onset altered mental status and fever. Vitals are notable for BP 90/60 and T 103.4. We can denote the patient as a variable <span class="math inline">\(x\)</span> consisting of all of the relevant attributes of the patient: their HPI, past medical history, current lab values and vitals, etc.</p>
 <p>On our first day as a medical student, we might not know what to do with this patient. Do we admit them and start them on IV antibiotics? Do we call a neurology consult? Do we just send the patient home? Each of these clinical interventions can be thought of as an action <span class="math inline">\(a\)</span> that we can take to try to help the patient get better.</p>
 <p>After observing a patient <span class="math inline">\(x\)</span> and performing an action <span class="math inline">\(a\)</span>, we monitor the patient to see if they improve. The patient’s outcome can be denoted as a variable <span class="math inline">\(y\)</span> (for example, <span class="math inline">\(y=0\)</span> if the patient deteriorates and <span class="math inline">\(y=1\)</span> if the patient gets better). We observe the clinical outcome <span class="math inline">\(y\)</span>, and use it to learn a better algorithm so that next time we see a similar patient, we can take a better action that leads to a more favorable outcome.</p>
@@ -264,10 +293,10 @@ Learning = Generalization
 <p>Machine learning (ML) uses the <em>exact same</em> framework of <strong>learning through observation</strong> to learn hard-to-write-down algorithms from data as <strong><em>exact steps</em></strong> that a computer can execute.</p>
 
 <div class="no-row-height column-margin column-container"><div class="">
-<p> Just like how we all have different mnemonics and mental maps on how to approach clinical reasoning, the exact steps in the algorithm that ML learns may not be the same as the steps that clinicians learn! This is an important problem that researchers are still trying to solve.</p>
+<p><i class="fa-solid fa-exclamation-triangle" aria-label="exclamation-triangle"></i> Just like how we all have different mnemonics and mental maps on how to approach clinical reasoning, the exact steps in the algorithm that ML learns may not be the same as the steps that clinicians learn! This is an important problem that researchers are still trying to solve.</p>
 </div></div><p>The fundamental goal of machine learning is to learn <strong>hard-to-write-down</strong> algorithms from past observations to hopefully make accurate predictions for future observations.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -276,7 +305,7 @@ What problems might cause algorithms to generalize poorly to new patients?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>There are a number of reasons. Here are a couple:</p>
 <ol type="1">
@@ -292,7 +321,7 @@ What problems might cause algorithms to generalize poorly to new patients?
 <h3 class="anchored" data-anchor-id="when-can-machine-learning-be-a-helpful-tool">When can machine learning be a helpful tool?</h3>
 <p>Consider the following example cases. Would you want to use machine learning in each of these cases?</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -301,25 +330,9 @@ What problems might cause algorithms to generalize poorly to new patients?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>No</strong>, it’s easy to just look up the age of a patient from the patient chart.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-2. Given patient blood pressure values, ML predicts the patient’s MAP.
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>No</strong>, computing MAP is an easy-to-write-down algorithm.</p>
+<p><strong>No</strong>, it’s easy to just look up the age of a patient from the patient chart.</p>
 </div>
 </div>
 </div>
@@ -329,13 +342,13 @@ What problems might cause algorithms to generalize poorly to new patients?
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-3. Given patient lab values, imaging data, genomic data, and other attributes, ML predicts whether the patient is at risk for a cancer with no known cure.
+2. Given patient blood pressure values, ML predicts the patient’s MAP.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>No</strong>, even if ML derives an algorithm for this task, there is nothing actionable that we can do about it.</p>
+<p><strong>No</strong>, computing MAP is an easy-to-write-down algorithm.</p>
 </div>
 </div>
 </div>
@@ -345,13 +358,13 @@ What problems might cause algorithms to generalize poorly to new patients?
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-4. Given patient bowel sound recordings, ML predicts the probability a patient has an SBO.
+3. Given patient lab values, imaging data, genomic data, and other attributes, ML predicts whether the patient is at risk for a cancer with no known cure.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>No</strong>, we don’t have any datasets of patient bowel sounds mapping to the presence/absence of an SBO, so there are no prior observations for ML to learn from.</p>
+<p><strong>No</strong>, even if ML derives an algorithm for this task, there is nothing actionable that we can do about it.</p>
 </div>
 </div>
 </div>
@@ -361,11 +374,27 @@ What problems might cause algorithms to generalize poorly to new patients?
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-5. Given patient lab values, ML predicts the probability a patient has ribose-5-phosphate isomerase (RPI) deficiency, the second rarest disease in the world.
+4. Given patient bowel sound recordings, ML predicts the probability a patient has an SBO.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>No</strong>, we don’t have any datasets of patient bowel sounds mapping to the presence/absence of an SBO, so there are no prior observations for ML to learn from.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+5. Given patient lab values, ML predicts the probability a patient has ribose-5-phosphate isomerase (RPI) deficiency, the second rarest disease in the world.
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>No</strong>, we don’t have nearly enough observations of patients with RPI deficiency. Even if we did have enough data to learn this algorithm, we also would rarely/never even need to use this algorithm.</p>
 </div>
@@ -413,7 +442,7 @@ What problems might cause algorithms to generalize poorly to new patients?
 
 </section>
 
-<p style="text-align: center;">
+<p style="text-align: center;margin-top: 20px;">
 Made with ❤ by the EAMC Team ©2024.
 </p></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

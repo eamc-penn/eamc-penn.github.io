@@ -1,7 +1,6 @@
 ---
-title: "Algorithmic Bias"
-reference-location: margin
-citation-location: margin
+title: Bias and Fairness
+author: Michael Yao, Allison Chae
 ---
 
 ## Learning Objectives
@@ -195,5 +194,6 @@ Bias is defined based on (1) protected attribute(s) and (2) a definition of harm
 
 1. Nicoletti L and Bass D. Humans are biased. Generative AI is even worse. Bloomberg. (2023). [Link to article](https://www.bloomberg.com/graphics/2023-generative-ai-bias/)
 2. Kearns M, Roth A. Responsible AI in the wild: Lessons learned at AWS. Amazon Science Blog. (2023). [Link to article](https://www.amazon.science/blog/responsible-ai-in-the-wild-lessons-learned-at-aws)
-3. List JM, Palevsky P, Tamang S, et al. Eliminating algorithmic racial bias in clinical decision support algorithms: Use cases from the Veterans Health Administration. Health Equity 7(1): 809-16. (2023). doi: [10.1089/heq.2023.0037](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10698768/). PMID: 38076213
-Mittermaier M, Raza MM, Kvedar JC. Bias in AI-based models for medical applications: Challenges and mitigation strategies. npj Digit Med 6(113). (2023). doi: [10.1038/s41746-023-00858-z](https://pubmed.ncbi.nlm.nih.gov/37311802/). PMID: 37311802
+3. Evaluating Model Fairness. Arize Blog. (2023). Accessed 19 May 2024. [Link to article](https://arize.com/blog/evaluating-model-fairness/)
+4. List JM, Palevsky P, Tamang S, et al. Eliminating algorithmic racial bias in clinical decision support algorithms: Use cases from the Veterans Health Administration. Health Equity 7(1): 809-16. (2023). doi: [10.1089/heq.2023.0037](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10698768/). PMID: 38076213
+5. Mittermaier M, Raza MM, Kvedar JC. Bias in AI-based models for medical applications: Challenges and mitigation strategies. npj Digit Med 6(113). (2023). doi: [10.1038/s41746-023-00858-z](https://pubmed.ncbi.nlm.nih.gov/37311802/). PMID: 37311802

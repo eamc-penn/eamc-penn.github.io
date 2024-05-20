@@ -35,7 +35,6 @@ Here are just a few examples of up-and-coming applications of generative AI:
 {{< fa lightbulb >}} Can you think of other potential use cases for generative AI in medicine and the sciences?
 :::
 
-
 ## New Challenges Associated with Generative AI
 
 With new technologies and opportunities also come new challenges associated with them.
@@ -54,7 +53,7 @@ Recent studies have shown that generative AI, including [large language models](
 
 #### Toxicity
 
-There are several notions of toxicity, such as the inclusion of profanity, offensive/controversial opinions, or other outputs that are not aligned with societal values (i.e., a model telling a user how to build a bomb). In certain cases, toxic behavior is easy to identify. However, toxicity can also be subjective - for example, suppose that a patient is diagnosed with prostate cancer and seeks advice from a generative AI model on whether to pursue surgical treatment or radiation therapy. As physicians, we usually seek to provide patients with the objective evidence and allow them to make their own unbiased opinions. Is it "toxic" behavior is a generative AI model makes a recommendation one way or another?
+There are several notions of toxicity, such as the inclusion of profanity, offensive/controversial opinions, or other outputs that are not aligned with societal values (i.e., a model telling a user how to build a bomb). In certain cases, toxic behavior is easy to identify. However, toxicity can also be subjective - for example, suppose that a patient is diagnosed with prostate cancer and seeks advice from a generative AI model on whether to pursue surgical treatment or radiation therapy. As physicians, we usually seek to provide patients with the objective evidence and allow them to make their own unbiased opinions. Is it "toxic" behavior if a generative AI model makes a recommendation one way or another?
 
 #### Hallucinations
 
@@ -98,11 +97,29 @@ Over the past few modules, we've discussed many different facets of ethical algo
 {{< fa lightbulb >}} These articles are completely different from the ones presented in the first module.
 :::
 
-1. **Overview Article**: Coming out to a chatbot? Researchers explore the limitations of mental health chatbots in LGBTQ+ communities. Science Daily. (2024). [Link to article](https://www.sciencedaily.com/releases/2024/05/240513193043.htm)
+::: {.callout-note icon=false}
+#### 1. Overview Article
 
-2. **<u>Yes</u>, generative AI improves access to mental health resources for teens**: Alanzi T, Alsalem AA, Alzahrani H, Almudaymigh N, Alessa A, Mulla R, AlQahtani L, Bajonaid R, Alharthi A, Alnarhdi O, Alanzi N. AI-powered mental health virtual assistants' acceptance: An empirical study on influencing factors among generations X, Y, and Z. Cureus 15(11): e49486. (2023). doi: [10.7759/cureus.49486](https://doi.org/10.7759/cureus.49486)
+Coming out to a chatbot? Researchers explore the limitations of mental health chatbots in LGBTQ+ communities. Science Daily. (2024). [Link to article](https://seas.harvard.edu/news/2024/05/coming-out-chatbot)
 
-3. **<u>No</u>, generative AI continues to propagate existing biases without the safeguards of a clinical provider**: Rai S, Stade EC, Giorgi S, Guntuku SC. Key language markers of depression on social media depend on race. Proc Nat Acad Sci 121(14): e2319837121. (2024). doi: [10.1073/pnas.2319837121](https://doi.org/10.1073/pnas.2319837121)
+**tl;dr**: Many researchers are exploring how generative AI chatbots can help treat loneliness among seniors and mental health disorders in teens. In one interview study with 31 participants, researchers reported that the chatbots offered a sense of solidarity and a safe space to explore and express their identities. However, the same tools often gave researchers bad advice or failed to support LGBTQ+ users. Research in this space is ongoing and the results are mixed.
+:::
+
+::: {.callout-tip icon=false}
+#### 2. <u>Yes</u>, generative AI improves access to mental health resources for teens.
+
+Alanzi T, Alsalem AA, Alzahrani H, Almudaymigh N, Alessa A, Mulla R, AlQahtani L, Bajonaid R, Alharthi A, Alnarhdi O, Alanzi N. AI-powered mental health virtual assistants' acceptance: An empirical study on influencing factors among generations X, Y, and Z. Cureus 15(11): e49486. (2023). doi: [10.7759/cureus.49486](https://doi.org/10.7759/cureus.49486)
+
+**tl;dr**: Single-site cross-sectional survey with 506 patient participants, 80% of which had moderate to high prior experience with mental health AI chatbots. Trusting bonds between users and chatbots were established quickly. Gen Z patients have more favorable opinions of AI-based virtual assistants and actively seek mental health support from chatbots.
+:::
+
+::: {.callout-important icon=false}
+#### 3. <u>No</u>, generative AI continues to propagate existing biases without the safeguards of a clinical provider.
+
+Rai S, Stade EC, Giorgi S, Guntuku SC. Key language markers of depression on social media depend on race. Proc Nat Acad Sci 121(14): e2319837121. (2024). doi: [10.1073/pnas.2319837121](https://doi.org/10.1073/pnas.2319837121)
+
+**tl;dr**: Researchers trained machine learning (ML) models to predict if an individual was depressed based on social media posts. State-of-the-art machine learning models failed to predict depression severity for Black patients - even when they were trained exclusively using the language of Black individuals. Current language processing techniques perform poorly on minority patients, potentially leading to substandard care for patients of color.
+:::
 
 ::: column-margin
 {{< fa lightbulb >}} Has your perspective on the role of machine learning and ethical algorithms changed at all since the first module?

@@ -12,15 +12,14 @@ author: Michael Yao, Allison Chae
 3. **Identify** key applications of machine learning and when computational tools can be helpful (and potentially harmful) for patient care.
 
 ## Food for Thought
-1. Are there tasks in healthcare for which automated methods–such as computer algorithms and artificial intelligence (AI)–should never be used for? Why or why not?
 
-::: {.callout-tip collapse="true" icon="false"}
-#### Food for Thought: Are there tasks in healthcare for which automated methods should never be used?
-
-{{< fa lightbulb >}} What if automated methods perform the task on par with humans? What if they perform *better than* humans?
-:::
+1. Are there tasks in healthcare for which automated methods–such as computer algorithms and artificial intelligence (AI)–should never be used? Why or why not?
 
 2. Does understanding ***how*** automated methods arrive at their predictions change any of your answers to question 1?
+
+::: column-margin
+{{< fa lightbulb >}} What if automated methods perform the task on par with humans? What if they perform *better than* humans?
+:::
 
 ## Introduction to Machine Learning
 
@@ -48,15 +47,15 @@ Computers can run algorithms that can be written down exactly. But how can we te
 
 Computers can learn by observation, much like how medical students learn! Consider some of the following scenarios:
 
-#### A Database of Genomes
+**A Database of Genomes**
 
-During your clinical research year, your advisor gives you a large dataset of many different patient genomes. We can denote this dataset of $n$ patients as the variable $\mathcal{D}_n$. By analyzing $\mathcal{D}_n$, we try to gain insights into which genes make individuals unique, and which ones all patients share in common.
+During your clinical research year, your advisor gives you a large dataset of many different patient genomes. By analyzing this dataset, we try to gain insights into which genes make individuals unique, and which ones all patients share in common.
 
-#### A Randomized Control Trial
+**A Randomized Control Trial**
 
 Your research mentor is impressed with your analysis and gives you a new project: investigating if a new drug ***abastatin*** lowers patient cholesterol levels. He gives you a large dataset of anonymized patient data containing two variables: whether the patient was given abastatin or placebo ($x$), and whether the patient had a reduction in their cholesterol levels ($y$). By analyzing this dataset, we try to learn whether or not abastatin is an effective drug for hypercholesterolemia.
 
-#### A Patient with Sepsis
+**A Patient with Sepsis**
 
 ::: column-margin
 {{< fa lightbulb >}} For those of you with a machine learning background, **A Database of Genomes** is an *unsupervised learning problem*, **A Randomized Control Trial** is a *supervised learning problem*, and **A Patient with Sepsis** is a *reinforcement learning problem*. You can learn more about each of these types of machine learning problems [here](https://www.coursera.org/articles/types-of-machine-learning)!
@@ -68,7 +67,9 @@ On our first day as a medical student, we might not know what to do with this pa
 
 After observing a patient $x$ and performing an action $a$, we monitor the patient to see if they improve. The patient's outcome can be denoted as a variable $y$ (for example, $y=0$ if the patient deteriorates and $y=1$ if the patient gets better). We observe the clinical outcome $y$, and use it to learn a better algorithm so that next time we see a similar patient, we can take a better action that leads to a more favorable outcome.
 
-Over the course of medical school, we see hundreds (if not thousands) of tuples $(x, a, y)$ through clerkships, sub-Is, exams, and UWorld, and use this dataset of patient-outcome pairs to learn *hard-to-write-down algorithms* for choosing the best clinical intervention $a$ given a patient $x$ to maximize the outcome $y$. In other words, **we learn by observation**.
+Over the course of medical school, we see hundreds (if not thousands) of tuples $(x, a, y)$ through clerkships, sub-Is, exams, and UWorld, and use this dataset of patient-action-outcome observations to learn *hard-to-write-down algorithms* for choosing the best clinical intervention $a$ given a patient $x$ to maximize the outcome $y$.
+
+In other words, **we learn by observation**.
 
 ### What does it mean to "learn"?
 
@@ -95,8 +96,9 @@ The fundamental goal of machine learning is to learn **hard-to-write-down** algo
 
 There are a number of reasons. Here are a couple:
   
-  1. **New patients are very different from the patients used to train the algorithm.** TODO
-  2. **The algorithm had too many inputs and learned relationships between inputs and outputs that are not true.** For example, if we try to predict the weather based on features like TODO
+  1. **New patients are very different from the patients used to learn the algorithm.** For example, society guidelines developed in the United States may lead to substandard care if implemented directly in another country like Korea or Nigeria. This is because the prevalence (and potentially pathophysiology) of diseases may differ between different areas of the world.
+  2. **The algorithm has too many inputs and learns relationships between inputs and outputs that are not true.** If you observe enough features, you may find "correlations" that end up just being due to random chance. For example, if we include "ice cream sales" as an input to an algorithm to predict drowning death rate, we may incorrectly learn that [ice cream causes drowning](https://www.scienceminded.org/post/ice-cream-linked-to-drowning). (This is also referred to as *spurious correlations*)
+  3. **The algorithm is learned from too small of a patient population.** If we only observe five septic patients and notice that all of them eat candy and miraculously get better, we might conclude that sugar cures sepsis. Generalizing before we've seen enough observations can lead to incorrect conclusions.
 
 What other problems did you think of? Are there any ways to fix the problems that we've identified?
 :::
@@ -118,7 +120,7 @@ Consider the following example cases. Would you want to use machine learning in 
 :::
 
 ::: {.callout-tip collapse="true" icon="false"}
-#### 3. Given patient lab values, imaging data, genomic data, and other attributes, ML predicts whether the patient is at risk for a cancer with no known cure.
+#### 3. Given patient lab values, imaging data, genomic data, and other attributes, ML predicts whether the patient is at risk for Huntington's disease (a disease with no known cure).
 
 **No**, even if ML derives an algorithm for this task, there is nothing actionable that we can do about it.
 :::
@@ -145,26 +147,39 @@ Consider the following example cases. Would you want to use machine learning in 
 
 **Should AI be used to improve access to mental health resources?**
 
-1. **Overview Article**: Stade EC, Stirman SW, Ungar LH, Boland CL, Schwartz HA, Yaden DB, Sedoc J, DeRubeis RJ, Willer R, Eichstaedt JC. Large language models could change the future of behavioral healthcare: A proposal for responsible development and evaluation. npj Mental Health Res 3(12). (2024). doi: [10.1038/s44184-024-00056-z](https://www.nature.com/articles/s44184-024-00056-z). PMID: 38609507
+::: {.callout-note icon=false}
+#### 1. Overview Article
 
-2. **<u>Yes</u>, AI is more empathetic than physicians**: Ayers JW, Poliak A, Dredze M, Leas EC, Zhu Z, Kelley J, Faux DJ, Goodman AM, Longhurst CA, Hogarth M, Smith DM. Comparing physician and artificial intelligence chatbot responses to patient questions posted to a public social media forum. JAMA Intern Med 183(6): 589-96. (2023). doi: [10.1001/jamainternmed.2023.1838](https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2804309). PMID: 37115527
+Stade EC, Stirman SW, Ungar LH, Boland CL, Schwartz HA, Yaden DB, Sedoc J, DeRubeis RJ, Willer R, Eichstaedt JC. Large language models could change the future of behavioral healthcare: A proposal for responsible development and evaluation. npj Mental Health Res 3(12). (2024). doi: [10.1038/s44184-024-00056-z](https://www.nature.com/articles/s44184-024-00056-z). PMID: 38609507
 
-3. **<u>No</u>, AI is too slow to appropriately escalate mental health risk scenarios**: Heston TF. Safety of large language models in addressing depression. Cureus 15(12): e50729. (2023). doi: [10.7759/cureus.50729](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10727113/). PMID: 38111813
+**tl;dr**: Large language models (LLMs) are AI tools that can read, summarize, and generate text. Early research efforts are investigating the applications of LLMs for psychotherapy. These tools may improve psychotherapy care delivery and access to mental health resources. However, poor outcomes or ethical transgressions from clinical LLMs could also harm patients.
+:::
+
+::: {.callout-tip icon=false}
+#### 2. <u>Yes</u>, AI is more empathetic than physicians.
+
+Ayers JW, Poliak A, Dredze M, Leas EC, Zhu Z, Kelley J, Faux DJ, Goodman AM, Longhurst CA, Hogarth M, Smith DM. Comparing physician and artificial intelligence chatbot responses to patient questions posted to a public social media forum. JAMA Intern Med 183(6): 589-96. (2023). doi: [10.1001/jamainternmed.2023.1838](https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2804309). PMID: 37115527
+
+**tl;dr**: Cross-sectional study using 195 randomly drawn public patient questions from Reddit's [r/AskDocs](https://www.reddit.com/r/AskDocs/) forum. Authors compared physician and chatbot responses to these questions. The chatbot responses were preferred over physician responses and rated significantly higher for both quality and empathy. AI assistants may be able to aid in drafting responses to patient questions.
+:::
+
+::: {.callout-important icon=false}
+#### 3. <u>No</u>, AI is too slow to appropriately escalate mental health risk scenarios.
+
+Heston TF. Safety of large language models in addressing depression. Cureus 15(12): e50729. (2023). doi: [10.7759/cureus.50729](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10727113/). PMID: 38111813
+
+**tl;dr**: Cross-sectional study evaluting 25 conversational AI chatbots specifically designed for mental health counseling. Each chatbot was evaluated twice via highly structured patient simulations designed to assess if (1) the chatbot can escalate suicide risk based on [Patient Health Questionnaire (PHQ-9)](https://www.mdcalc.com/calc/1725/phq9-patient-health-questionnaire9) scores; and (2) the chatbot can recognize suicidality in conversation. Few chatbots included crisis resources in these simulations, and were slow to escalate mental health risk scenarios, postponing referral to a human to potentially dangerous levels. 
+:::
 
 ## Hands-On Tutorial
 
-Let’s explore how state-of-the-art AI models currently perform as mental health resources for real-world patients. Here's an example of a chatbot that's currently available for anyone to use on the Internet.
+Let’s explore how state-of-the-art AI models currently perform as mental health resources for real-world patients. <a href="https://hf.co/chat/assistant/65bfce195560c1a5c0c9d5ad" target="_blank">Here is an example of a chatbot</a> that's currently available for anyone to use on the Internet (including your patients) - click on the link to open it in a new window.
 
 Assume the role of a patient seeking mental health support and resources. How accurate is the model as a therapist? How empathetic is the model? Would you use this particular model for mental health support? Why or why not?
 
 ::: column-margin
-This particular model is hosted on [Hugging Face](https://huggingface.co/), which has become the *de-facto* website for publishing publicly available machine learning models like the one we're exploring here. Anyone can download a model and use it for applications such as mental health among others.
+{{< fa lightbulb >}} This particular model is hosted on [Hugging Face](https://huggingface.co/), which has become the *de-facto* website for publishing publicly available machine learning models like the one we're exploring here. Anyone can download a model and use it for applications such as mental health among others.
 :::
-
-```{=html}
-<iframe src="https://hf.co/chat/assistant/65bfce195560c1a5c0c9d5ad" width=100%, height=800px sandbox>
-</iframe>
-```
 
 ## Summary
 

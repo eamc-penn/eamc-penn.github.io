@@ -117,13 +117,31 @@ In summary, there are two key points that we hope you take away from this exerci
 
 **Do current HIPAA-compliant anonymization standards effectively protect minorities and people of color?**
 
-1. **Overview Article**: *All of Us* Research Program Overview. National Institutes of Health. Accessed 19 May 2024. [Link to article](https://allofus.nih.gov/about/program-overview)[^5]
+::: {.callout-note icon=false}
+#### 1. Overview Article
+
+*All of Us* Research Program Overview. National Institutes of Health. Accessed 19 May 2024. [Link to article](https://allofus.nih.gov/about/program-overview)[^5]
+
+**tl;dr**: *All of Us* is an NIH initiative to build a diverse database of Americans from all backgrounds in order to inform and power thousands of future studies on a variety of different health conditions. The overarching goal of the *All of Us* initiative is to power future advancements in precision medicine.
+:::
 
 [^5]: There's a great 2-minute intro video to the *All of Us* Research program [here](https://youtu.be/ti50nS7B5vI?si=UzV3skolOuFync9g).
 
-2. **<u>Yes</u>, the anonymization achieved by the All-of-Us dataset is sufficient**: Xia W, Basford M, Carroll R, Clayton EW, Harris P, Kantacioglu M, Liu Y, Nyemba S, Vorobeychik Y, Wan Z, Malin BA. Managing re-identification risks while providing access to the *All of Us* research program. J Am Med Inf Assoc 30(5): 907-14. (2023). doi: [10.1093/jamia/ocad021](https://doi.org/10.1093/jamia/ocad021). PMID: 36809550
+::: {.callout-tip icon=false}
+#### 2. <u>Yes</u>, the anonymization achieved by the All-of-Us Research Program is sufficient.
 
-3. **<u>No</u>, the All-of-Us dataset hurts people of color**: Kaiser J. Million-person U.S. study of genes and health stumbles over including Native American groups. Science. (2019). [Link to article](https://www.science.org/content/article/million-person-us-study-genes-and-health-stumbles-over-including-native-american-groups)
+Xia W, Basford M, Carroll R, Clayton EW, Harris P, Kantacioglu M, Liu Y, Nyemba S, Vorobeychik Y, Wan Z, Malin BA. Managing re-identification risks while providing access to the *All of Us* research program. J Am Med Inf Assoc 30(5): 907-14. (2023). doi: [10.1093/jamia/ocad021](https://doi.org/10.1093/jamia/ocad021). PMID: 36809550
+
+**tl;dr**: Cross-sectional study using the All of Us database containing data from over 300,000 participants at the time of the study. The authors used computational techniques to compute the re-identification risk for any given individual in the dataset. A large re-identification risk means that a given individual is unique in dataset and therefore more likely to be re-identified. The 95th percentile re-identification risk across all participants satisfies current government guidelines. 
+:::
+
+::: {.callout-important icon=false}
+#### 3. <u>No</u>, the All-of-Us Research Program hurts people of color.
+
+Kaiser J. Million-person U.S. study of genes and health stumbles over including Native American groups. Science. (2019). [Link to article](https://www.science.org/content/article/million-person-us-study-genes-and-health-stumbles-over-including-native-american-groups)
+
+**tl;dr**: Native Americans have historically been mistreated by researchers and the US government, and are skeptical of participating in *All of Us*. Because so few Native Americans currently participate in *All of Us*, any new individual participant from a small tribe will have a high re-identification risk in spite of data safeguards. Tribes are seeking to be able to approve publications on their group and an opportunity to bless biological samples before disposal.
+:::
 
 ::: column-margin
 {{< fa lightbulb >}} There are other problems involving the All of Us research program, including a recent study [inadvertently using "objective" mathematical techniques that inappropriately validates racist and xenophobic ideologies](https://www.statnews.com/2024/03/15/all-of-us-genomic-sequencing-results-umap-science-history-sociology/).[^6] Even well-established data analysis techniques must be used and presented carefully!

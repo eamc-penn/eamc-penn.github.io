@@ -10,3 +10,8 @@ $cyan: #87CEEB;
 
 // Code blocks
 $code-block-bg-alpha: -.8;
+
+.dropdown-menu {
+    background-color: $navbar-bg !important;
+    border: 1px solid rgba(255, 255, 255, .15) !important;
+}

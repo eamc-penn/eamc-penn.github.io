@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-05-19">
+<meta name="dcterms.date" content="2024-05-20">
 
 <title>Ethical Algorithms for the Modern Clinician</title>
 <style>
@@ -31,6 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href=".//images/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -95,7 +96,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-modules">    
         <li>
     <a class="dropdown-item" href="./ml.html" rel="" target="">
- <span class="dropdown-text">Introduction to Machine Learning</span></a>
+ <span class="dropdown-text">Intro to Machine Learning</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./bias.html" rel="" target="">
@@ -107,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
         <li>
     <a class="dropdown-item" href="./interpretability.html" rel="" target="">
- <span class="dropdown-text">Interpretability and Explainability</span></a>
+ <span class="dropdown-text">Algorithmic Interpretability</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./genai.html" rel="" target="">
@@ -160,7 +161,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 19, 2024</p>
+      <p class="date">May 20, 2024</p>
     </div>
   </div>
   
@@ -178,7 +179,7 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="./ml.html"><strong>Introduction to Machine Learning</strong></a>: What is machine learning? How is it similar to and different from conventional software?</li>
 <li><a href="./bias.html"><strong>Bias and Fairness</strong></a>: How can algorithms like machine learning be biased against certain patient sub-populations? How can we quantify, detect, and reduce bias in clinical decision making algorithms?</li>
 <li><a href="./privacy.html"><strong>Privacy and Anonymization</strong></a>: How can we effectively anonymize patient data? Why does anonymization often fall short in protecting patient identities? How can we ensure that clinicians use algorithms responsibly while maintaining patient privacy?</li>
-<li><a href="./interpretability.html"><strong>Interpretability and Explainability</strong></a>: TODO</li>
+<li><a href="./interpretability.html"><strong>Algorithmic Interpretability</strong></a>: What does mean for an algorithm to be <em>interpretable</em>? Is it important for us to be able to explain how an algorithm works in order to use it in clinical practice?</li>
 <li><a href="./genai.html"><strong>Generative AI</strong></a>: What is generative AI, and how might it be used in the clinic? What are the new challenges and opportunities associated with generative AI models?</li>
 </ol>
 <div class="page-columns page-full"><p>Just as epidemiology was introduced in medical school curricula alongside the rise of evidence-based guidelines<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, <strong>it is crucial for future clinicians to have a working understanding of machine learning algorithms</strong> as they become increasingly adapted in clinical practice. Much of the curriculum has been inspired by the (much longer) ethical algorithms course at Penn taught by <a href="https://www.cis.upenn.edu/~mkearns/">Michael Kearns</a>. <em>Ethical Algorithms for the Modern Clinician</em> is intended as foundational knowledge for medical students <strong>of all backgrounds</strong> - prior experience with machine learning is <em>not</em> required.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;Fowkes FG, Gehlbach SH, Farrow SC, et al.&nbsp;Epidemiology for medical students: A course relevant to clinical practice. Int J Epidemiol 13(4): 538-41. (1984). doi: <a href="https://pubmed.ncbi.nlm.nih.gov/6519897/">10.1093/ije/13.4.538</a>. PMID: 6519897</p></li></div></div>
@@ -212,11 +213,11 @@ What This Resource Is <em>Not</em>
 <h2 class="anchored" data-anchor-id="about-the-authors">About the Authors</h2>
 <p><strong><a href="https://www.michaelsyao.com">Michael Yao</a></strong> is an MD-PhD candidate at the University of Pennsylvania, and has formerly worked as an software engineer and researcher at companies such as <a href="https://www.microsoft.com/en-us/research/lab/microsoft-health-futures/">Microsoft Research</a>, <a href="https://scale.com/">Scale AI</a>, <a href="https://glass.health/">Glass Health</a>, and <a href="https://hyperfine.io/">Hyperfine</a>. His current thesis research is in trustworthiness and robustness for deep learning, offline optimization, meta-learning, and bandit problem formulations. Michael is broadly interested in developing methods that leverage prior knowledge and data to help algorithms better generalize to new distributions.</p>
 <p><strong><a href="https://www.allisonchae.com">Allison Chae</a></strong> is an MD candidate at the University of Pennsylvania researching how AI algorithms can be used for real-world clinical workflows. She currently works alongside radiologists to better understand how physicians and computer systems interact with one another. Allison’s research is supported by the <a href="https://www.alphaomegaalpha.org/programs/carolyn-l-kuckein-student-research-fellowship/">AΩA Society</a> and the Perelman School of Medicine.</p>
-</section>
-<section id="expert-collaborators" class="level2">
-<h2 class="anchored" data-anchor-id="expert-collaborators">Expert Collaborators</h2>
-<p><em>Ethical Algorithms for the Modern Clinician</em> is backed by experts in both clinical medicine and machine learning.</p>
-<p>TODO</p>
+<!-- ## Expert Collaborators
+
+*Ethical Algorithms for the Modern Clinician* is backed by experts in both clinical medicine and machine learning.
+
+TODO -->
 </section>
 <section id="institutional-partners" class="level2">
 <h2 class="anchored" data-anchor-id="institutional-partners">Institutional Partners</h2>
@@ -596,5 +597,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/eamc-penn/eamc-penn.github.io/issues/new" class="toc-action">Report an issue</a></p></div></div></div></div></footer><script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

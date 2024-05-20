@@ -4,6 +4,10 @@ project:
 
 website:
   title: "Ethical Algorithms for the Modern Clinician"
+  page-navigation: true
+  repo-url: https://github.com/eamc-penn/eamc-penn.github.io
+  repo-actions: [issue]
+  favicon: /images/favicon.ico
   navbar:
     search: true
     right:
@@ -12,13 +16,13 @@ website:
       - text: Modules
         menu:
           - href: ml.qmd
-            text: Introduction to Machine Learning
+            text: Intro to Machine Learning
           - href: bias.qmd
             text: Bias and Fairness
           - href: privacy.qmd
             text: Privacy and Anonymization
           - href: interpretability.qmd
-            text: Interpretability and Explainability
+            text: Algorithmic Interpretability
           - href: genai.qmd
             text: Generative AI
     tools:

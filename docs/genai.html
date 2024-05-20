@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Michael Yao, Allison Chae">
-<meta name="dcterms.date" content="2024-05-19">
+<meta name="dcterms.date" content="2024-05-20">
 
 <title>Ethical Algorithms for the Modern Clinician - Generative AI</title>
 <style>
@@ -32,6 +32,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href=".//images/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -98,7 +99,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-modules">    
         <li>
     <a class="dropdown-item" href="./ml.html" rel="" target="">
- <span class="dropdown-text">Introduction to Machine Learning</span></a>
+ <span class="dropdown-text">Intro to Machine Learning</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./bias.html" rel="" target="">
@@ -110,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
         <li>
     <a class="dropdown-item" href="./interpretability.html" rel="" target="">
- <span class="dropdown-text">Interpretability and Explainability</span></a>
+ <span class="dropdown-text">Algorithmic Interpretability</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./genai.html" rel="" target="">
@@ -158,7 +159,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#additional-readings" id="toc-additional-readings" class="nav-link" data-scroll-target="#additional-readings">Additional Readings</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="genai.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/eamc-penn/eamc-penn.github.io/issues/new" class="toc-action">Report an issue</a></p></div></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="genai.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
@@ -182,7 +183,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 19, 2024</p>
+      <p class="date">May 20, 2024</p>
     </div>
   </div>
   
@@ -242,7 +243,7 @@ Definition of Generative AI
 </section>
 <section id="toxicity" class="level4">
 <h4 class="anchored" data-anchor-id="toxicity">Toxicity</h4>
-<p>There are several notions of toxicity, such as the inclusion of profanity, offensive/controversial opinions, or other outputs that are not aligned with societal values (i.e., a model telling a user how to build a bomb). In certain cases, toxic behavior is easy to identify. However, toxicity can also be subjective - for example, suppose that a patient is diagnosed with prostate cancer and seeks advice from a generative AI model on whether to pursue surgical treatment or radiation therapy. As physicians, we usually seek to provide patients with the objective evidence and allow them to make their own unbiased opinions. Is it “toxic” behavior is a generative AI model makes a recommendation one way or another?</p>
+<p>There are several notions of toxicity, such as the inclusion of profanity, offensive/controversial opinions, or other outputs that are not aligned with societal values (i.e., a model telling a user how to build a bomb). In certain cases, toxic behavior is easy to identify. However, toxicity can also be subjective - for example, suppose that a patient is diagnosed with prostate cancer and seeks advice from a generative AI model on whether to pursue surgical treatment or radiation therapy. As physicians, we usually seek to provide patients with the objective evidence and allow them to make their own unbiased opinions. Is it “toxic” behavior if a generative AI model makes a recommendation one way or another?</p>
 </section>
 <section id="hallucinations" class="level4 page-columns page-full">
 <h4 class="anchored" data-anchor-id="hallucinations">Hallucinations</h4>
@@ -278,11 +279,48 @@ Definition of Generative AI
 
 <div class="no-row-height column-margin column-container"><div class="">
 <p><i class="fa-solid fa-lightbulb" aria-label="lightbulb"></i> These articles are completely different from the ones presented in the first module.</p>
-</div></div><ol type="1">
-<li><p><strong>Overview Article</strong>: Coming out to a chatbot? Researchers explore the limitations of mental health chatbots in LGBTQ+ communities. Science Daily. (2024). <a href="https://www.sciencedaily.com/releases/2024/05/240513193043.htm">Link to article</a></p></li>
-<li><p><strong><u>Yes</u>, generative AI improves access to mental health resources for teens</strong>: Alanzi T, Alsalem AA, Alzahrani H, Almudaymigh N, Alessa A, Mulla R, AlQahtani L, Bajonaid R, Alharthi A, Alnarhdi O, Alanzi N. AI-powered mental health virtual assistants’ acceptance: An empirical study on influencing factors among generations X, Y, and Z. Cureus 15(11): e49486. (2023). doi: <a href="https://doi.org/10.7759/cureus.49486">10.7759/cureus.49486</a></p></li>
-<li><p><strong><u>No</u>, generative AI continues to propagate existing biases without the safeguards of a clinical provider</strong>: Rai S, Stade EC, Giorgi S, Guntuku SC. Key language markers of depression on social media depend on race. Proc Nat Acad Sci 121(14): e2319837121. (2024). doi: <a href="https://doi.org/10.1073/pnas.2319837121">10.1073/pnas.2319837121</a></p></li>
-</ol>
+</div></div><div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+1. Overview Article
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Coming out to a chatbot? Researchers explore the limitations of mental health chatbots in LGBTQ+ communities. Science Daily. (2024). <a href="https://seas.harvard.edu/news/2024/05/coming-out-chatbot">Link to article</a></p>
+<p><strong>tl;dr</strong>: Many researchers are exploring how generative AI chatbots can help treat loneliness among seniors and mental health disorders in teens. In one interview study with 31 participants, researchers reported that the chatbots offered a sense of solidarity and a safe space to explore and express their identities. However, the same tools often gave researchers bad advice or failed to support LGBTQ+ users. Research in this space is ongoing and the results are mixed.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+2. <u>Yes</u>, generative AI improves access to mental health resources for teens.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Alanzi T, Alsalem AA, Alzahrani H, Almudaymigh N, Alessa A, Mulla R, AlQahtani L, Bajonaid R, Alharthi A, Alnarhdi O, Alanzi N. AI-powered mental health virtual assistants’ acceptance: An empirical study on influencing factors among generations X, Y, and Z. Cureus 15(11): e49486. (2023). doi: <a href="https://doi.org/10.7759/cureus.49486">10.7759/cureus.49486</a></p>
+<p><strong>tl;dr</strong>: Single-site cross-sectional survey with 506 patient participants, 80% of which had moderate to high prior experience with mental health AI chatbots. Trusting bonds between users and chatbots were established quickly. Gen Z patients have more favorable opinions of AI-based virtual assistants and actively seek mental health support from chatbots.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+3. <u>No</u>, generative AI continues to propagate existing biases without the safeguards of a clinical provider.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Rai S, Stade EC, Giorgi S, Guntuku SC. Key language markers of depression on social media depend on race. Proc Nat Acad Sci 121(14): e2319837121. (2024). doi: <a href="https://doi.org/10.1073/pnas.2319837121">10.1073/pnas.2319837121</a></p>
+<p><strong>tl;dr</strong>: Researchers trained machine learning (ML) models to predict if an individual was depressed based on social media posts. State-of-the-art machine learning models failed to predict depression severity for Black patients - even when they were trained exclusively using the language of Black individuals. Current language processing techniques perform poorly on minority patients, potentially leading to substandard care for patients of color.</p>
+</div>
+</div>
 
 <div class="no-row-height column-margin column-container"><div class="">
 <p><i class="fa-solid fa-lightbulb" aria-label="lightbulb"></i> Has your perspective on the role of machine learning and ethical algorithms changed at all since the first module?</p>

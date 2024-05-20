@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Michael Yao, Allison Chae">
-<meta name="dcterms.date" content="2024-05-19">
+<meta name="dcterms.date" content="2024-05-20">
 
-<title>Ethical Algorithms for the Modern Clinician - Interpretability and Explainability</title>
+<title>Ethical Algorithms for the Modern Clinician - Algorithmic Interpretability</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,6 +32,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href=".//images/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -43,6 +44,8 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -65,6 +68,8 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -96,7 +101,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-modules">    
         <li>
     <a class="dropdown-item" href="./ml.html" rel="" target="">
- <span class="dropdown-text">Introduction to Machine Learning</span></a>
+ <span class="dropdown-text">Intro to Machine Learning</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./bias.html" rel="" target="">
@@ -108,7 +113,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
         <li>
     <a class="dropdown-item" href="./interpretability.html" rel="" target="">
- <span class="dropdown-text">Interpretability and Explainability</span></a>
+ <span class="dropdown-text">Algorithmic Interpretability</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./genai.html" rel="" target="">
@@ -149,16 +154,21 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
-  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#what-is-interpretability" id="toc-what-is-interpretability" class="nav-link" data-scroll-target="#what-is-interpretability">What is Interpretability?</a></li>
+  <li><a href="#discussion-questions" id="toc-discussion-questions" class="nav-link" data-scroll-target="#discussion-questions">Discussion Questions</a></li>
+  <li><a href="#interpretability-versus-accuracy" id="toc-interpretability-versus-accuracy" class="nav-link" data-scroll-target="#interpretability-versus-accuracy">Interpretability versus Accuracy</a></li>
+  <li><a href="#evidence-based-medicine-discussion" id="toc-evidence-based-medicine-discussion" class="nav-link" data-scroll-target="#evidence-based-medicine-discussion">Evidence-Based Medicine Discussion</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#additional-readings" id="toc-additional-readings" class="nav-link" data-scroll-target="#additional-readings">Additional Readings</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="interpretability.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/eamc-penn/eamc-penn.github.io/issues/new" class="toc-action">Report an issue</a></p></div></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="interpretability.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Interpretability and Explainability</h1>
+<h1 class="title">Algorithmic Interpretability</h1>
 </div>
 
 
@@ -175,7 +185,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 19, 2024</p>
+      <p class="date">May 20, 2024</p>
     </div>
   </div>
   
@@ -188,14 +198,144 @@ ul.task-list li input[type="checkbox"] {
 <section id="learning-objectives" class="level2">
 <h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
 <ol type="1">
-<li>TODO</li>
+<li><p><strong>Define</strong> what it means for an algorithm to be interpretable and <strong>highlight</strong> key ways that the definition is subjective and user-dependent.</p></li>
+<li><p><strong>Describe</strong> the accuracy-interpretability tradeoff and why it is observed in many real-world algorithms.</p></li>
+<li><p><strong>Reflect</strong> on the role of interpretability in algorithms used in clinical practice.</p></li>
 </ol>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Food for Thought: Interpretability or Accuracy?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Suppose I ask you the following question: <strong>is 99 a prime number?</strong> Which of the following generated answers is more helpful to you?</p>
+<ol type="1">
+<li><strong>No</strong>, 99 is not a prime number.</li>
+<li><strong>Yes</strong>, 99 is a prime number. To figure out if a number is prime we can list out all of the numbers that are greater than 1 and less than or equal to the square root of input number. In our case, the numbers that satisfy these criteria are 2 through 9 inclusive. We then see if the original number is divisible by any of the numbers in this list - if not, then the number is <a href="https://en.wikipedia.org/wiki/Prime_number">prime</a>. Otherwise, the number is <a href="https://en.wikipedia.org/wiki/Composite_number">composite</a>. 99 is not divisble by any of 2 through 9 inclusive. Therefore, we can conclude from that 99 is prime.</li>
+</ol>
+<p>Would your answer to this question change if the original question posed instead was <strong>what disease does this sick patient in front of me have?</strong></p>
+<p>Which is more important to you: getting the right answer (accuracy) or understanding how to approach similar problems in the future (interpretability)?</p>
+</div>
+</div>
+</div>
 </section>
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<section id="what-is-interpretability" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="what-is-interpretability">What is Interpretability?</h2>
+<div class="page-columns page-full"><p>Unlike our past few modules defining topics like fairness and anonymity exactly, it is challenging to give a rigorous, objective definition of interpretability. One commonly cited definition is <strong>interpretability is the degree to which a human can understand <em>why</em> an algorithm made its prediction</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. If an algorithm is interpretable, then it is easier for someone to understand why certain predictions were made. Note that the definition of interpretability is <em>entirely independent</em> from the the accuracy of the algorithm - we only seek to explain why an algorithm made its own prediction, which may or may not be necessarily correct.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;Miller T. Explanation in artificial intelligence: Insights from the social sciences. Art Intel 267: 1-38. (2019). doi: <a href="10.1016/j.artint.2018.07.007">https://doi.org/10.1016/j.artint.2018.07.007</a></p></li></div></div>
+<p>Even when using this definition, interpretability is still a very subjective property of an algorithm! Interpretability varies due to a number of factors:</p>
+<ol type="1">
+<li><strong>Difficulty of the Task</strong>: Algorithms trained to perform complex, domain-specific tasks are inherently less interpretable by the average user due to the nature of the task itself.</li>
+<li><strong>Expertise of the User</strong>: A domain expert may require less explanation in order to call an algorithm interpretable compared to someone with less experience in the field.</li>
+<li><strong>Expertise with the Algorithm</strong>: Just like with any other software, technicians with years of experience using an algorithm are more likely able to explain its predictions more due to having more experience using the technology.</li>
+</ol>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><i class="fa-solid fa-lightbulb" aria-label="lightbulb"></i> What other factors might influence the subjectivity of the interpretability of an algorithm?</p>
+</div></div></section>
+<section id="discussion-questions" class="level2">
+<h2 class="anchored" data-anchor-id="discussion-questions">Discussion Questions</h2>
+<section id="which-of-the-following-algorithms-are-interpretable" class="level4">
+<h4 class="anchored" data-anchor-id="which-of-the-following-algorithms-are-interpretable">Which of the following algorithms are interpretable?</h4>
+<p><strong>Mean Arterial Pressure (MAP)</strong></p>
+<p>On one end of the spectrum, clinical algorithms like computing the <a href="https://www.mdcalc.com/calc/74/mean-arterial-pressure-map">mean arterial pressure (MAP)</a> are pretty clearly interpretable. We can exactly right down the formula to compute this quantity as</p>
+<p><span class="math display">\[\text{MAP}=\frac{1}{3}(\text{Systolic Blood Pressure (mmHg)}) + \frac{2}{3}(\text{Diastolic Blood Pressure (mmHg)})\]</span></p>
+<p>We might even be able to reason <em>why</em> this formula works - heuristically, the arterial pressure might spend about 2/3rds of the time in diastole and 1/2rd in systole, and so the time-weighted average of these two quantities is the MAP.</p>
+<p><strong>MELD Score</strong></p>
+<p>The <a href="https://www.mdcalc.com/calc/78/meld-score-model-end-stage-liver-disease-12-older">MELD Score</a> is a clinical algorithm used quantifying the degree of end-stage liver disease in potential transplant candidates. Similar to MAP, the MELD score also has an exact formula:</p>
+<p><span class="math display">\[\text{MELD}=9.57\times\log(\text{Cr}) + 3.78\times \log(\text{Bilirubin})+11.20\times \log(\text{INR})+6.43\]</span></p>
+<p>Is this equation still interpretable? From the equation above, we still clearly have transparency into how a MELD score is calculated, but the equation itself is a little more complicated and may not be easily understand by everyone. After looking at the above equation, we’re still left with a number of remaining questions: How were the decimal coefficients derived? Why is there a logarithmic relationship between the MELD score and patient lab values?</p>
+<p><strong>A Machine Learning Algorithm</strong></p>
+<p>Suppose we now have a ML algorithm that predicts a patient’s risk of breast cancer given their genomic data. Such algorithms are often referred to as <strong><em>black-box algorithms</em></strong> because the algorithm’s user cannot see the inner workings of the algorithm. However, is such an algorithm truly “black-box”? Similar to the MELD Score, I can exactly write down the specific formula for the algorithm, with all of its inputs, internal functions, decimal coefficients, etc. It would be an incredibly long and complex equation, but <em>any</em> ML algorithm can be written down exactly just like the MELD score and MAP calculations above.</p>
+<p><strong>A Probabilistic Algorithm</strong></p>
+<p>Finally, consider the following algorithm that utilizes a fair two-sided coin: if I flip the coin and it lands heads, then I admit a patient from the ED. Otherwise, I discharge them and send the patient home. Is this an “interpretable” algorithm?</p>
+<p><strong>An Accurate Algorithm Trained on An Unknown Dataset</strong></p>
+<p>After reading a recently published paper on a new machine learning algorithm to diagnose a rare disease, you try testing the algorithm on your own patients’ data and find that it has almost perfect accuracy! However, the paper does not include any details about how the model was trained - including any information on the patient demographics in the published study.</p>
+</section>
+</section>
+<section id="interpretability-versus-accuracy" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="interpretability-versus-accuracy">Interpretability versus Accuracy</h2>
+<p>A key insight that we hope you take away from considering the discussion question posed above is that there is often times a trade-off between the <em>complexity</em> and <em>interpretability</em> of an algorithm. If an algorithm is more complex, such as machine learning models and the MELD score, then they may be less interpretable. At the same time, algorithms that are more complex can often times represent more complex relationships between inputs and outputs, leading to better predictive accuracy. In other words, we have the following:</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The Accuracy-Interpretability Tradeoff
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The more accurate an algorithm model is, the less likely it is to be interpretable.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+</div>
+</div>
+<div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;There’s a great blog post discussing the accuracy-interpretability tradeoff in more detail here: Ndungula S. Model accuracy and interpretability. Medium. (2022). <a href="https://samuelndungula.medium.com/model-accuracy-and-interpretability-3d875439942c">Link to article</a></p></li></div></section>
+<section id="evidence-based-medicine-discussion" class="level2">
+<h2 class="anchored" data-anchor-id="evidence-based-medicine-discussion">Evidence-Based Medicine Discussion</h2>
+<p><strong>Do algorithms need to be interpretable in order for clinicians to leverage them for patient care?</strong></p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+1. Overview Article
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Imrie F, Davis R, van dr Schaar M. Multiple stakeholders drive diverse interpretability requirements for machine learning in healthcare. Nat Mach Intell 5: 824-9. (2023). doi: <a href="https://doi.org/10.1038/s42256-023-00698-2">10.1038/s42256-023-00698-2</a></p>
+<p><strong>tl;dr</strong>: Machine learning (ML) algorithms are becoming increasingly commonplace in healthcare settings. Key stakeholders in healthcare systems - such as algorithm developers, researchers, clinicians, and patients - often have different (and sometimes conflicting) definitions for interpretability of different algorithms used in clinical practice.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+2. <u>Yes</u>, interpretability ensures that algorithms are aligned with clinical reasoning.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Antony M, Kakileti ST, Shah R, Sahoo S, Bhattacharyya C, Manjunath G. Challenges of AI driven diagnosis of chest X-rays transmitted through smart phones: A case study in COVID-19. Sci Rep 13: 18102. (2023). doi: <a href="https://doi.org/10.1038/s41598-023-44653-y">10.1038/s41598-023-44653-y</a>. PMID: 37872204</p>
+<p><strong>tl;dr</strong>: Retrospective study using multiple publicly available chest X-ray (CXR) imaging datasets from approximately 40,000 patients. Researchers found that state-of-the-art machine learning models could accurately predict which patients had COVID-19 from CXR imaging studies, but were actually diagnosing patients by focusing on parts of the CXR scans completely outside of the lung fields, and even outside the patient’s body in certain instances.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+3. <u>No</u>, using black-box models allows us to discover new clinical insights and provide better care.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ling J, Liao T, Wu Y, Wang Z, Jin H, Lu F, Fang M. Predictive value of red blood cell distribution width in septic shock patients with thrombocytopenia: A retrospective study using machine learning. J Clin Lab Anal 35(12): e24053. (2021). doi: <a href="10.1002/jcla.24053">10.1002/jcla.24053</a>. PMID: 34674393</p>
+<p><strong>tl;dr</strong>: The red blood cell distribution width (RDW) is a lab value most commonly used in the workup of anemias. However, a retrospective study using the <a href="https://www.nature.com/articles/sdata201635">a large patient dataset</a> showed using non-interpretable machine learning methods that red blood cell distribution width (RDW) was the second most important lab value in predicting 28-day mortality from sepsis. Non-interpretable algorithms therefore helped clinicians “discover” new clinical applications of the RDW.</p>
+</div>
+</div>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>Interpretability is a subjective property of an algorithm that characterizes the degree to which a human can understand why and how and algorithm made its prediction. There are many reasons why interpretability can vary, including the difficulty of the clinical task, the complexity of the algorithm, and expertise of the user among many others. While there is often a tradeoff observed between accuracy and interpretability in practice, many experts believe that interpretability is important for algorithms used in patient care.</p>
+</section>
+<section id="additional-readings" class="level2">
+<h2 class="anchored" data-anchor-id="additional-readings">Additional Readings</h2>
+<ol type="1">
+<li>Model interpretability. Amazon Web Services Whitepapers. Accessed 20 May 2024. <a href="https://docs.aws.amazon.com/whitepapers/latest/ml-best-practices-healthcare-life-sciences/model-interpretability.html">Link to article</a></li>
+<li>Amann J, Blasimme A, Vayena E, Frey D, Madai VI. Explainability for artificial intelligence in healthcare: A multidisciplinary perspective. BMC Med Inform Decis Mak 20(1): 310. (2020). doi: <a href="https://doi.org/10.1186/s12911-020-01332-6">10.1186/s12911-020-01332-6</a>. PMID: 33256715</li>
+<li>Teng Q, Liu Z, Song Y, et al.&nbsp;A survey on the interpretability of deep learning in medical diagnosis. Multimed Syst 28(6): 2335-55. (2022). doi: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9243744/">10.1007/s00530-022-00960-4</a>. PMID: 35789785</li>
+</ol>
 
 
 </section>
+
 
 <p style="text-align: center;margin-top: 20px;">
 Made with ❤ by the EAMC Team ©2024.

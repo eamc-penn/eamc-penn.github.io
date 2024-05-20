@@ -12,7 +12,7 @@ This resource is ***not*** intended to teach how machine learning algorithms wor
 1. [**Introduction to Machine Learning**](/ml.html): What is machine learning? How is it similar to and different from conventional software?
 2. [**Bias and Fairness**](/bias.html): How can algorithms like machine learning be biased against certain patient sub-populations? How can we quantify, detect, and reduce bias in clinical decision making algorithms?
 3. [**Privacy and Anonymization**](/privacy.html): How can we effectively anonymize patient data? Why does anonymization often fall short in protecting patient identities? How can we ensure that clinicians use algorithms responsibly while maintaining patient privacy?
-4. [**Interpretability and Explainability**](/interpretability.html): TODO
+4. [**Algorithmic Interpretability**](/interpretability.html): What does mean for an algorithm to be *interpretable*? Is it important for us to be able to explain how an algorithm works in order to use it in clinical practice?
 5. [**Generative AI**](/genai.html): What is generative AI, and how might it be used in the clinic? What are the new challenges and opportunities associated with generative AI models?
 
 Just as epidemiology was introduced in medical school curricula alongside the rise of evidence-based guidelines[^1], **it is crucial for future clinicians to have a working understanding of machine learning algorithms** as they become increasingly adapted in clinical practice. Much of the curriculum has been inspired by the (much longer) ethical algorithms course at Penn taught by [Michael Kearns](https://www.cis.upenn.edu/~mkearns/). *Ethical Algorithms for the Modern Clinician* is intended as foundational knowledge for medical students **of all backgrounds** - prior experience with machine learning is *not* required.
@@ -39,11 +39,11 @@ There are a lot of machine learning resources out there already... what makes *E
 
 **[Allison Chae](https://www.allisonchae.com)** is an MD candidate at the University of Pennsylvania researching how AI algorithms can be used for real-world clinical workflows. She currently works alongside radiologists to better understand how physicians and computer systems interact with one another. Allison's research is supported by the [A&Omega;A Society](https://www.alphaomegaalpha.org/programs/carolyn-l-kuckein-student-research-fellowship/) and the Perelman School of Medicine.
 
-## Expert Collaborators
+<!-- ## Expert Collaborators
 
 *Ethical Algorithms for the Modern Clinician* is backed by experts in both clinical medicine and machine learning.
 
-TODO
+TODO -->
 
 ## Institutional Partners
 

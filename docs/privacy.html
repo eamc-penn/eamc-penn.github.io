@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Michael Yao, Allison Chae">
-<meta name="dcterms.date" content="2024-05-19">
+<meta name="dcterms.date" content="2024-05-20">
 
 <title>Ethical Algorithms for the Modern Clinician - Privacy and Anonymization</title>
 <style>
@@ -32,6 +32,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href=".//images/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -100,7 +101,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-modules">    
         <li>
     <a class="dropdown-item" href="./ml.html" rel="" target="">
- <span class="dropdown-text">Introduction to Machine Learning</span></a>
+ <span class="dropdown-text">Intro to Machine Learning</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./bias.html" rel="" target="">
@@ -112,7 +113,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
         <li>
     <a class="dropdown-item" href="./interpretability.html" rel="" target="">
- <span class="dropdown-text">Interpretability and Explainability</span></a>
+ <span class="dropdown-text">Algorithmic Interpretability</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./genai.html" rel="" target="">
@@ -160,7 +161,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#additional-readings" id="toc-additional-readings" class="nav-link" data-scroll-target="#additional-readings">Additional Readings</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="privacy.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/eamc-penn/eamc-penn.github.io/issues/new" class="toc-action">Report an issue</a></p></div></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="privacy.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
@@ -184,7 +185,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 19, 2024</p>
+      <p class="date">May 20, 2024</p>
     </div>
   </div>
   
@@ -390,13 +391,48 @@ Problems with Anonymization
 <section id="evidence-based-medicine-discussion" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="evidence-based-medicine-discussion">Evidence-Based Medicine Discussion</h2>
 <p><strong>Do current HIPAA-compliant anonymization standards effectively protect minorities and people of color?</strong></p>
-<ol type="1">
-<li><strong>Overview Article</strong>: <em>All of Us</em> Research Program Overview. National Institutes of Health. Accessed 19 May 2024. <a href="https://allofus.nih.gov/about/program-overview">Link to article</a><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></li>
-</ol>
-<div class="no-row-height column-margin column-container"><li id="fn5"><p><sup>5</sup>&nbsp;There’s a great 2-minute intro video to the <em>All of Us</em> Research program <a href="https://youtu.be/ti50nS7B5vI?si=UzV3skolOuFync9g">here</a>.</p></li></div><ol start="2" type="1">
-<li><p><strong><u>Yes</u>, the anonymization achieved by the All-of-Us dataset is sufficient</strong>: Xia W, Basford M, Carroll R, Clayton EW, Harris P, Kantacioglu M, Liu Y, Nyemba S, Vorobeychik Y, Wan Z, Malin BA. Managing re-identification risks while providing access to the <em>All of Us</em> research program. J Am Med Inf Assoc 30(5): 907-14. (2023). doi: <a href="https://doi.org/10.1093/jamia/ocad021">10.1093/jamia/ocad021</a>. PMID: 36809550</p></li>
-<li><p><strong><u>No</u>, the All-of-Us dataset hurts people of color</strong>: Kaiser J. Million-person U.S. study of genes and health stumbles over including Native American groups. Science. (2019). <a href="https://www.science.org/content/article/million-person-us-study-genes-and-health-stumbles-over-including-native-american-groups">Link to article</a></p></li>
-</ol>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+1. Overview Article
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><em>All of Us</em> Research Program Overview. National Institutes of Health. Accessed 19 May 2024. <a href="https://allofus.nih.gov/about/program-overview">Link to article</a><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<p><strong>tl;dr</strong>: <em>All of Us</em> is an NIH initiative to build a diverse database of Americans from all backgrounds in order to inform and power thousands of future studies on a variety of different health conditions. The overarching goal of the <em>All of Us</em> initiative is to power future advancements in precision medicine.</p>
+</div>
+</div>
+<div class="no-row-height column-margin column-container"><li id="fn5"><p><sup>5</sup>&nbsp;There’s a great 2-minute intro video to the <em>All of Us</em> Research program <a href="https://youtu.be/ti50nS7B5vI?si=UzV3skolOuFync9g">here</a>.</p></li></div><div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+2. <u>Yes</u>, the anonymization achieved by the All-of-Us Research Program is sufficient.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Xia W, Basford M, Carroll R, Clayton EW, Harris P, Kantacioglu M, Liu Y, Nyemba S, Vorobeychik Y, Wan Z, Malin BA. Managing re-identification risks while providing access to the <em>All of Us</em> research program. J Am Med Inf Assoc 30(5): 907-14. (2023). doi: <a href="https://doi.org/10.1093/jamia/ocad021">10.1093/jamia/ocad021</a>. PMID: 36809550</p>
+<p><strong>tl;dr</strong>: Cross-sectional study using the All of Us database containing data from over 300,000 participants at the time of the study. The authors used computational techniques to compute the re-identification risk for any given individual in the dataset. A large re-identification risk means that a given individual is unique in dataset and therefore more likely to be re-identified. The 95th percentile re-identification risk across all participants satisfies current government guidelines.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+3. <u>No</u>, the All-of-Us Research Program hurts people of color.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Kaiser J. Million-person U.S. study of genes and health stumbles over including Native American groups. Science. (2019). <a href="https://www.science.org/content/article/million-person-us-study-genes-and-health-stumbles-over-including-native-american-groups">Link to article</a></p>
+<p><strong>tl;dr</strong>: Native Americans have historically been mistreated by researchers and the US government, and are skeptical of participating in <em>All of Us</em>. Because so few Native Americans currently participate in <em>All of Us</em>, any new individual participant from a small tribe will have a high re-identification risk in spite of data safeguards. Tribes are seeking to be able to approve publications on their group and an opportunity to bless biological samples before disposal.</p>
+</div>
+</div>
 
 <div class="no-row-height column-margin column-container"><div class="">
 <p><i class="fa-solid fa-lightbulb" aria-label="lightbulb"></i> There are other problems involving the All of Us research program, including a recent study <a href="https://www.statnews.com/2024/03/15/all-of-us-genomic-sequencing-results-umap-science-history-sociology/">inadvertently using “objective” mathematical techniques that inappropriately validates racist and xenophobic ideologies</a>.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> Even well-established data analysis techniques must be used and presented carefully!<li id="fn6"><p><sup>6</sup>&nbsp;The All of Us Research Program Genomics Investigators. Genomic data in the All of Us research program. Nature 627: 340-6. (2024). doi: <a href="https://www.nature.com/articles/s41586-023-06957-x">10.1038/s41586-023-06957-x</a>. PMID: 38374255</p></li></p>

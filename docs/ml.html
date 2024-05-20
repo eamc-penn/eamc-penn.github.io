@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Michael Yao, Allison Chae">
-<meta name="dcterms.date" content="2024-05-19">
+<meta name="dcterms.date" content="2024-05-20">
 
 <title>Ethical Algorithms for the Modern Clinician - Introduction to Machine Learning</title>
 <style>
@@ -32,6 +32,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href=".//images/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -100,7 +101,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-modules">    
         <li>
     <a class="dropdown-item" href="./ml.html" rel="" target="">
- <span class="dropdown-text">Introduction to Machine Learning</span></a>
+ <span class="dropdown-text">Intro to Machine Learning</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./bias.html" rel="" target="">
@@ -112,7 +113,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
         <li>
     <a class="dropdown-item" href="./interpretability.html" rel="" target="">
- <span class="dropdown-text">Interpretability and Explainability</span></a>
+ <span class="dropdown-text">Algorithmic Interpretability</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./genai.html" rel="" target="">
@@ -167,7 +168,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#additional-readings" id="toc-additional-readings" class="nav-link" data-scroll-target="#additional-readings">Additional Readings</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="ml.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/eamc-penn/eamc-penn.github.io/issues/new" class="toc-action">Report an issue</a></p></div></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="ml.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
@@ -191,7 +192,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 19, 2024</p>
+      <p class="date">May 20, 2024</p>
     </div>
   </div>
   
@@ -209,31 +210,16 @@ ul.task-list li input[type="checkbox"] {
 <li><p><strong>Identify</strong> key applications of machine learning and when computational tools can be helpful (and potentially harmful) for patient care.</p></li>
 </ol>
 </section>
-<section id="food-for-thought" class="level2">
+<section id="food-for-thought" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="food-for-thought">Food for Thought</h2>
 <ol type="1">
-<li>Are there tasks in healthcare for which automated methods–such as computer algorithms and artificial intelligence (AI)–should never be used for? Why or why not?</li>
+<li><p>Are there tasks in healthcare for which automated methods–such as computer algorithms and artificial intelligence (AI)–should never be used? Why or why not?</p></li>
+<li><p>Does understanding <strong><em>how</em></strong> automated methods arrive at their predictions change any of your answers to question 1?</p></li>
 </ol>
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Food for Thought: Are there tasks in healthcare for which automated methods should never be used?
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
+
+<div class="no-row-height column-margin column-container"><div class="">
 <p><i class="fa-solid fa-lightbulb" aria-label="lightbulb"></i> What if automated methods perform the task on par with humans? What if they perform <em>better than</em> humans?</p>
-</div>
-</div>
-</div>
-<ol start="2" type="1">
-<li>Does understanding <strong><em>how</em></strong> automated methods arrive at their predictions change any of your answers to question 1?</li>
-</ol>
-</section>
+</div></div></section>
 <section id="introduction-to-machine-learning" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="introduction-to-machine-learning">Introduction to Machine Learning</h2>
 <section id="what-is-an-algorithm" class="level3">
@@ -252,24 +238,19 @@ Food for Thought: Are there tasks in healthcare for which automated methods shou
 <section id="learning-by-observing" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="learning-by-observing">Learning by Observing</h3>
 <p>Computers can learn by observation, much like how medical students learn! Consider some of the following scenarios:</p>
-<section id="a-database-of-genomes" class="level4">
-<h4 class="anchored" data-anchor-id="a-database-of-genomes">A Database of Genomes</h4>
-<p>During your clinical research year, your advisor gives you a large dataset of many different patient genomes. We can denote this dataset of <span class="math inline">\(n\)</span> patients as the variable <span class="math inline">\(\mathcal{D}_n\)</span>. By analyzing <span class="math inline">\(\mathcal{D}_n\)</span>, we try to gain insights into which genes make individuals unique, and which ones all patients share in common.</p>
-</section>
-<section id="a-randomized-control-trial" class="level4">
-<h4 class="anchored" data-anchor-id="a-randomized-control-trial">A Randomized Control Trial</h4>
+<p><strong>A Database of Genomes</strong></p>
+<p>During your clinical research year, your advisor gives you a large dataset of many different patient genomes. By analyzing this dataset, we try to gain insights into which genes make individuals unique, and which ones all patients share in common.</p>
+<p><strong>A Randomized Control Trial</strong></p>
 <p>Your research mentor is impressed with your analysis and gives you a new project: investigating if a new drug <strong><em>abastatin</em></strong> lowers patient cholesterol levels. He gives you a large dataset of anonymized patient data containing two variables: whether the patient was given abastatin or placebo (<span class="math inline">\(x\)</span>), and whether the patient had a reduction in their cholesterol levels (<span class="math inline">\(y\)</span>). By analyzing this dataset, we try to learn whether or not abastatin is an effective drug for hypercholesterolemia.</p>
-</section>
-<section id="a-patient-with-sepsis" class="level4 page-columns page-full">
-<h4 class="anchored" data-anchor-id="a-patient-with-sepsis">A Patient with Sepsis</h4>
+<p><strong>A Patient with Sepsis</strong></p>
 
 <div class="no-row-height column-margin column-container"><div class="">
 <p><i class="fa-solid fa-lightbulb" aria-label="lightbulb"></i> For those of you with a machine learning background, <strong>A Database of Genomes</strong> is an <em>unsupervised learning problem</em>, <strong>A Randomized Control Trial</strong> is a <em>supervised learning problem</em>, and <strong>A Patient with Sepsis</strong> is a <em>reinforcement learning problem</em>. You can learn more about each of these types of machine learning problems <a href="https://www.coursera.org/articles/types-of-machine-learning">here</a>!</p>
 </div></div><p>A 52 year-old male presents with acute-onset altered mental status and fever. Vitals are notable for BP 90/60 and T 103.4. We can denote the patient as a variable <span class="math inline">\(x\)</span> consisting of all of the relevant attributes of the patient: their HPI, past medical history, current lab values and vitals, etc.</p>
 <p>On our first day as a medical student, we might not know what to do with this patient. Do we admit them and start them on IV antibiotics? Do we call a neurology consult? Do we just send the patient home? Each of these clinical interventions can be thought of as an action <span class="math inline">\(a\)</span> that we can take to try to help the patient get better.</p>
 <p>After observing a patient <span class="math inline">\(x\)</span> and performing an action <span class="math inline">\(a\)</span>, we monitor the patient to see if they improve. The patient’s outcome can be denoted as a variable <span class="math inline">\(y\)</span> (for example, <span class="math inline">\(y=0\)</span> if the patient deteriorates and <span class="math inline">\(y=1\)</span> if the patient gets better). We observe the clinical outcome <span class="math inline">\(y\)</span>, and use it to learn a better algorithm so that next time we see a similar patient, we can take a better action that leads to a more favorable outcome.</p>
-<p>Over the course of medical school, we see hundreds (if not thousands) of tuples <span class="math inline">\((x, a, y)\)</span> through clerkships, sub-Is, exams, and UWorld, and use this dataset of patient-outcome pairs to learn <em>hard-to-write-down algorithms</em> for choosing the best clinical intervention <span class="math inline">\(a\)</span> given a patient <span class="math inline">\(x\)</span> to maximize the outcome <span class="math inline">\(y\)</span>. In other words, <strong>we learn by observation</strong>.</p>
-</section>
+<p>Over the course of medical school, we see hundreds (if not thousands) of tuples <span class="math inline">\((x, a, y)\)</span> through clerkships, sub-Is, exams, and UWorld, and use this dataset of patient-action-outcome observations to learn <em>hard-to-write-down algorithms</em> for choosing the best clinical intervention <span class="math inline">\(a\)</span> given a patient <span class="math inline">\(x\)</span> to maximize the outcome <span class="math inline">\(y\)</span>.</p>
+<p>In other words, <strong>we learn by observation</strong>.</p>
 </section>
 <section id="what-does-it-mean-to-learn" class="level3">
 <h3 class="anchored" data-anchor-id="what-does-it-mean-to-learn">What does it mean to “learn”?</h3>
@@ -296,7 +277,7 @@ Learning = Generalization
 <p><i class="fa-solid fa-exclamation-triangle" aria-label="exclamation-triangle"></i> Just like how we all have different mnemonics and mental maps on how to approach clinical reasoning, the exact steps in the algorithm that ML learns may not be the same as the steps that clinicians learn! This is an important problem that researchers are still trying to solve.</p>
 </div></div><p>The fundamental goal of machine learning is to learn <strong>hard-to-write-down</strong> algorithms from past observations to hopefully make accurate predictions for future observations.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -305,12 +286,13 @@ What problems might cause algorithms to generalize poorly to new patients?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>There are a number of reasons. Here are a couple:</p>
 <ol type="1">
-<li><strong>New patients are very different from the patients used to train the algorithm.</strong> TODO</li>
-<li><strong>The algorithm had too many inputs and learned relationships between inputs and outputs that are not true.</strong> For example, if we try to predict the weather based on features like TODO</li>
+<li><strong>New patients are very different from the patients used to learn the algorithm.</strong> For example, society guidelines developed in the United States may lead to substandard care if implemented directly in another country like Korea or Nigeria. This is because the prevalence (and potentially pathophysiology) of diseases may differ between different areas of the world.</li>
+<li><strong>The algorithm has too many inputs and learns relationships between inputs and outputs that are not true.</strong> If you observe enough features, you may find “correlations” that end up just being due to random chance. For example, if we include “ice cream sales” as an input to an algorithm to predict drowning death rate, we may incorrectly learn that <a href="https://www.scienceminded.org/post/ice-cream-linked-to-drowning">ice cream causes drowning</a>. (This is also referred to as <em>spurious correlations</em>)</li>
+<li><strong>The algorithm is learned from too small of a patient population.</strong> If we only observe five septic patients and notice that all of them eat candy and miraculously get better, we might conclude that sugar cures sepsis. Generalizing before we’ve seen enough observations can lead to incorrect conclusions.</li>
 </ol>
 <p>What other problems did you think of? Are there any ways to fix the problems that we’ve identified?</p>
 </div>
@@ -321,7 +303,7 @@ What problems might cause algorithms to generalize poorly to new patients?
 <h3 class="anchored" data-anchor-id="when-can-machine-learning-be-a-helpful-tool">When can machine learning be a helpful tool?</h3>
 <p>Consider the following example cases. Would you want to use machine learning in each of these cases?</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -330,9 +312,25 @@ What problems might cause algorithms to generalize poorly to new patients?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>No</strong>, it’s easy to just look up the age of a patient from the patient chart.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+2. Given patient blood pressure values, ML predicts the patient’s MAP.
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>No</strong>, computing MAP is an easy-to-write-down algorithm.</p>
 </div>
 </div>
 </div>
@@ -342,13 +340,13 @@ What problems might cause algorithms to generalize poorly to new patients?
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-2. Given patient blood pressure values, ML predicts the patient’s MAP.
+3. Given patient lab values, imaging data, genomic data, and other attributes, ML predicts whether the patient is at risk for Huntington’s disease (a disease with no known cure).
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>No</strong>, computing MAP is an easy-to-write-down algorithm.</p>
+<p><strong>No</strong>, even if ML derives an algorithm for this task, there is nothing actionable that we can do about it.</p>
 </div>
 </div>
 </div>
@@ -358,13 +356,13 @@ What problems might cause algorithms to generalize poorly to new patients?
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-3. Given patient lab values, imaging data, genomic data, and other attributes, ML predicts whether the patient is at risk for a cancer with no known cure.
+4. Given patient bowel sound recordings, ML predicts the probability a patient has an SBO.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>No</strong>, even if ML derives an algorithm for this task, there is nothing actionable that we can do about it.</p>
+<p><strong>No</strong>, we don’t have any datasets of patient bowel sounds mapping to the presence/absence of an SBO, so there are no prior observations for ML to learn from.</p>
 </div>
 </div>
 </div>
@@ -374,27 +372,11 @@ What problems might cause algorithms to generalize poorly to new patients?
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-4. Given patient bowel sound recordings, ML predicts the probability a patient has an SBO.
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>No</strong>, we don’t have any datasets of patient bowel sounds mapping to the presence/absence of an SBO, so there are no prior observations for ML to learn from.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
 5. Given patient lab values, ML predicts the probability a patient has ribose-5-phosphate isomerase (RPI) deficiency, the second rarest disease in the world.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>No</strong>, we don’t have nearly enough observations of patients with RPI deficiency. Even if we did have enough data to learn this algorithm, we also would rarely/never even need to use this algorithm.</p>
 </div>
@@ -410,23 +392,58 @@ What problems might cause algorithms to generalize poorly to new patients?
 <section id="evidence-based-medicine-discussion" class="level3">
 <h3 class="anchored" data-anchor-id="evidence-based-medicine-discussion">Evidence-Based Medicine Discussion</h3>
 <p><strong>Should AI be used to improve access to mental health resources?</strong></p>
-<ol type="1">
-<li><p><strong>Overview Article</strong>: Stade EC, Stirman SW, Ungar LH, Boland CL, Schwartz HA, Yaden DB, Sedoc J, DeRubeis RJ, Willer R, Eichstaedt JC. Large language models could change the future of behavioral healthcare: A proposal for responsible development and evaluation. npj Mental Health Res 3(12). (2024). doi: <a href="https://www.nature.com/articles/s44184-024-00056-z">10.1038/s44184-024-00056-z</a>. PMID: 38609507</p></li>
-<li><p><strong><u>Yes</u>, AI is more empathetic than physicians</strong>: Ayers JW, Poliak A, Dredze M, Leas EC, Zhu Z, Kelley J, Faux DJ, Goodman AM, Longhurst CA, Hogarth M, Smith DM. Comparing physician and artificial intelligence chatbot responses to patient questions posted to a public social media forum. JAMA Intern Med 183(6): 589-96. (2023). doi: <a href="https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2804309">10.1001/jamainternmed.2023.1838</a>. PMID: 37115527</p></li>
-<li><p><strong><u>No</u>, AI is too slow to appropriately escalate mental health risk scenarios</strong>: Heston TF. Safety of large language models in addressing depression. Cureus 15(12): e50729. (2023). doi: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10727113/">10.7759/cureus.50729</a>. PMID: 38111813</p></li>
-</ol>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+1. Overview Article
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Stade EC, Stirman SW, Ungar LH, Boland CL, Schwartz HA, Yaden DB, Sedoc J, DeRubeis RJ, Willer R, Eichstaedt JC. Large language models could change the future of behavioral healthcare: A proposal for responsible development and evaluation. npj Mental Health Res 3(12). (2024). doi: <a href="https://www.nature.com/articles/s44184-024-00056-z">10.1038/s44184-024-00056-z</a>. PMID: 38609507</p>
+<p><strong>tl;dr</strong>: Large language models (LLMs) are AI tools that can read, summarize, and generate text. Early research efforts are investigating the applications of LLMs for psychotherapy. These tools may improve psychotherapy care delivery and access to mental health resources. However, poor outcomes or ethical transgressions from clinical LLMs could also harm patients.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+2. <u>Yes</u>, AI is more empathetic than physicians.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ayers JW, Poliak A, Dredze M, Leas EC, Zhu Z, Kelley J, Faux DJ, Goodman AM, Longhurst CA, Hogarth M, Smith DM. Comparing physician and artificial intelligence chatbot responses to patient questions posted to a public social media forum. JAMA Intern Med 183(6): 589-96. (2023). doi: <a href="https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2804309">10.1001/jamainternmed.2023.1838</a>. PMID: 37115527</p>
+<p><strong>tl;dr</strong>: Cross-sectional study using 195 randomly drawn public patient questions from Reddit’s <a href="https://www.reddit.com/r/AskDocs/">r/AskDocs</a> forum. Authors compared physician and chatbot responses to these questions. The chatbot responses were preferred over physician responses and rated significantly higher for both quality and empathy. AI assistants may be able to aid in drafting responses to patient questions.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+3. <u>No</u>, AI is too slow to appropriately escalate mental health risk scenarios.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Heston TF. Safety of large language models in addressing depression. Cureus 15(12): e50729. (2023). doi: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10727113/">10.7759/cureus.50729</a>. PMID: 38111813</p>
+<p><strong>tl;dr</strong>: Cross-sectional study evaluting 25 conversational AI chatbots specifically designed for mental health counseling. Each chatbot was evaluated twice via highly structured patient simulations designed to assess if (1) the chatbot can escalate suicide risk based on <a href="https://www.mdcalc.com/calc/1725/phq9-patient-health-questionnaire9">Patient Health Questionnaire (PHQ-9)</a> scores; and (2) the chatbot can recognize suicidality in conversation. Few chatbots included crisis resources in these simulations, and were slow to escalate mental health risk scenarios, postponing referral to a human to potentially dangerous levels.</p>
+</div>
+</div>
 </section>
 </section>
 <section id="hands-on-tutorial" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="hands-on-tutorial">Hands-On Tutorial</h2>
-<p>Let’s explore how state-of-the-art AI models currently perform as mental health resources for real-world patients. Here’s an example of a chatbot that’s currently available for anyone to use on the Internet.</p>
+<p>Let’s explore how state-of-the-art AI models currently perform as mental health resources for real-world patients. <a href="https://hf.co/chat/assistant/65bfce195560c1a5c0c9d5ad" target="_blank">Here is an example of a chatbot</a> that’s currently available for anyone to use on the Internet (including your patients) - click on the link to open it in a new window.</p>
 <p>Assume the role of a patient seeking mental health support and resources. How accurate is the model as a therapist? How empathetic is the model? Would you use this particular model for mental health support? Why or why not?</p>
 
 <div class="no-row-height column-margin column-container"><div class="">
-<p>This particular model is hosted on <a href="https://huggingface.co/">Hugging Face</a>, which has become the <em>de-facto</em> website for publishing publicly available machine learning models like the one we’re exploring here. Anyone can download a model and use it for applications such as mental health among others.</p>
-</div></div><iframe src="https://hf.co/chat/assistant/65bfce195560c1a5c0c9d5ad" width="100%," height="800px" sandbox="">
-</iframe>
-</section>
+<p><i class="fa-solid fa-lightbulb" aria-label="lightbulb"></i> This particular model is hosted on <a href="https://huggingface.co/">Hugging Face</a>, which has become the <em>de-facto</em> website for publishing publicly available machine learning models like the one we’re exploring here. Anyone can download a model and use it for applications such as mental health among others.</p>
+</div></div></section>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
 <p>Algorithms are functions that map inputs to outputs. Some algorithms are easy to describe while others are harder to write down. Machine learning is the process of computers learning hard-to-write-down algorithms from past observations, with the goal of learning algorithms that are generalizable to new sets of inputs.</p>

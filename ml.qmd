@@ -58,7 +58,7 @@ Your research mentor is impressed with your analysis and gives you a new project
 **A Patient with Sepsis**
 
 ::: column-margin
-{{< fa lightbulb >}} For those of you with a machine learning background, **A Database of Genomes** is an *unsupervised learning problem*, **A Randomized Control Trial** is a *supervised learning problem*, and **A Patient with Sepsis** is a *reinforcement learning problem*. You can learn more about each of these types of machine learning problems [here](https://www.coursera.org/articles/types-of-machine-learning)!
+{{< fa info-circle >}} For those of you with a machine learning background, **A Database of Genomes** is an *unsupervised learning problem*, **A Randomized Control Trial** is a *supervised learning problem*, and **A Patient with Sepsis** is a *reinforcement learning problem*. You can learn more about each of these types of machine learning problems [here](https://www.coursera.org/articles/types-of-machine-learning)!
 :::
 
 A 52 year-old male presents with acute-onset altered mental status and fever. Vitals are notable for BP 90/60 and T 103.4. We can denote the patient as a variable $x$ consisting of all of the relevant attributes of the patient: their HPI, past medical history, current lab values and vitals, etc.
@@ -86,7 +86,7 @@ After observing the many different patient cases and outcomes, we want to be abl
 Machine learning (ML) uses the *exact same* framework of **learning through observation** to learn hard-to-write-down algorithms from data as ***exact steps*** that a computer can execute.
 
 ::: column-margin
-{{< fa exclamation-triangle >}} Just like how we all have different mnemonics and mental maps on how to approach clinical reasoning, the exact steps in the algorithm that ML learns may not be the same as the steps that clinicians learn! This is an important problem that researchers are still trying to solve.
+{{< fa info-circle >}} Just like how we all have different mnemonics and mental maps on how to approach clinical reasoning, the exact steps in the algorithm that ML learns may not be the same as the steps that clinicians learn! This is an important problem that researchers are still trying to solve.
 :::
 
 The fundamental goal of machine learning is to learn **hard-to-write-down** algorithms from past observations to hopefully make accurate predictions for future observations.
@@ -168,7 +168,7 @@ Ayers JW, Poliak A, Dredze M, Leas EC, Zhu Z, Kelley J, Faux DJ, Goodman AM, Lon
 
 Heston TF. Safety of large language models in addressing depression. Cureus 15(12): e50729. (2023). doi: [10.7759/cureus.50729](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10727113/). PMID: 38111813
 
-**tl;dr**: Cross-sectional study evaluting 25 conversational AI chatbots specifically designed for mental health counseling. Each chatbot was evaluated twice via highly structured patient simulations designed to assess if (1) the chatbot can escalate suicide risk based on [Patient Health Questionnaire (PHQ-9)](https://www.mdcalc.com/calc/1725/phq9-patient-health-questionnaire9) scores; and (2) the chatbot can recognize suicidality in conversation. Few chatbots included crisis resources in these simulations, and were slow to escalate mental health risk scenarios, postponing referral to a human to potentially dangerous levels. 
+**tl;dr**: Cross-sectional study evaluting 25 conversational AI chatbots specifically designed for mental health counseling. Each chatbot was evaluated twice via highly structured patient simulations designed to assess if (1) the chatbot can escalate suicide risk based on [Patient Health Questionnaire (PHQ-9)](https://www.mdcalc.com/calc/1725/phq9-patient-health-questionnaire9) scores; and (2) the chatbot can recognize suicidality in conversation. Few chatbots included crisis resources in these simulations, and most were too slow to escalate mental health risk scenarios, postponing referral to a human to potentially dangerous levels. 
 :::
 
 ## Hands-On Tutorial
@@ -178,7 +178,7 @@ Let’s explore how state-of-the-art AI models currently perform as mental healt
 Assume the role of a patient seeking mental health support and resources. How accurate is the model as a therapist? How empathetic is the model? Would you use this particular model for mental health support? Why or why not?
 
 ::: column-margin
-{{< fa lightbulb >}} This particular model is hosted on [Hugging Face](https://huggingface.co/), which has become the *de-facto* website for publishing publicly available machine learning models like the one we're exploring here. Anyone can download a model and use it for applications such as mental health among others.
+{{< fa info-circle >}} This particular model is hosted on [Hugging Face](https://huggingface.co/), which has become the *de-facto* website for publishing publicly available machine learning models like the one we're exploring here. Anyone can download a model and use it for applications such as mental health among others.
 :::
 
 ## Summary

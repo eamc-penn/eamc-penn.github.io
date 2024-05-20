@@ -7,37 +7,45 @@ toc: false
 
 *Ethical Algorithms for the Modern Clinician* is a short course intended to teach future clinicians the basics of machine learning (ML) and artificial intelligence (AI) as they pertain to clinical practice.
 
-This resource is ***not*** intended to teach how machine learning algorithms work or how to build novel models. Instead, we introduce ML from clinical practitioner's perspective and discuss what ML does right, where it falls short, and how it will impact patient care. This short course focuses on five key aspects:
+This resource does ***not*** discuss how machine learning algorithms work or how to build ML models. Instead, we introduce ML from clinical practitioner's perspective and discuss what ML does right, where it falls short, and how it will impact patient care. We focus on five key aspects:
 
 1. [**Introduction to Machine Learning**](/ml.html): What is machine learning? How is it similar to and different from conventional software?
-2. [**Bias and Fairness**](/bias.html): How can algorithms like machine learning be biased against certain patient sub-populations? How can we quantify, detect, and reduce bias in clinical decision making algorithms?
-3. [**Privacy and Anonymization**](/privacy.html): How can we effectively anonymize patient data? Why does anonymization often fall short in protecting patient identities? How can we ensure that clinicians use algorithms responsibly while maintaining patient privacy?
-4. [**Algorithmic Interpretability**](/interpretability.html): What does mean for an algorithm to be *interpretable*? Is it important for us to be able to explain how an algorithm works in order to use it in clinical practice?
-5. [**Generative AI**](/genai.html): What is generative AI, and how might it be used in the clinic? What are the new challenges and opportunities associated with generative AI models?
+2. [**Bias and Fairness**](/bias.html): How can algorithms be biased against different patient groups? How can we quantify, detect, and reduce bias in clinical decision making algorithms?
+3. [**Privacy and Anonymization**](/privacy.html): How can we anonymize patient data? Why does anonymization often fall short in protecting patient identities? How can we ensure that clinicians maintain patient privacy?
+4. [**Algorithmic Interpretability**](/interpretability.html): What does mean for an algorithm to be interpretable? Is it important for us to be able to explain how an algorithm works in order to use it in clinical practice?
+5. [**Generative AI**](/genai.html): What is generative AI, and how might it be used for patient care? What are the new challenges and opportunities associated with generative AI models?
 
-Just as epidemiology was introduced in medical school curricula alongside the rise of evidence-based guidelines[^1], **it is crucial for future clinicians to have a working understanding of machine learning algorithms** as they become increasingly adapted in clinical practice. Much of the curriculum has been inspired by the (much longer) ethical algorithms course at Penn taught by [Michael Kearns](https://www.cis.upenn.edu/~mkearns/). *Ethical Algorithms for the Modern Clinician* is intended as foundational knowledge for medical students **of all backgrounds** - prior experience with machine learning is *not* required.
+::: column-margin
+{{< fa info-circle >}} Additional (optional) context to help motivate interesting discussions will be marked by little information icons like this in each of the modules.
+:::
 
-[^1]: Fowkes FG, Gehlbach SH, Farrow SC, et al. Epidemiology for medical students: A course relevant to clinical practice. Int J Epidemiol 13(4): 538-41. (1984). doi: [10.1093/ije/13.4.538](https://pubmed.ncbi.nlm.nih.gov/6519897/). PMID: 6519897
+Just as epidemiology was introduced in medical school curricula alongside the rise of evidence-based guidelines[^1], **it is crucial for future clinicians to have a working understanding of machine learning algorithms** as they become increasingly prevalent in clinical practice. Much of the curriculum has been inspired by the (much longer) ethical algorithms course at Penn taught by [Michael Kearns](https://www.cis.upenn.edu/~mkearns/). *Ethical Algorithms for the Modern Clinician* is intended as foundational knowledge for medical students **of all backgrounds** - prior experience with machine learning is *not* required.
+
+[^1]: Optional citations for digging deeper into interesting topics will be included in the margin like this: Fowkes FG, Gehlbach SH, Farrow SC, et al. Epidemiology for medical students: A course relevant to clinical practice. Int J Epidemiol 13(4): 538-41. (1984). doi: [10.1093/ije/13.4.538](https://pubmed.ncbi.nlm.nih.gov/6519897/). PMID: 6519897
 
 ## How to Use This Book
 
-There are a number of different ways to learn this book. Some find it most helpful to directly self-study the material, which usually can be done in a weekend according to prior students. We believe the most effective and fruitful way to learn the content herein is in **small, discussion-based** classroom environments. Many of the discussion questions included in each module have *no single right answer*, and it is often helpful to hear from peers on how they're thinking about the material, too. To facilitate classroom implementation, the content has been broken down into five modules lasting approximately one-hour each.
+Everyone learns differently. Some find it most helpful to self-study the material, which usually can be done in a weekend according to prior students. We believe the most effective and fruitful way to learn the content herein is in **small, discussion-based** classroom environments. Many of the discussion questions included in each module have *no single right answer*, and it is often helpful to learn how peers are thinking about challenging topics, too. To facilitate this learning environment, the content has been broken down into five modules that can each be covered in one-hour sessions.
+
+::: column-margin
+{{< fa lightbulb >}} Optional follow-up discussion questions and food-for-thought are marked with a lightbulb to help you explore topics further.
+:::
 
 ::: {.callout-caution collapse="true"}
 ### What This Resource Is *Not*
 
-There are a lot of machine learning resources out there already... what makes *Ethical Algorithms for the Modern Clinician* different? This resource is ***not*** any of the following:
+There are a lot of machine learning resources out there already - what makes *Ethical Algorithms for the Modern Clinician* different? This resource is ***not*** any of the following:
 
 1. **A introduction to theory of and programming for machine learning**: If you're interested in building ML models from scratch, the MedML@Emory Club has put together a fantastic tutorial [here](https://colab.research.google.com/drive/1eij5s6YoSthXUAWMUJ0-ouydIFK0D_1d?usp=sharing), and [Andrew Ng](https://www.andrewng.org/) also has a great curated list of technical tutorials [here](https://www.coursera.org/collections/machine-learning).
-2. **An overview of the computational techniques used to build machine learning models**: If you're looking for something like this, we recommend recent work by [Pfob et al. (2022)](https://pubmed.ncbi.nlm.nih.gov/36319956/) and [Sidey-Gibbons et al. (2019)](https://pubmed.ncbi.nlm.nih.gov/30890124/).
+2. **An overview of the computational techniques used to build machine learning models**: If you're looking for something like this, we recommend checking out recent work by [Pfob et al. (2022)](https://pubmed.ncbi.nlm.nih.gov/36319956/) and [Sidey-Gibbons et al. (2019)](https://pubmed.ncbi.nlm.nih.gov/30890124/).
 3. **A mathematically rigorous foundation for assessing algorithmic fairness and privacy**: If this is something you're interested in, we highly recommend checking out [The Ethical Algorithm](https://www.amazon.com/Ethical-Algorithm-Science-Socially-Design/dp/0190948205) and the [Ethical Algorithm Design](https://www.cis.upenn.edu/~mkearns/teaching/EADSpring24/) course offered at Penn every year.
 :::
 
 ## About the Authors
 
-**[Michael Yao](https://www.michaelsyao.com)** is an MD-PhD candidate at the University of Pennsylvania, and has formerly worked as an software engineer and researcher at companies such as [Microsoft Research](https://www.microsoft.com/en-us/research/lab/microsoft-health-futures/), [Scale AI](https://scale.com/), [Glass Health](https://glass.health/), and [Hyperfine](https://hyperfine.io/). His current thesis research  is in trustworthiness and robustness for deep learning, offline optimization, meta-learning, and bandit problem formulations. Michael is broadly interested in developing methods that leverage prior knowledge and data to help algorithms better generalize to new distributions.
+**[Michael Yao](https://www.michaelsyao.com)** is an MD-PhD candidate at the University of Pennsylvania, and has formerly worked at companies such as [Microsoft Research](https://www.microsoft.com/en-us/research/lab/microsoft-health-futures/), [Scale AI](https://scale.com/), [Glass Health](https://glass.health/), and [Hyperfine](https://hyperfine.io/). His current research is in trustworthiness and robustness for deep learning and offline optimization problems. Michael is broadly interested in developing methods that leverage prior knowledge to help algorithms better generalize to new distributions.
 
-**[Allison Chae](https://www.allisonchae.com)** is an MD candidate at the University of Pennsylvania researching how AI algorithms can be used for real-world clinical workflows. She currently works alongside radiologists to better understand how physicians and computer systems interact with one another. Allison's research is supported by the [A&Omega;A Society](https://www.alphaomegaalpha.org/programs/carolyn-l-kuckein-student-research-fellowship/) and the Perelman School of Medicine.
+**[Allison Chae](https://www.allisonchae.com)** is an MD candidate at the University of Pennsylvania researching how AI algorithms can be used in real-world clinical workflows. She currently works alongside radiologists to better understand how physicians and computer systems interact with one another. Allison's research is supported by the [A&Omega;A Society](https://www.alphaomegaalpha.org/programs/carolyn-l-kuckein-student-research-fellowship/) and the Perelman School of Medicine.
 
 <!-- ## Expert Collaborators
 

@@ -220,7 +220,7 @@ Food for Thought: What does data privacy mean to you?
 <li><strong>Control of Use</strong>: You should be able to have a say on how your data is used and for what purpose.</li>
 <li><strong>Knowledge of Access/Use</strong>: You should know when your data is used or accessed.</li>
 <li><strong>Opt In (and Out)</strong>: You should be able to add more data or remove your data at any point in time.</li>
-<li><strong>Anonymity</strong>: Your identity should be maintained even after giving up your data.</li>
+<li><strong>Anonymity</strong>: Your identity should remain private regardless of whatever you or others do with your data.</li>
 </ol>
 <p>What other answers did you think of? Do you think these notions of privacy are currently satisfied in academic research using patient data?</p>
 </div>
@@ -242,11 +242,15 @@ Food for Thought: What does data privacy mean to you?
 </section>
 <section id="a-detailed-look-hipaa-phi" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="a-detailed-look-hipaa-phi">A Detailed Look: HIPAA PHI</h2>
-<p>Let’s take a look at the official list of <a href="https://cphs.berkeley.edu/hipaa/hipaa18.html">HIPAA-protected attributes</a> from the Health and Human Services Department:</p>
-<ol type="1">
-<li>Names;</li>
-<li>All geographical subdivisions smaller than a state (e.g., street address, city, county, precinct, ZIP code except for the initial three digits of a ZIP code).<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
-<li>All dates (except year) directly related to an individual (e.g., birth date, admission date, exact ages in years over the ages of 90).<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
+<p>Let’s take a look at the official list of <a href="https://cphs.berkeley.edu/hipaa/hipaa18.html">HIPAA-protected attributes</a> from the Health and Human Services Department, which are called <strong>protected health information (PHI)</strong>:</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><i class="fa-solid fa-lightbulb" aria-label="lightbulb"></i> The initial three digits of a zip code is still considered PHI by HIPAA if the number of individuals residing in all zip codes with those initial three digits is less than 20,000. Why do you think this is the case? How do you think the cutoff of 20,000 individuals was determined?</p>
+<p><i class="fa-solid fa-lightbulb" aria-label="lightbulb"></i> Why are ages over 90 years-old considered PHI, but not younger ages?</p>
+</div></div><ol type="1">
+<li>Names.</li>
+<li>All geographical subdivisions smaller than a state (e.g., street address, city, county, precinct, ZIP code except for the initial three digits of a ZIP code).</li>
+<li>All dates (except year) directly related to an individual (e.g., birth date, admission date, exact ages in years over the ages of 90).</li>
 <li>Phone numbers, fax numbers, email addresses.</li>
 <li>Social security numbers, health plan beneficiary numbers, driver license numbers, medical record numbers, etc.</li>
 <li>License plates</li>
@@ -255,7 +259,7 @@ Food for Thought: What does data privacy mean to you?
 <li>Full-face photographic images</li>
 <li>Any other unique identifying number, characteristic, or code</li>
 </ol>
-<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;The initial three digits of a zip code is still considered PHI by HIPAA if the number of individuals residing in all zip codes with those initial three digits is less than 20,000. Why do you think this is the case? How do you think the cutoff of 20,000 individuals was determined?</p></li><li id="fn2"><p><sup>2</sup>&nbsp;Why are ages over 90 years-old considered PHI, but not younger ages?</p></li></div><p>Are there any attributes listed that you didn’t expect? How about attributes that aren’t listed above but <em>should</em> be included?</p>
+<p>Are there any attributes listed that you didn’t expect? How about attributes that aren’t listed above but <em>should</em> be included?</p>
 </section>
 <section id="hands-on-tutorial" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="hands-on-tutorial">Hands-On Tutorial</h2>
@@ -350,8 +354,11 @@ Food for Thought: What does data privacy mean to you?
 <div class="no-row-height column-margin column-container"><div class="">
 <p><i class="fa-solid fa-lightbulb" aria-label="lightbulb"></i> Is <a href="#tbl-dataset">Table&nbsp;1</a> properly anonymized according to HIPAA regulations?</p>
 </div></div><p>Imagine that you’re a student working in a research lab and are tasked with analyzing this dataset of patients from the Philadelphia area. Your research mentor tells you that this dataset contains <u>all</u> of the inpatient admissions to HUP from the past week.</p>
-<div class="page-columns page-full"><p>Separately during your lunch break, you hear on the news that a famous celebrity - a 50 year-old female (in this hypothetical situation) - was recently admitted to HUP last week for a hypertensive crisis, and was just recently discharged from the hospital.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;In case it wasn’t already clear, this dataset and scenario is entirely fictional, and was actually generated using <a href="https://chatgpt.com">ChatGPT</a>! You can take a look at the generation process <a href="https://chatgpt.com/share/f48b4e45-e6f0-4b68-a982-3c288ab27f94">here</a> if you’re interested.</p></li></div></div>
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<p>Separately during your lunch break, you hear on the news that a famous celebrity - a 50 year-old female (in this hypothetical situation) - was recently admitted to HUP last week for a hypertensive crisis, and was just recently discharged from the hospital.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><i class="fa-solid fa-info-circle" aria-label="info-circle"></i> In case it wasn’t already clear, this dataset and scenario is entirely fictional, and was actually generated using <a href="https://chatgpt.com">ChatGPT</a>! You can take a look at the generation process <a href="https://chatgpt.com/share/f48b4e45-e6f0-4b68-a982-3c288ab27f94">here</a> if you’re interested.</p>
+</div></div><div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -368,8 +375,11 @@ Given this information, can you identify which patient ID corresponds to the fam
 </div>
 </div>
 <p>Ignoring the fact that this was a small toy example, how difficult was it to <em>re-identify</em> a patient (namely, the famous celebrity) from the dataset? As a result of the successful re-identification of the patient, were you able to learn anything new about the patient (i.e., take a look at the <code>HIV_STATUS</code> column).</p>
-<div class="page-columns page-full"><p>It turns out that a very similar re-identification strategy was used by <a href="https://latanyasweeney.org/index.html">Dr.&nbsp;Latanya Sweeney</a> in 1997 where she successfully re-identified the then Governor of Massachusetts using publicly accessible, anonymized medical records released by the state of Massachusetts.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn4"><p><sup>4</sup>&nbsp;Sweeney is an excellent writer and we encourage you to check out two of her publications on this topic: [1] Sweeney L. Only you, your doctor, and many others may know. Tech Sci. (2015). <a href="https://techscience.org/a/2015092903">Link to article</a>; [2] Sweeney L. <span class="math inline">\(k\)</span>-Anonymity: A model for protecting privacy. Int J Uncertainty, Fuzziness, and Knowledge-based Systems 10(5): 557-70. (2002). <a href="https://epic.org/wp-content/uploads/privacy/reidentification/Sweeney_Article.pdf">Link to article</a></p></li></div></div>
-<p>Why were we and Dr.&nbsp;Sweeney able to re-identify patients from an anonymized dataset? The main reason is that in both situations, we correlated the information in the table with outside knowledge and other datasets <strong>in order to gain new, privileged information</strong> about patients by synthesizing datasets together. There are countless other examples of re-identifying individuals from anonymized datasets, from <a href="https://arxiv.org/abs/cs/0610105">identifying Netflix users from anonymized movie ratings</a> to even finally <a href="https://www.science.org/content/article/we-will-find-you-dna-search-used-nab-golden-state-killer-can-home-about-60-white">catching the notorious <em>Golden State Killer</em></a>.</p>
+<p>It turns out that a very similar re-identification strategy was used by <a href="https://latanyasweeney.org/index.html">Dr.&nbsp;Latanya Sweeney</a> in 1997 where she successfully re-identified the then Governor of Massachusetts using publicly accessible, anonymized medical records released by the state of Massachusetts.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><i class="fa-solid fa-info-circle" aria-label="info-circle"></i> Sweeney is an excellent writer and researcher, and we encourage you to check out two of her publications on this topic: [1] Sweeney L. Only you, your doctor, and many others may know. Tech Sci. (2015). <a href="https://techscience.org/a/2015092903">Link to article</a>; [2] Sweeney L. <span class="math inline">\(k\)</span>-Anonymity: A model for protecting privacy. Int J Uncertainty, Fuzziness, and Knowledge-based Systems 10(5): 557-70. (2002). <a href="https://epic.org/wp-content/uploads/privacy/reidentification/Sweeney_Article.pdf">Link to article</a></p>
+</div></div><p>Why were we and Dr.&nbsp;Sweeney able to re-identify patients from an anonymized dataset? The main reason is that in both situations, we correlated the information in the table with outside knowledge and other datasets <strong>in order to gain new, privileged information</strong> about patients by synthesizing datasets together. There are countless other examples of re-identifying individuals from anonymized datasets, from <a href="https://arxiv.org/abs/cs/0610105">identifying Netflix users from anonymized movie ratings</a> to even finally <a href="https://www.science.org/content/article/we-will-find-you-dna-search-used-nab-golden-state-killer-can-home-about-60-white">catching the notorious <em>Golden State Killer</em></a>.</p>
 <p>In summary, there are two key points that we hope you take away from this exercise:</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -383,7 +393,7 @@ Problems with Anonymization
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li>Anonymization is <strong><em>not</em></strong> an effective tool to preserve patient privacy.</li>
-<li>The <em>reason</em> why anonymization fails is that it assumes there are no other datasets or sources of information in the world to cross-reference.</li>
+<li>The <em>reason</em> why anonymization fails is that it assumes there are no other datasets or sources of information in the world to cross-reference (which is obviously not true).</li>
 </ol>
 </div>
 </div>
@@ -401,11 +411,14 @@ Problems with Anonymization
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><em>All of Us</em> Research Program Overview. National Institutes of Health. Accessed 19 May 2024. <a href="https://allofus.nih.gov/about/program-overview">Link to article</a><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<p><em>All of Us</em> Research Program Overview. National Institutes of Health. Accessed 19 May 2024. <a href="https://allofus.nih.gov/about/program-overview">Link to article</a></p>
 <p><strong>tl;dr</strong>: <em>All of Us</em> is an NIH initiative to build a diverse database of Americans from all backgrounds in order to inform and power thousands of future studies on a variety of different health conditions. The overarching goal of the <em>All of Us</em> initiative is to power future advancements in precision medicine.</p>
 </div>
 </div>
-<div class="no-row-height column-margin column-container"><li id="fn5"><p><sup>5</sup>&nbsp;There’s a great 2-minute intro video to the <em>All of Us</em> Research program <a href="https://youtu.be/ti50nS7B5vI?si=UzV3skolOuFync9g">here</a>.</p></li></div><div class="callout callout-style-default callout-tip no-icon callout-titled">
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><i class="fa-solid fa-info-circle" aria-label="info-circle"></i> There’s a great 2-minute intro video to the <em>All of Us</em> Research program <a href="https://youtu.be/ti50nS7B5vI?si=UzV3skolOuFync9g">here</a>.</p>
+</div></div><div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -435,7 +448,7 @@ Problems with Anonymization
 </div>
 
 <div class="no-row-height column-margin column-container"><div class="">
-<p><i class="fa-solid fa-lightbulb" aria-label="lightbulb"></i> There are other problems involving the All of Us research program, including a recent study <a href="https://www.statnews.com/2024/03/15/all-of-us-genomic-sequencing-results-umap-science-history-sociology/">inadvertently using “objective” mathematical techniques that inappropriately validates racist and xenophobic ideologies</a>.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> Even well-established data analysis techniques must be used and presented carefully!<li id="fn6"><p><sup>6</sup>&nbsp;The All of Us Research Program Genomics Investigators. Genomic data in the All of Us research program. Nature 627: 340-6. (2024). doi: <a href="https://www.nature.com/articles/s41586-023-06957-x">10.1038/s41586-023-06957-x</a>. PMID: 38374255</p></li></p>
+<p><i class="fa-solid fa-info-circle" aria-label="info-circle"></i> There are other problems involving the All of Us research program, including a recent study <a href="https://www.statnews.com/2024/03/15/all-of-us-genomic-sequencing-results-umap-science-history-sociology/">inadvertently using “objective” mathematical techniques that inappropriately validates racist and xenophobic ideologies</a>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Even well-established data analysis techniques must be used and presented carefully!<li id="fn1"><p><sup>1</sup>&nbsp;The All of Us Research Program Genomics Investigators. Genomic data in the All of Us research program. Nature 627: 340-6. (2024). doi: <a href="https://www.nature.com/articles/s41586-023-06957-x">10.1038/s41586-023-06957-x</a>. PMID: 38374255</p></li></p>
 </div></div></section>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>

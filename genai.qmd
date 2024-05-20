@@ -39,7 +39,7 @@ Here are just a few examples of up-and-coming applications of generative AI:
 
 With new technologies and opportunities also come new challenges associated with them.
 
-#### Fairness
+**Fairness**
 
 In our [Bias and Fairness](/bias.html) module, we explored how to identify bias by defining (1) a *protected attribute* and (2) a *notion of harm*. What would be the notion of harm for tasks leveraging generative AI?
 
@@ -47,15 +47,15 @@ As of yet, there exists no clear-cut way to "measure" fairness for generative AI
 
 [^2]: This is a great read exploring specific instances of bias in current generative AI models: Nicoletti L and Bass D. Humans are biased. Generative AI is even worse. Bloomberg. (2023). [Link to article](https://www.bloomberg.com/graphics/2023-generative-ai-bias/)
 
-#### Privacy and Intellectual Property
+**Privacy and Intellectual Property**
 
 Recent studies have shown that generative AI, including [large language models](https://aws.amazon.com/what-is/large-language-model/) like ChatGPT, can often *regurgitate* existing data, including entire [New York Times articles](https://www.forbes.com/sites/tomchavez/2024/01/31/openai--the-new-york-times-a-wake-up-call-for-ethical-data-practices) and [unique artistic styles](https://www.theatlantic.com/technology/archive/2023/10/openai-dall-e-3-artists-work/675519/). Furthermore, the same models can also be potentially coerced into [revealing sensitive patient data](https://www.datavant.com/blog/patient-privacy-in-the-age-of-large-language-models).
 
-#### Toxicity
+**Toxicity**
 
 There are several notions of toxicity, such as the inclusion of profanity, offensive/controversial opinions, or other outputs that are not aligned with societal values (i.e., a model telling a user how to build a bomb). In certain cases, toxic behavior is easy to identify. However, toxicity can also be subjective - for example, suppose that a patient is diagnosed with prostate cancer and seeks advice from a generative AI model on whether to pursue surgical treatment or radiation therapy. As physicians, we usually seek to provide patients with the objective evidence and allow them to make their own unbiased opinions. Is it "toxic" behavior if a generative AI model makes a recommendation one way or another?
 
-#### Hallucinations
+**Hallucinations**
 
 Hallucination occurs when a generative AI model produces an output that "sounds" plausible but is verifiably wrong (i.e., in [producing citations to papers that don't exist](https://hai.stanford.edu/news/hallucinating-law-legal-mistakes-large-language-models-are-pervasive)). Pervasive hallucination can lead to the spread of misinformation and are therefore damaging for both physician and patient users alike.
 
@@ -94,7 +94,7 @@ Over the past few modules, we've discussed many different facets of ethical algo
 **Should AI be used to improve access to mental health resources?**
 
 ::: column-margin
-{{< fa lightbulb >}} These articles are completely different from the ones presented in the first module.
+{{< fa info-circle >}} These articles are completely different from the ones presented in the first module.
 :::
 
 ::: {.callout-note icon=false}

@@ -15,7 +15,7 @@ author: Michael Yao, Allison Chae
 
 **Bias** is a term that is often used broadly but has a very precise definition. Bias is always defined with respect to two related concepts: (1) protected attribute(s), and (2) a definition of harm.
 
-1. A ***protected attribute*** is an attribute about a patient that we want to ensure there is no bias against. Examples of protected attributes might be patient age, gender, or ethnicity.
+1. A ***protected attribute*** is an attribute about a patient that we want to ensure there is no bias against. Examples of protected attributes include patient age, gender, and ethnicity.
 2. A ***definition of harm*** is how we choose to define when bias is present. Common definitions of harm include an algorithm's overall error rate, or its [false positive or false negative rate](https://en.wikipedia.org/wiki/False_positives_and_false_negatives).
 
 When we choose the protected attribute and a definition of harm, we can then define when an algorithm is biased. Namely, **an algorithm is biased if it causes an increase in harm for a subpopulation of patients with respect to the protected attribute(s)**. For example, if we define the protected attribute as a patient's race and the definition of harm as the algorithm's error rate, then the algorithm is biased if its error rate is higher for Black Americans than White Americans.
@@ -32,11 +32,13 @@ In each of these situations, our goal is to label an input patient using a posit
 
 As with any clinical task, algorithms rarely get 100% accuracy. We may mistakenly diagnose a patient as having a disease when they in fact do not have it, or decide that a patient can be discharged when they need to stay in the hospital for additional treatment. These are situations where an algorithm might cause harm to a patient.
 
-1. An algorithm's <u>false positive rate</u> (FPR) is the rate at which an algorithm falsely assigns the positive label to a patient (i.e., telling a patient AMAB[^1] that they are pregnant).
+1. An algorithm's <u>false positive rate</u> (FPR) is the rate at which an algorithm falsely assigns the positive label to a patient (i.e., telling a patient AMAB that they are pregnant).
 2. An algorithm's <u>false negative rate</u> (FNR) is the rate at which an algorithm falsely assigns the negative label to a patient (i.e., telling a patient that is 8 months pregnant that they are not pregnant).
 3. An algorithm's <u>overall error rate</u> is the rate at which an algorithm assigns the wrong label to a patient.
 
-[^1]: Assigned male at birth, meaning the patient has XY sex chromosomes.
+::: column-margin
+{{< fa info-circle >}} AMAB means "assigned male at birth", meaning the patient has XY sex chromosomes.
+:::
 
 In general, we want to minimize an algorithm's FPR, FNR, and overall error rate. FPR, FNR, and overall error are commonly used definitions of harm in assessing for algorithmic bias.
 
@@ -50,24 +52,23 @@ What *causes* an algorithm to be potentially biased? Bias can be due to a wide v
 {{< fa lightbulb >}} Other than the sources listed below, what are some other potential causes of bias that algorithms might suffer from?
 :::
 
-### Availability of Data
+**Availability of Data**
 
 Especially for machine learning algorithms, it is important for models to be trained on diverse datasets from many different patient populations. If the dataset used to train a model is composed of 90% White patients and only 10% Black patients, then the resulting algorithm will likely perform inaccurately on Black patients.
 
-This is a common problem not just for machine learning algorithms, but also in insights from randomized control trials! For example, take a look at the 2023 ISCHEMIA Trial[^2] from the American Heart Association. According to [Supplementary Table 1](https://www.ahajournals.org/action/downloadSupplement?doi=10.1161%2FCIRCULATIONAHA.120.047987&file=CIRC_CIRCULATIONAHA-2020-047987_supp1.pdf), approximately 77% of the patients in the study were male. Would you trust the insights from the trial for your female patients?
+This is a common problem not just for machine learning algorithms, but also in insights from randomized control trials! For example, take a look at the 2023 ISCHEMIA Trial[^1] from the American Heart Association. According to [Supplementary Table 1](https://www.ahajournals.org/action/downloadSupplement?doi=10.1161%2FCIRCULATIONAHA.120.047987&file=CIRC_CIRCULATIONAHA-2020-047987_supp1.pdf), approximately 77% of the patients in the study were male. Would you trust the insights from the trial for your female patients?
 
-[^2]: Hochman JS, Anthopolos R, Reynolds HR, et al. Survival after invasive or conservative management of stable coronary disease. Circulation 147(1): 8-19. (2022). doi: [10.1161/CIRCULATIONA HA.122.062714](https://doi.org/10.1161/CIRCULATIONAHA.122.062714). PMID: 36335918
+[^1]: Hochman JS, Anthopolos R, Reynolds HR, et al. Survival after invasive or conservative management of stable coronary disease. Circulation 147(1): 8-19. (2022). doi: [10.1161/CIRCULATIONA HA.122.062714](https://doi.org/10.1161/CIRCULATIONAHA.122.062714). PMID: 36335918
 
-
-### Pathophysiology
+**Pathophysiology**
 
 Different patient populations may have different underlying mechanisms of disease, and so lumping patients together using a single predictive algorithm may limit that algorithm's ability to represent all the different mechanisms of disease.
 
-### Quality of Data
+**Quality of Data**
 
 Suppose we have two CT scanners in the hospital: Scanner 1 and Scanner 2. Scanner 1 was made in 1970 and Scanner 2 was made in 2020; as a result, Scanner 1 produces very low-quality, low-resolution images compared to Scanner 2. If we learn an algorithm to diagnose a disease from CT scans, then the algorithm will likely perform worse on input scans from Scanner 1. This is because lower quality scans contain less information about the patient, and so patients imaged with Scanner 1 will be inherently less predictable.
 
-### How Data is Acquired
+**How Data is Acquired**
 
 The data that we choose to collect to learn an algorithm can also introduce biases. For example, suppose you are conducting a study investigating the relationship between number of leadership positions and success in medical school for medical students. Focusing only on leadership positions might result in algorithms that are biased against students from lower socioeconomic backgrounds who can succeed in medical school but may have to focus on things such as taking care of loved ones or part-time employment that was not factored into the initial algorithm design. In summary, it is important to be thoughtful about not only algorithms, but also datasets as potential sources of bias!
 
@@ -79,17 +80,17 @@ The data that we choose to collect to learn an algorithm can also introduce bias
 
 To better understand the sources of algorithmic bias and why they are important, let's look at some commonly cited case studies (both clinical and non-clinical):
 
-### Pulmonary Function Testing (PFT)
+<u>**Pulmonary Function Testing (PFT)**</u>
 
 **PFTs** are used in clinical practice to evaluate lung health. The patient's measured lung values are compared with the expected lung values given the patient's age, height, sex assigned at birth, and ethnicity among other factors.
 
 Researchers have found that using a patient's *race* as input into the expected lung value calculation can result in different PFT results, with implications for access to certain disease treatments and disability benefits. However, they also report that using race has also allowed patients to **benefit** from treatment options that they would have otherwise not had access to based on societal guidelines.
 
-The [2019 American Thoracic Society (ATS) guidelines](https://www.atsjournals.org/doi/10.1164/rccm.201908-1590ST) currently offer both race-specific and race-neutral algorithms, leaving it up to the discretion of the provider to determine how PFTs are used in clinical practice. Other historical examples of bias in clinical medicine include [eGFR calculations](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9495470/), [opioid risk mitigation](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3090430/), and care assessment evaluation as functions of race and other patient demographic information. To learn more, check out the Health Equity article from List et al.[^3]
+The [2019 American Thoracic Society (ATS) guidelines](https://www.atsjournals.org/doi/10.1164/rccm.201908-1590ST) currently offer both race-specific and race-neutral algorithms, leaving it up to the discretion of the provider to determine how PFTs are used in clinical practice. Other historical examples of bias in clinical medicine include [eGFR calculations](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9495470/), [opioid risk mitigation](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3090430/), and care assessment evaluation as functions of race and other patient demographic information. To learn more, check out the Health Equity article from List et al.[^2]
 
-[^3]: List JM, Palevsky P, Tamang S, et al. Eliminating algorithmic racial bias in clinical decision support algorithms: Use cases from the Veterans Health Administration. Health Equity 7(1): 809-16. (2023). doi: [10.1089/heq.2023.0037](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10698768/). PMID: 38076213
+[^2]: List JM, Palevsky P, Tamang S, et al. Eliminating algorithmic racial bias in clinical decision support algorithms: Use cases from the Veterans Health Administration. Health Equity 7(1): 809-16. (2023). doi: [10.1089/heq.2023.0037](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10698768/). PMID: 38076213
 
-### COMPAS/ProPublica
+<u>**COMPAS/ProPublica**</u>
 
 In 1998, a private company built the **COMPAS algorithm**, which is an algorithm that takes in information about arrested/incarcerated individuals and returns a prediction of how likely the individual will commit future crimes. Inputs into the COMPAS algorithm include individual demographics, criminal history, personal and family history, and the nature of the charged crime among others.
 
@@ -116,11 +117,11 @@ What other potential reasons did you think of?
 
 - [Area under the receiver operating curve (AUROC)](https://en.wikipedia.org/wiki/Receiver_operating_characteristic), a metric of classifier “goodness,” for black and white subpopulations are equal. Therefore, COMPAS is not biased and we can make sure the FPR of both populations are equal by setting different classifier thresholds for the two subpopulations.
 
-### Image Generation Using Google Gemini
+<u>**Image Generation Using Google Gemini**</u>
 
-In late 2023, Google introduced a new generative AI model called [Gemini](https://blog.google/technology/ai/google-gemini-ai/), which is able to complete a variety of tasks such as generating images from input text descriptions. Gemini was released to the public, and users quickly found that Gemini stood out from prior generative models because it was able to generate more diverse sets of images, such as producing images of people of color when prompted for an "American woman" or producing images images of women when prompted for historically male-dominated roles, such as a lawyer or an engineer. This was seen as a major step forward in tackling the bias associated with other generative models.[^4]
+In late 2023, Google introduced a new generative AI model called [Gemini](https://blog.google/technology/ai/google-gemini-ai/), which is able to complete a variety of tasks such as generating images from input text descriptions. Gemini was released to the public, and users quickly found that Gemini stood out from prior generative models because it was able to generate more diverse sets of images, such as producing images of people of color when prompted for an "American woman" or producing images images of women when prompted for historically male-dominated roles, such as a lawyer or an engineer. This was seen as a major step forward in tackling the bias associated with other generative models.[^3]
 
-[^4]: Nicoletti L and Bass D. Humans are biased. Generative AI is even worse. Bloomberg. (2023). [Link to article](https://www.bloomberg.com/graphics/2023-generative-ai-bias/)
+[^3]: Nicoletti L and Bass D. Humans are biased. Generative AI is even worse. Bloomberg. (2023). [Link to article](https://www.bloomberg.com/graphics/2023-generative-ai-bias/)
 
 However, an unintended side effect was that the model also generated historically inaccurate images when prompted for images of "1943 German soldiers" or "US senators from the 1800s." In these settings, it would be inaccurate to generate images of people of color given these input prompts.
 
@@ -130,13 +131,13 @@ The most common reason why bias occurs in machine learning is that we train mode
 
 On the other hand, we could instead implement a *completely random algorithm* - for example, deciding whether a patient should be admitted or not solely based on the flip of a coin. Such an algorithm would be completely unbiased, but not very accurate.
 
-These two examples demonstrate that in general, there is a tradeoff between **accuracy and bias**. As we train models to be more accurate, they often become more biased at the same time. Researchers are currently working on ways to overcome these limitations[^5], but this is an incredibly common empirical finding that we see in practice.
+These two examples demonstrate that in general, there is a tradeoff between **accuracy and bias**. As we train models to be more accurate, they often become more biased at the same time. Researchers are currently working on ways to overcome these limitations[^4], but this is an incredibly common empirical finding that we see in practice.
 
-[^5]: Chouldechova A, Roth A. The frontiers of fairness in machine learning. arXiv Preprint. (2018). doi: [10.48550/arXiv.1810.08810](https://arxiv.org/abs/1810.08810)
+[^4]: Chouldechova A, Roth A. The frontiers of fairness in machine learning. arXiv Preprint. (2018). doi: [10.48550/arXiv.1810.08810](https://arxiv.org/abs/1810.08810)
 
 #### Fairness is not Compositional
 
-Why is training both fair and accurate models hard? There are a lot of complex answers to this question, but one important reason is that **fairness is not compositional**. In simpler terms, imagine that we have a screening tool that seeks to predict whether a patient has a disease with 50% prevalence in the population. The algorithm has been shown to be unbiased against patient gender (male versus female) with regards to sensitivity, and also unbiased against patient color (“blue” versus “green” people) using the same metric. Does this mean that the algorithm is also unbiased against blue female people?
+Why is training both fair and accurate models hard? There are a lot of complex parts to the answer to this question, but one important reason is that **fairness is not compositional**. In simpler terms, imagine that we have a screening tool that seeks to predict whether a patient has a disease with 50% prevalence in the population. The algorithm has been shown to be unbiased against patient gender (male versus female) with regards to sensitivity, and also unbiased against patient color (“blue” versus “green” people) using the same metric. Does this mean that the algorithm is also unbiased against blue female people?
 
 **No!** The screening tool can still be biased against blue female people in this toy case. Here's an illustrative diagram of one possibility:
 
@@ -165,9 +166,9 @@ In the above example, we looked at distributing loans. However, we can imagine a
 ::: {.callout-note collapse="false" icon="false"}
 #### Does a patient need supplemental oxygen?
 
-**Important Context**: O~2~ saturation measurements are less accurate for Black individuals.[^6] More specifically, pulse oximeters often *overestimate* true O~2~ saturation for Black patients.
+**Important Context**: O~2~ saturation measurements are less accurate for Black individuals.[^5] More specifically, pulse oximeters often *overestimate* true O~2~ saturation for Black patients.
 
-[^6]: Al-Halawani R, Charlton PH, Qassem M, et al. A review of the effect of skin pigmentation on pulse oximeter accuracy. Physiol Meas 44(5): 05TR01. (2023). doi: [10.1088/1361-6579/acd51a](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10391744/). PMID: 37172609
+[^5]: Al-Halawani R, Charlton PH, Qassem M, et al. A review of the effect of skin pigmentation on pulse oximeter accuracy. Physiol Meas 44(5): 05TR01. (2023). doi: [10.1088/1361-6579/acd51a](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10391744/). PMID: 37172609
 
 **Two Strategies to Consider**:
 

@@ -20,7 +20,7 @@ Some potential answers might include:
 2. **Control of Use**: You should be able to have a say on how your data is used and for what purpose.
 3. **Knowledge of Access/Use**: You should know when your data is used or accessed.
 4. **Opt In (and Out)**: You should be able to add more data or remove your data at any point in time.
-5. **Anonymity**: Your identity should be maintained even after giving up your data.
+5. **Anonymity**: Your identity should remain private regardless of whatever you or others do with your data.
 
 What other answers did you think of? Do you think these notions of privacy are currently satisfied in academic research using patient data?
 :::
@@ -28,7 +28,6 @@ What other answers did you think of? Do you think these notions of privacy are c
 ::: column-margin
 {{< fa lightbulb >}} When you release your genomic data to the public, is the privacy of your parents and grandparents still preserved? What about the future privacy of your children and grandchildren?
 :::
-
 
 ## Overview
 
@@ -43,11 +42,17 @@ How can we be certain that a dataset is anonymized "*enough*"? Formally, a datas
 
 ## A Detailed Look: HIPAA PHI
 
-Let's take a look at the official list of [HIPAA-protected attributes](https://cphs.berkeley.edu/hipaa/hipaa18.html) from the Health and Human Services Department:
+Let's take a look at the official list of [HIPAA-protected attributes](https://cphs.berkeley.edu/hipaa/hipaa18.html) from the Health and Human Services Department, which are called **protected health information (PHI)**:
 
-1. Names;
-2. All geographical subdivisions smaller than a state (e.g., street address, city, county, precinct, ZIP code except for the initial three digits of a ZIP code).[^1]
-3. All dates (except year) directly related to an individual (e.g., birth date, admission date, exact ages in years over the ages of 90).[^2]
+::: column-margin
+{{< fa lightbulb >}} The initial three digits of a zip code is still considered PHI by HIPAA if the number of individuals residing in all zip codes with those initial three digits is less than 20,000. Why do you think this is the case? How do you think the cutoff of 20,000 individuals was determined?
+
+{{< fa lightbulb >}} Why are ages over 90 years-old considered PHI, but not younger ages?
+:::
+
+1. Names.
+2. All geographical subdivisions smaller than a state (e.g., street address, city, county, precinct, ZIP code except for the initial three digits of a ZIP code).
+3. All dates (except year) directly related to an individual (e.g., birth date, admission date, exact ages in years over the ages of 90).
 4. Phone numbers, fax numbers, email addresses.
 5. Social security numbers, health plan beneficiary numbers, driver license numbers, medical record numbers, etc.
 6. License plates
@@ -57,9 +62,6 @@ Let's take a look at the official list of [HIPAA-protected attributes](https://c
 10. Any other unique identifying number, characteristic, or code
 
 Are there any attributes listed that you didn't expect? How about attributes that aren't listed above but *should* be included?
-
-[^1]: The initial three digits of a zip code is still considered PHI by HIPAA if the number of individuals residing in all zip codes with those initial three digits is less than 20,000. Why do you think this is the case? How do you think the cutoff of 20,000 individuals was determined?
-[^2]: Why are ages over 90 years-old considered PHI, but not younger ages?
 
 ## Hands-On Tutorial
 
@@ -86,9 +88,11 @@ For this exercise, take a look at the following table:
 
 Imagine that you're a student working in a research lab and are tasked with analyzing this dataset of patients from the Philadelphia area. Your research mentor tells you that this dataset contains <u>all</u> of the inpatient admissions to HUP from the past week.
 
-Separately during your lunch break, you hear on the news that a famous celebrity - a 50 year-old female (in this hypothetical situation) - was recently admitted to HUP last week for a hypertensive crisis, and was just recently discharged from the hospital.[^3]
+Separately during your lunch break, you hear on the news that a famous celebrity - a 50 year-old female (in this hypothetical situation) - was recently admitted to HUP last week for a hypertensive crisis, and was just recently discharged from the hospital.
 
-[^3]: In case it wasn't already clear, this dataset and scenario is entirely fictional, and was actually generated using [ChatGPT](https://chatgpt.com)! You can take a look at the generation process [here](https://chatgpt.com/share/f48b4e45-e6f0-4b68-a982-3c288ab27f94) if you're interested.
+::: column-margin
+{{< fa info-circle >}} In case it wasn't already clear, this dataset and scenario is entirely fictional, and was actually generated using [ChatGPT](https://chatgpt.com)! You can take a look at the generation process [here](https://chatgpt.com/share/f48b4e45-e6f0-4b68-a982-3c288ab27f94) if you're interested.
+:::
 
 ::: {.callout-tip collapse="true" icon="false"}
 #### Given this information, can you identify which patient ID corresponds to the famous celebrity?
@@ -98,9 +102,11 @@ The only patient in the table above corresponding to a 50 year-old female with h
 
 Ignoring the fact that this was a small toy example, how difficult was it to *re-identify* a patient (namely, the famous celebrity) from the dataset? As a result of the successful re-identification of the patient, were you able to learn anything new about the patient (i.e., take a look at the `HIV_STATUS` column).
 
-It turns out that a very similar re-identification strategy was used by [Dr. Latanya Sweeney](https://latanyasweeney.org/index.html) in 1997 where she successfully re-identified the then Governor of Massachusetts using publicly accessible, anonymized medical records released by the state of Massachusetts.[^4]
+It turns out that a very similar re-identification strategy was used by [Dr. Latanya Sweeney](https://latanyasweeney.org/index.html) in 1997 where she successfully re-identified the then Governor of Massachusetts using publicly accessible, anonymized medical records released by the state of Massachusetts.
 
-[^4]: Sweeney is an excellent writer and we encourage you to check out two of her publications on this topic: [1] Sweeney L. Only you, your doctor, and many others may know. Tech Sci. (2015). [Link to article](https://techscience.org/a/2015092903); [2] Sweeney L. $k$-Anonymity: A model for protecting privacy. Int J Uncertainty, Fuzziness, and Knowledge-based Systems 10(5): 557-70. (2002). [Link to article](https://epic.org/wp-content/uploads/privacy/reidentification/Sweeney_Article.pdf)
+::: column-margin
+{{< fa info-circle >}} Sweeney is an excellent writer and researcher, and we encourage you to check out two of her publications on this topic: [1] Sweeney L. Only you, your doctor, and many others may know. Tech Sci. (2015). [Link to article](https://techscience.org/a/2015092903); [2] Sweeney L. $k$-Anonymity: A model for protecting privacy. Int J Uncertainty, Fuzziness, and Knowledge-based Systems 10(5): 557-70. (2002). [Link to article](https://epic.org/wp-content/uploads/privacy/reidentification/Sweeney_Article.pdf)
+:::
 
 Why were we and Dr. Sweeney able to re-identify patients from an anonymized dataset? The main reason is that in both situations, we correlated the information in the table with outside knowledge and other datasets **in order to gain new, privileged information** about patients by synthesizing datasets together. There are countless other examples of re-identifying individuals from anonymized datasets, from [identifying Netflix users from anonymized movie ratings](https://arxiv.org/abs/cs/0610105) to even finally [catching the notorious *Golden State Killer*](https://www.science.org/content/article/we-will-find-you-dna-search-used-nab-golden-state-killer-can-home-about-60-white).
 
@@ -110,7 +116,7 @@ In summary, there are two key points that we hope you take away from this exerci
 ### Problems with Anonymization
 
 1. Anonymization is ***not*** an effective tool to preserve patient privacy.
-2. The *reason* why anonymization fails is that it assumes there are no other datasets or sources of information in the world to cross-reference.
+2. The *reason* why anonymization fails is that it assumes there are no other datasets or sources of information in the world to cross-reference (which is obviously not true).
 :::
 
 ## Evidence-Based Medicine Discussion
@@ -120,12 +126,14 @@ In summary, there are two key points that we hope you take away from this exerci
 ::: {.callout-note icon=false}
 #### 1. Overview Article
 
-*All of Us* Research Program Overview. National Institutes of Health. Accessed 19 May 2024. [Link to article](https://allofus.nih.gov/about/program-overview)[^5]
+*All of Us* Research Program Overview. National Institutes of Health. Accessed 19 May 2024. [Link to article](https://allofus.nih.gov/about/program-overview)
 
 **tl;dr**: *All of Us* is an NIH initiative to build a diverse database of Americans from all backgrounds in order to inform and power thousands of future studies on a variety of different health conditions. The overarching goal of the *All of Us* initiative is to power future advancements in precision medicine.
 :::
 
-[^5]: There's a great 2-minute intro video to the *All of Us* Research program [here](https://youtu.be/ti50nS7B5vI?si=UzV3skolOuFync9g).
+::: column-margin
+{{< fa info-circle >}} There's a great 2-minute intro video to the *All of Us* Research program [here](https://youtu.be/ti50nS7B5vI?si=UzV3skolOuFync9g).
+:::
 
 ::: {.callout-tip icon=false}
 #### 2. <u>Yes</u>, the anonymization achieved by the All-of-Us Research Program is sufficient.
@@ -144,10 +152,10 @@ Kaiser J. Million-person U.S. study of genes and health stumbles over including 
 :::
 
 ::: column-margin
-{{< fa lightbulb >}} There are other problems involving the All of Us research program, including a recent study [inadvertently using "objective" mathematical techniques that inappropriately validates racist and xenophobic ideologies](https://www.statnews.com/2024/03/15/all-of-us-genomic-sequencing-results-umap-science-history-sociology/).[^6] Even well-established data analysis techniques must be used and presented carefully!
+{{< fa info-circle >}} There are other problems involving the All of Us research program, including a recent study [inadvertently using "objective" mathematical techniques that inappropriately validates racist and xenophobic ideologies](https://www.statnews.com/2024/03/15/all-of-us-genomic-sequencing-results-umap-science-history-sociology/).[^1] Even well-established data analysis techniques must be used and presented carefully!
 :::
 
-[^6]: The All of Us Research Program Genomics Investigators. Genomic data in the All of Us research program. Nature 627: 340-6. (2024). doi: [10.1038/s41586-023-06957-x](https://www.nature.com/articles/s41586-023-06957-x). PMID: 38374255
+[^1]: The All of Us Research Program Genomics Investigators. Genomic data in the All of Us research program. Nature 627: 340-6. (2024). doi: [10.1038/s41586-023-06957-x](https://www.nature.com/articles/s41586-023-06957-x). PMID: 38374255
 
 ## Summary
 

@@ -16,10 +16,15 @@ author: Michael Yao, Allison Chae
 **Bias** is a term that is often used broadly but has a very precise definition. Bias is always defined with respect to two related concepts: (1) protected attribute(s), and (2) a definition of harm.
 
 1. A ***protected attribute*** is an attribute about a patient that we want to ensure there is no bias against. Examples of protected attributes include patient age, gender, and ethnicity.
-2. A ***definition of harm*** is how we choose to define when bias is present. Common definitions of harm include an algorithm's overall error rate, or its [false positive or false negative rate](https://en.wikipedia.org/wiki/False_positives_and_false_negatives).
+2. A ***definition of harm*** is how we choose to define when bias is present. Common definitions of harm include an algorithm's (A) overall error rate; (B) false positive rate (FPR); and (C) false negative rate (FNR).
+
+::: column-margin
+{{< fa info-circle >}} For a review on metrics such as FPR and FNR, check out this article: Cardinal LJ. Diagnostic testing: A key component of high-value care. J Community Hosp Intern Med Perspect 6(3). (2016). doi: [10.3402/jchimp.v6.31664](https://doi.org/10.3402%2Fjchimp.v6.31664). PMID: 27406456
+:::
 
 When we choose the protected attribute and a definition of harm, we can then define when an algorithm is biased. Namely, **an algorithm is biased if it causes an increase in harm for a subpopulation of patients with respect to the protected attribute(s)**. For example, if we define the protected attribute as a patient's race and the definition of harm as the algorithm's error rate, then the algorithm is biased if its error rate is higher for Black Americans than White Americans.
 
+<!--
 ## Key Terminology: Binary Classification
 
 In this section, we primarily focus on understanding algorithmic bias as they pertain to *binary classifiers*, which are algorithms that seek to classify patients into one of two categories. Binary classification is common in clinical medicine: we often want to classify patients by...
@@ -40,9 +45,11 @@ As with any clinical task, algorithms rarely get 100% accuracy. We may mistakenl
 {{< fa info-circle >}} AMAB means "assigned male at birth", meaning the patient has XY sex chromosomes.
 :::
 
-In general, we want to minimize an algorithm's FPR, FNR, and overall error rate. FPR, FNR, and overall error are commonly used definitions of harm in assessing for algorithmic bias.
+-->
 
-It is important to recognize that **the consequences of false positives and false negatives can be different** depending on the task. For example, in colon cancer screening, a false negative (e.g., missing a precancerous polyp on a colonoscopy) is much worse than a false positive (e.g., taking out a potential polyp that turns out not to be precancerous). This means that the consequence of a false negative is much more significant than that of a false positive for colon cancer screening.
+**Which definition of harm should we use - (A) overall error rate; (B) false positive rate; or (C) false negative rate?**
+
+It depends! It's important to recognize that **the consequences of false positives and false negatives can be different** depending on the task. For example, in colon cancer screening, a false negative (e.g., missing a precancerous polyp on a colonoscopy) is much worse than a false positive (e.g., taking out a potential polyp that turns out not to be precancerous). This means that the consequence of a false negative is much more significant than that of a false positive for colon cancer screening.
 
 ## Sources of Bias
 
@@ -70,7 +77,7 @@ Suppose we have two CT scanners in the hospital: Scanner 1 and Scanner 2. Scanne
 
 **How Data is Acquired**
 
-The data that we choose to collect to learn an algorithm can also introduce biases. For example, suppose you are conducting a study investigating the relationship between number of leadership positions and success in medical school for medical students. Focusing only on leadership positions might result in algorithms that are biased against students from lower socioeconomic backgrounds who can succeed in medical school but may have to focus on things such as taking care of loved ones or part-time employment that was not factored into the initial algorithm design. In summary, it is important to be thoughtful about not only algorithms, but also datasets as potential sources of bias!
+The data that we choose to collect to learn an algorithm can also introduce biases. For example, suppose you are investigating the relationship between number of leadership positions and match rate for medical students. Focusing only on leadership positions might result in algorithms that are biased against students from lower socioeconomic backgrounds who may have to focus on things such as taking care of loved ones or part-time employment that was not factored into the initial algorithm design. In summary, it is important to be thoughtful about not only algorithms, but also datasets as potential sources of bias!
 
 ::: column-margin
 {{< fa lightbulb >}} How might collecting too *many* data features bias algorithms?
@@ -119,7 +126,7 @@ What other potential reasons did you think of?
 
 <u>**Image Generation Using Google Gemini**</u>
 
-In late 2023, Google introduced a new generative AI model called [Gemini](https://blog.google/technology/ai/google-gemini-ai/), which is able to complete a variety of tasks such as generating images from input text descriptions. Gemini was released to the public, and users quickly found that Gemini stood out from prior generative models because it was able to generate more diverse sets of images, such as producing images of people of color when prompted for an "American woman" or producing images images of women when prompted for historically male-dominated roles, such as a lawyer or an engineer. This was seen as a major step forward in tackling the bias associated with other generative models.[^3]
+In late 2023, Google introduced a new generative AI model called [Gemini](https://blog.google/technology/ai/google-gemini-ai/), which is able to complete a variety of tasks such as generating images from input text descriptions. Gemini was released to the public, and users quickly found that Gemini stood out from prior generative models because it was able to generate more diverse sets of images, such as producing images of people of color when prompted for an "American woman" or producing images of women when prompted for historically male-dominated roles, such as a lawyer or an engineer. This was seen as a major step forward in tackling the bias associated with other generative models.[^3]
 
 [^3]: Nicoletti L and Bass D. Humans are biased. Generative AI is even worse. Bloomberg. (2023). [Link to article](https://www.bloomberg.com/graphics/2023-generative-ai-bias/)
 
@@ -135,13 +142,18 @@ These two examples demonstrate that in general, there is a tradeoff between **ac
 
 [^4]: Chouldechova A, Roth A. The frontiers of fairness in machine learning. arXiv Preprint. (2018). doi: [10.48550/arXiv.1810.08810](https://arxiv.org/abs/1810.08810)
 
-#### Fairness is not Compositional
+#### Fairness Doesn't Stack
 
-Why is training both fair and accurate models hard? There are a lot of complex parts to the answer to this question, but one important reason is that **fairness is not compositional**. In simpler terms, imagine that we have a screening tool that seeks to predict whether a patient has a disease with 50% prevalence in the population. The algorithm has been shown to be unbiased against patient gender (male versus female) with regards to sensitivity, and also unbiased against patient color (“blue” versus “green” people) using the same metric. Does this mean that the algorithm is also unbiased against blue female people?
+Why is training both fair and accurate models hard? There are a lot of complex parts to the answer to this question, but one important reason is that **fairness does not stack**.
 
-**No!** The screening tool can still be biased against blue female people in this toy case. Here's an illustrative diagram of one possibility:
+Imagine that we have a screening tool that seeks to predict whether a patient has a disease with 50% prevalence in the population. Using lower sensitivity as our definition of harm, suppose that
 
-![Fairness Gerrymandering. Adapted from Kearns M, Neel S, Roth A, Wu ZS. Preventing fairness gerrymandering: Auditing and learning for subgroup fairness. Proc Int Conf Mach Learn 80: 2564-72. (2018). [Link to Paper](https://proceedings.mlr.press/v80/kearns18a.html)](/images/bias.png){#fig-bias}
+1. Our screening tool is unbiased with respect to patient gender (i.e., male vs. female).
+2. Our screening tool is *also* unbiased with respect to patient race (i.e., "blue" vs. "green").
+
+**Even though algorithm is unbiased against blue people and unbiased against females, *it can still be biased against blue female people*!** Here's an illustrative diagram of one possibility:
+
+![**Fairness Gerrymandering.** Red circles indicates positive individuals identified using a disease screening tool. For a disease with 50% prevalence in the population across all subgroups, the screening tool can be unbiased against both color and gender, and still yet still have a 0% sensitivity rate for blue females and green males! Adapted from Kearns M, Neel S, Roth A, Wu ZS. Preventing fairness gerrymandering: Auditing and learning for subgroup fairness. Proc Int Conf Mach Learn 80: 2564-72. (2018). [Link to Paper](https://proceedings.mlr.press/v80/kearns18a.html)](/images/bias.png){#fig-bias}
 
 In @fig-bias, we can see that our screening tool is “fair” with respect to gender and color by only accepting individuals that are either both blue and male or both green and female. Ensuring that models are fair for certain subgroups doesn't mean that those models are also fair for members of the *intersections* of those groups, or other entirely unrelated subgroups. In other words, fairness conditions do not compose. **This is why fairness is such a hard problem to tackle!**
 
@@ -151,7 +163,7 @@ The most important thing to help reduce bias is recognize that ***all real-world
 
 ## Hands-On Tutorial
 
-To better understand how bias can impact algorithms, let's take a look at a simple example of a binary classifier algorithm that seeks to predict whether a loan applicant will either (1) pay back the loan or (2) default on the loan.
+To better understand how bias can impact algorithms, let's take a look at a simple example of a *binary classifier* algorithm that seeks to predict whether a loan applicant will either (1) pay back the loan or (2) default on the loan.
 
 ::: {.callout-note collapse="false" icon="false"}
 #### Will a loan applicant pay back the loan?
@@ -173,13 +185,15 @@ In the above example, we looked at distributing loans. However, we can imagine a
 **Two Strategies to Consider**:
 
 1. <u>Group-Unaware Strategy</u>: For all patients irregardless of skin color, we only start supplemental oxygen if SpO2 < 92%.
-2. <u>Equal Opportunity Strategy</u>: The same fraction of Black and White patients should be on SpO2, so we will use the SpO2 < 92% cutoff for White patients and use a separate SpO2 < 94% cutoff for Black patients.
+2. <u>Equal Opportunity Strategy</u>: The same fraction of Black and White patients should be on supplemental oxygen, so we will use the SpO2 < 92% cutoff for White patients and use a separate SpO2 < 94% cutoff for Black patients.
 
 Which strategy is more biased? Is using race as an input into algorithms (as in the equal opportunity strategy) "good"? Why or why not?
 :::
 
 ::: column-margin
 {{< fa lightbulb >}} How would your answer to this question change (or not) if instead we were deciding whether a patient was a lung transplant candidate? How about if we were deciding whether to start losartan therapy for newly diagnosed hypertension?
+
+{{< fa info-circle >}} Another way to think about the supplemental oxygen problem is how ***equity*** and ***equality*** differ from one another. What do these two terms mean to you?
 :::
 
 ## Discussion Questions

@@ -47,11 +47,12 @@ There are a lot of machine learning resources out there already - what makes *Et
 
 **[Allison Chae](https://www.allisonchae.com)** is an MD candidate at the University of Pennsylvania researching how AI algorithms can be used in real-world clinical workflows. She currently works alongside radiologists to better understand how physicians and computer systems interact with one another. Allison's research is supported by the [A&Omega;A Society](https://www.alphaomegaalpha.org/programs/carolyn-l-kuckein-student-research-fellowship/) and the Perelman School of Medicine.
 
-<!-- ## Expert Collaborators
+## Expert Collaborators
 
 *Ethical Algorithms for the Modern Clinician* is backed by experts in both clinical medicine and machine learning.
 
-TODO -->
+1. [**Mark Yatskar, PhD**](https://www.cis.upenn.edu/~myatskar/) is an Assistant Professor of Computer and Information Science at the University of Pennsylvania. His lab studies the interplay between visual and language systems in machine learning, and how such systems can inherit human biases.
+2. [**Walter Witschey, PhD**](https://www.med.upenn.edu/corlab/current.html) is an Associate Professor of Radiology at the University of Pennsylvania. He leads an interdisciplinary lab studying MRI imaging techniques and machine learning for clinical radiology.
 
 ## Institutional Partners
 

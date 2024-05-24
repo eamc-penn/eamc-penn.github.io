@@ -6,8 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Michael Yao, Allison Chae">
-<meta name="dcterms.date" content="2024-05-20">
+<meta name="author" content="Michael Yao, Allison Chae, Mark Yatskar PhD">
+<meta name="dcterms.date" content="2024-05-24">
 
 <title>Ethical Algorithms for the Modern Clinician - Algorithmic Interpretability</title>
 <style>
@@ -178,14 +178,14 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Michael Yao, Allison Chae </p>
+             <p>Michael Yao, Allison Chae, Mark Yatskar PhD </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 20, 2024</p>
+      <p class="date">May 24, 2024</p>
     </div>
   </div>
   
@@ -227,8 +227,34 @@ Food for Thought: Interpretability or Accuracy?
 </section>
 <section id="what-is-interpretability" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="what-is-interpretability">What is Interpretability?</h2>
-<div class="page-columns page-full"><p>Unlike our past few modules defining topics like fairness and anonymity exactly, it is challenging to give a rigorous, objective definition of interpretability. One commonly cited definition is <strong>interpretability is the degree to which a human can understand <em>why</em> an algorithm made its prediction</strong>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> If an algorithm is interpretable, then it is easier for someone to understand why certain predictions were made. Note that the definition of interpretability is <em>entirely independent</em> from the the accuracy of the algorithm - we only seek to explain why an algorithm made its own prediction, which may or may not be necessarily correct.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;Miller T. Explanation in artificial intelligence: Insights from the social sciences. Art Intel 267: 1-38. (2019). doi: <a href="10.1016/j.artint.2018.07.007">https://doi.org/10.1016/j.artint.2018.07.007</a></p></li></div></div>
-<p>Even when using this definition, interpretability is still a very subjective property of an algorithm! Interpretability varies due to a number of factors:</p>
+<div class="page-columns page-full"><p>Unlike our past few modules defining topics like fairness and anonymity exactly, it is challenging to give a rigorous, objective definition of interpretability. One commonly cited definition is <strong>interpretability is the degree to which a human can understand <em>why</em> an algorithm made its prediction</strong>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> If an algorithm is interpretable, then it is easier for someone to understand why certain predictions were made. Note that the definition of interpretability is <em>entirely independent</em> from the the accuracy of the algorithm - we only seek to explain why an algorithm made its own prediction, which may or may not be necessarily correct.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;Miller T. Explanation in artificial intelligence: Insights from the social sciences. Art Intel 267: 1-38. (2019). doi: <a href="https://doi.org/10.1016/j.artint.2018.07.007">10.1016/j.artint.2018.07.007</a></p></li></div></div>
+<div class="page-columns page-full"><p>However, even this definition of interpretability remains underspecified.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> For example, here are some other factors of algorithmic design that are closely related to - if not paramount for - interpretability:</p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;Lipton ZC. The mythos of model interpretability. Proc ICML Workshop on Human Interpretability in Machine Learning. (2016). <a href="https://doi.org/10.48550/arXiv.1606.03490">10.48550/arXiv.1606.03490</a></p></li></div></div>
+<ol type="1">
+<li><strong>Trust</strong>: What is an objective notion of trust? Is it confidence that a model will perform well? Do you care about how <em>often</em> an algorithm is correct, or for <em>which inputs</em> the algorithm is correct for?</li>
+<li><strong>Causality</strong>: Can we use algorithms to learn potential hypotheses about the world around us? Is this important in labelling a model as interpretable?</li>
+<li><strong>Transferrability</strong>: Do algorithms generalize to new patient populations? Can we predict when an algorithm might generalize and when it won’t? How might deployment of models alter the user’s environment to simultaneously <em>invalidate</em> the model?</li>
+<li><strong>Informativeness</strong>: As previously explored in the <strong>Food for Thought</strong> discussion above, is it more important for you to have an explanation to approach future problems, or to get the correct answer? Does the model serve the role of an oracle, a colleague, or a mentor?</li>
+<li><strong>Fair and Ethical Decision Making</strong>: How can we be sure that predictions do not discriminate on the basis of race, age, gender, and other patient attributes?</li>
+</ol>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<i class="fa-solid fa-lightbulb" aria-label="lightbulb"></i> A recent study described a machine learning algorithm showing that patients are less likely to die from pneumonia if they also had asthma. Why might this be the case? Would you want to deploy this system in the ED?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>In 2015, <a href="https://dl.acm.org/doi/10.1145/2783258.2788613">Caruana et al.</a> showed that concurrent asthma was a predictor of lower risk of death in patients with pneumonia. This is because physicians that knew about the patient’s asthma history always always treated these asthmatic patients more agressively. As a result, asthmatic patients paradoxically had <em>lower</em> death rates from pneumonia.</p>
+<p>Imagine that we naively implement this model for patient triage without understanding the reasoning behind its predictions. In this case, model deployment would <em>prevent</em> physicians from treating asthmatic patients more agressively because the model would label these patients as having a low risk of death. In other words, deploying the model would actually end up invalidating the model and <em>hurt</em> patients!</p>
+<p>Caruana R, Lou Y, Gehrke J, Koch P, Sturm M, Elhadad N. Intelligible models for healthcare: Predicting pneumonia risk and hospital 30-day readmission. Proc Conf Knowl Disc Data Mining: 1721-30. (2015). doi: <a href="https://doi.org/10.1145/2783258.2788613">10.1145/2783258.2788613</a></p>
+</div>
+</div>
+</div>
+<p>These factors that contribute to how we label if an algorithm is interpretable often vary due to a number of factors:</p>
 <ol type="1">
 <li><strong>Difficulty of the Task</strong>: Algorithms trained to perform complex, domain-specific tasks are inherently less interpretable by the average user due to the nature of the task itself.</li>
 <li><strong>Expertise of the User</strong>: A domain expert may require less explanation in order to call an algorithm interpretable compared to someone with less experience in the field.</li>
@@ -252,8 +278,24 @@ Food for Thought: Interpretability or Accuracy?
 <p>Is this equation still interpretable? From the equation above, we still clearly have transparency into how a MELD score is calculated, but the equation itself is a little more complicated and may not be easily understand by everyone. After looking at the above equation, we’re still left with a number of remaining questions: How were the decimal coefficients derived? Why is there a logarithmic relationship between the MELD score and patient lab values?</p>
 <p><strong>A Machine Learning Algorithm</strong></p>
 <p>Suppose we now have a ML algorithm that predicts a patient’s risk of breast cancer given their genomic data. Such algorithms are often referred to as <strong><em>black-box algorithms</em></strong> because the algorithm’s user cannot see the inner workings of the algorithm. However, is such an algorithm truly “black-box”? Similar to the MELD Score, I can exactly write down the specific formula for the algorithm, with all of its inputs, internal functions, decimal coefficients, etc. It would be an incredibly long and complex equation, but <em>any</em> ML algorithm can be written down exactly just like the MELD score and MAP calculations above.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Does being able to write down a mathematical formula for an algorithm (even if it’s extraordinarily complex as with machine learning models) mean that the algorithm is interpretable? Why or why not? What’s missing from this definition?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Unfortunately, we don’t have a “right” answer to share with you here. Comparing the above three scenarios, some experts may describe them as interpretable and humans just lack the ability to understand them. In other cases, some might claim that this is not sufficient. Is it the algorithm’s “job” to explain itself to humans when we lack the ability to understand how they work?</p>
+</div>
+</div>
+</div>
 <p><strong>A Probabilistic Algorithm</strong></p>
-<p>Finally, consider the following algorithm that utilizes a fair two-sided coin: if I flip the coin and it lands heads, then I admit a patient from the ED. Otherwise, I discharge them and send the patient home. Is this an “interpretable” algorithm?</p>
+<p>Finally, consider the following algorithm that utilizes a fair two-sided coin: if I flip the coin and it lands heads, then I admit a patient from the ED. Otherwise, I discharge them and send the patient home. Is this algorithm (or any probability-based algorithm) “interpretable”?</p>
 <p><strong>An Accurate Algorithm Trained on An Unknown Dataset</strong></p>
 <p>After reading a recently published paper on a new machine learning algorithm to diagnose a rare disease, you try testing the algorithm on your own patients’ data and find that it has almost perfect accuracy! However, the paper does not include any details about how the model was trained - including any information on the patient demographics in the published study.</p>
 </section>
@@ -271,10 +313,10 @@ The Accuracy-Interpretability Tradeoff
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The more accurate an algorithm model is, the less likely it is to be interpretable.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>The more accurate an algorithm model is, the less likely it is to be interpretable.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
 </div>
 </div>
-<div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;There’s a great blog post discussing the accuracy-interpretability tradeoff in more detail here: Ndungula S. Model accuracy and interpretability. Medium. (2022). <a href="https://samuelndungula.medium.com/model-accuracy-and-interpretability-3d875439942c">Link to article</a></p></li></div></section>
+<div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;There’s a great blog post discussing the accuracy-interpretability tradeoff in more detail here: Ndungula S. Model accuracy and interpretability. Medium. (2022). <a href="https://samuelndungula.medium.com/model-accuracy-and-interpretability-3d875439942c">Link to article</a></p></li></div></section>
 <section id="evidence-based-medicine-discussion" class="level2">
 <h2 class="anchored" data-anchor-id="evidence-based-medicine-discussion">Evidence-Based Medicine Discussion</h2>
 <p><strong>Do algorithms need to be interpretable in order for clinicians to leverage them for patient care?</strong></p>

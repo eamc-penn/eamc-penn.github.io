@@ -1,6 +1,6 @@
 ---
 title: Bias and Fairness
-author: Michael Yao, Allison Chae
+author: Michael Yao, Allison Chae, Mark Yatskar PhD
 ---
 
 ## Learning Objectives
@@ -157,6 +157,10 @@ Imagine that we have a screening tool that seeks to predict whether a patient ha
 
 In @fig-bias, we can see that our screening tool is “fair” with respect to gender and color by only accepting individuals that are either both blue and male or both green and female. Ensuring that models are fair for certain subgroups doesn't mean that those models are also fair for members of the *intersections* of those groups, or other entirely unrelated subgroups. In other words, fairness conditions do not compose. **This is why fairness is such a hard problem to tackle!**
 
+In fact, the currently state of the fairness in machine learning literature is that **experts don't have a good singular definition of fairness** for all applications. Many conditions that we might want to achieve fairness (e.g., fair with respect to gender *and* race) may be *provably impossible* to achieve in certain cases![^5] This is an active area of research, and it's important to acknolwedge these challenges when discussing bias and fairness in algorithmic systems.
+
+[^5]: Formal proofs of this statement do exist but are well-outside the scope of this course. If this is an interesting topic to you, we recommend this quick (non-technical) read by [Santamicone M. (2021).](https://mauriziosantamicone.medium.com/you-cant-be-fair-to-everyone-560d09639bd5) A slightly more technical blog post that covers more of the details is also available by [Zhao H. (2020).](https://blog.ml.cmu.edu/2020/02/28/inherent-tradeoffs-in-learning-fair-representations/) at CMU.
+
 #### What can we do about this as clinicians?
 
 The most important thing to help reduce bias is recognize that ***all real-world algorithms are biased***! How algorithms are biased and to what extent depend on your definition of harm and the patient attribute(s) that you're focusing on. These definitions inherently differ between persons and scenarios. Recognizing our own biases in the algorithms used by both computers and humans is critical so that we make the best decisions for each individual patient.
@@ -178,9 +182,9 @@ In the above example, we looked at distributing loans. However, we can imagine a
 ::: {.callout-note collapse="false" icon="false"}
 #### Does a patient need supplemental oxygen?
 
-**Important Context**: O~2~ saturation measurements are less accurate for Black individuals.[^5] More specifically, pulse oximeters often *overestimate* true O~2~ saturation for Black patients.
+**Important Context**: O~2~ saturation measurements are less accurate for Black individuals.[^6] More specifically, pulse oximeters often *overestimate* true O~2~ saturation for Black patients.
 
-[^5]: Al-Halawani R, Charlton PH, Qassem M, et al. A review of the effect of skin pigmentation on pulse oximeter accuracy. Physiol Meas 44(5): 05TR01. (2023). doi: [10.1088/1361-6579/acd51a](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10391744/). PMID: 37172609
+[^6]: Al-Halawani R, Charlton PH, Qassem M, et al. A review of the effect of skin pigmentation on pulse oximeter accuracy. Physiol Meas 44(5): 05TR01. (2023). doi: [10.1088/1361-6579/acd51a](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10391744/). PMID: 37172609
 
 **Two Strategies to Consider**:
 

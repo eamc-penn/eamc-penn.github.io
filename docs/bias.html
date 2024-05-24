@@ -6,8 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Michael Yao, Allison Chae">
-<meta name="dcterms.date" content="2024-05-22">
+<meta name="author" content="Michael Yao, Allison Chae, Mark Yatskar PhD">
+<meta name="dcterms.date" content="2024-05-24">
 
 <title>Ethical Algorithms for the Modern Clinician - Bias and Fairness</title>
 <style>
@@ -178,14 +178,14 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Michael Yao, Allison Chae </p>
+             <p>Michael Yao, Allison Chae, Mark Yatskar PhD </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 22, 2024</p>
+      <p class="date">May 24, 2024</p>
     </div>
   </div>
   
@@ -308,7 +308,7 @@ Does this mean that the COMPAS algorithm is racially biased (using the risk scor
 <p>The most common reason why bias occurs in machine learning is that we train models to be accurate on the “average” patient. In other words, if there are more patients from one subpopulation than another in the dataset used to learn an algorithm, then the algorithm will almost certainly be more accurate on the majority population. Naively learning algorithms in this fashion will result in accurate but biased models.</p>
 <p>On the other hand, we could instead implement a <em>completely random algorithm</em> - for example, deciding whether a patient should be admitted or not solely based on the flip of a coin. Such an algorithm would be completely unbiased, but not very accurate.</p>
 <div class="page-columns page-full"><p>These two examples demonstrate that in general, there is a tradeoff between <strong>accuracy and bias</strong>. As we train models to be more accurate, they often become more biased at the same time. Researchers are currently working on ways to overcome these limitations<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>, but this is an incredibly common empirical finding that we see in practice.</p><div class="no-row-height column-margin column-container"><li id="fn4"><p><sup>4</sup>&nbsp;Chouldechova A, Roth A. The frontiers of fairness in machine learning. arXiv Preprint. (2018). doi: <a href="https://arxiv.org/abs/1810.08810">10.48550/arXiv.1810.08810</a></p></li></div></div>
-<section id="fairness-doesnt-stack" class="level4">
+<section id="fairness-doesnt-stack" class="level4 page-columns page-full">
 <h4 class="anchored" data-anchor-id="fairness-doesnt-stack">Fairness Doesn’t Stack</h4>
 <p>Why is training both fair and accurate models hard? There are a lot of complex parts to the answer to this question, but one important reason is that <strong>fairness does not stack</strong>.</p>
 <p>Imagine that we have a screening tool that seeks to predict whether a patient has a disease with 50% prevalence in the population. Using lower sensitivity as our definition of harm, suppose that</p>
@@ -324,6 +324,7 @@ Does this mean that the COMPAS algorithm is racially biased (using the risk scor
 </figure>
 </div>
 <p>In <a href="#fig-bias">Figure&nbsp;1</a>, we can see that our screening tool is “fair” with respect to gender and color by only accepting individuals that are either both blue and male or both green and female. Ensuring that models are fair for certain subgroups doesn’t mean that those models are also fair for members of the <em>intersections</em> of those groups, or other entirely unrelated subgroups. In other words, fairness conditions do not compose. <strong>This is why fairness is such a hard problem to tackle!</strong></p>
+<div class="page-columns page-full"><p>In fact, the currently state of the fairness in machine learning literature is that <strong>experts don’t have a good singular definition of fairness</strong> for all applications. Many conditions that we might want to achieve fairness (e.g., fair with respect to gender <em>and</em> race) may be <em>provably impossible</em> to achieve in certain cases!<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> This is an active area of research, and it’s important to acknolwedge these challenges when discussing bias and fairness in algorithmic systems.</p><div class="no-row-height column-margin column-container"><li id="fn5"><p><sup>5</sup>&nbsp;Formal proofs for this statement do exist but are well-outside the scope of this course. If this is an interesting topic to you, we recommend this quick (non-technical) read by <a href="https://mauriziosantamicone.medium.com/you-cant-be-fair-to-everyone-560d09639bd5">Santamicone M. (2021).</a> A slightly more technical blog post that covers more of the details is also available by <a href="https://blog.ml.cmu.edu/2020/02/28/inherent-tradeoffs-in-learning-fair-representations/">Zhao H. (2020).</a> at CMU.</p></li></div></div>
 </section>
 <section id="what-can-we-do-about-this-as-clinicians" class="level4">
 <h4 class="anchored" data-anchor-id="what-can-we-do-about-this-as-clinicians">What can we do about this as clinicians?</h4>
@@ -332,7 +333,7 @@ Does this mean that the COMPAS algorithm is racially biased (using the risk scor
 </section>
 <section id="hands-on-tutorial" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="hands-on-tutorial">Hands-On Tutorial</h2>
-<p>To better understand how bias can impact algorithms, let’s take a look at a simple example of a binary classifier algorithm that seeks to predict whether a loan applicant will either (1) pay back the loan or (2) default on the loan.</p>
+<p>To better understand how bias can impact algorithms, let’s take a look at a simple example of a <em>binary classifier</em> algorithm that seeks to predict whether a loan applicant will either (1) pay back the loan or (2) default on the loan.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -366,7 +367,7 @@ Does a patient need supplemental oxygen?
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p><strong>Important Context</strong>: O<sub>2</sub> saturation measurements are less accurate for Black individuals.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> More specifically, pulse oximeters often <em>overestimate</em> true O<sub>2</sub> saturation for Black patients.</p>
+<p><strong>Important Context</strong>: O<sub>2</sub> saturation measurements are less accurate for Black individuals.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> More specifically, pulse oximeters often <em>overestimate</em> true O<sub>2</sub> saturation for Black patients.</p>
 <p><strong>Two Strategies to Consider</strong>:</p>
 <ol type="1">
 <li><u>Group-Unaware Strategy</u>: For all patients irregardless of skin color, we only start supplemental oxygen if SpO2 &lt; 92%.</li>
@@ -376,7 +377,7 @@ Does a patient need supplemental oxygen?
 </div>
 </div>
 </div>
-<div class="no-row-height column-margin column-container"><li id="fn5"><p><sup>5</sup>&nbsp;Al-Halawani R, Charlton PH, Qassem M, et al.&nbsp;A review of the effect of skin pigmentation on pulse oximeter accuracy. Physiol Meas 44(5): 05TR01. (2023). doi: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10391744/">10.1088/1361-6579/acd51a</a>. PMID: 37172609</p></li><div class="">
+<div class="no-row-height column-margin column-container"><li id="fn6"><p><sup>6</sup>&nbsp;Al-Halawani R, Charlton PH, Qassem M, et al.&nbsp;A review of the effect of skin pigmentation on pulse oximeter accuracy. Physiol Meas 44(5): 05TR01. (2023). doi: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10391744/">10.1088/1361-6579/acd51a</a>. PMID: 37172609</p></li><div class="">
 <p><i class="fa-solid fa-lightbulb" aria-label="lightbulb"></i> How would your answer to this question change (or not) if instead we were deciding whether a patient was a lung transplant candidate? How about if we were deciding whether to start losartan therapy for newly diagnosed hypertension?</p>
 <p><i class="fa-solid fa-info-circle" aria-label="info-circle"></i> Another way to think about the supplemental oxygen problem is how <strong><em>equity</em></strong> and <strong><em>equality</em></strong> differ from one another. What do these two terms mean to you?</p>
 </div></div>

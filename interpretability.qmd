@@ -1,6 +1,6 @@
 ---
 title: Algorithmic Interpretability
-author: Michael Yao, Allison Chae
+author: Michael Yao, Allison Chae, Mark Yatskar PhD
 ---
 
 ## Learning Objectives
@@ -28,9 +28,29 @@ Which is more important to you: getting the right answer (accuracy) or understan
 
 Unlike our past few modules defining topics like fairness and anonymity exactly, it is challenging to give a rigorous, objective definition of interpretability. One commonly cited definition is **interpretability is the degree to which a human can understand *why* an algorithm made its prediction**.[^1] If an algorithm is interpretable, then it is easier for someone to understand why certain predictions were made. Note that the definition of interpretability is *entirely independent* from the the accuracy of the algorithm - we only seek to explain why an algorithm made its own prediction, which may or may not be necessarily correct.
 
-[^1]: Miller T. Explanation in artificial intelligence: Insights from the social sciences. Art Intel 267: 1-38. (2019). doi: [https://doi.org/10.1016/j.artint.2018.07.007](10.1016/j.artint.2018.07.007)
+[^1]: Miller T. Explanation in artificial intelligence: Insights from the social sciences. Art Intel 267: 1-38. (2019). doi: [10.1016/j.artint.2018.07.007](https://doi.org/10.1016/j.artint.2018.07.007)
 
-Even when using this definition, interpretability is still a very subjective property of an algorithm! Interpretability varies due to a number of factors:
+However, even this definition of interpretability remains underspecified.[^2] For example, here are some other factors of algorithmic design that are closely related to - if not paramount for - interpretability:
+
+[^2]: Lipton ZC. The mythos of model interpretability. Proc ICML Workshop on Human Interpretability in Machine Learning. (2016). [10.48550/arXiv.1606.03490](https://doi.org/10.48550/arXiv.1606.03490)
+
+1. **Trust**: What is an objective notion of trust? Is it confidence that a model will perform well? Do you care about how *often* an algorithm is correct, or for *which inputs* the algorithm is correct for?
+2. **Causality**: Can we use algorithms to learn potential hypotheses about the world around us? Is this important in labelling a model as interpretable?
+3. **Transferrability**: Do algorithms generalize to new patient populations? Can we predict when an algorithm might generalize and when it won't? How might deployment of models alter the user's environment to simultaneously *invalidate* the model?
+4. **Informativeness**: As previously explored in the **Food for Thought** discussion above, is it more important for you to have an explanation to approach future problems, or to get the correct answer? Does the model serve the role of an oracle, a colleague, or a mentor?
+5. **Fair and Ethical Decision Making**: How can we be sure that predictions do not discriminate on the basis of race, age, gender, and other patient attributes?
+
+::: {.callout-tip collapse="true" icon="false"}
+#### {{< fa lightbulb >}} A recent study described a machine learning algorithm showing that patients are less likely to die from pneumonia if they also had asthma. Why might this be the case? Would you want to deploy this system in the ED?
+
+In 2015, [Caruana et al.](https://dl.acm.org/doi/10.1145/2783258.2788613) showed that concurrent asthma was a predictor of lower risk of death in patients with pneumonia. This is because physicians that knew about the patient's asthma history always always treated these asthmatic patients more agressively. As a result, asthmatic patients paradoxically had *lower* death rates from pneumonia.
+
+Imagine that we naively implement this model for patient triage without understanding the reasoning behind its predictions. In this case, model deployment would *prevent* physicians from treating asthmatic patients more agressively because the model would label these patients as having a low risk of death. In other words, deploying the model would actually end up invalidating the model and *hurt* patients!
+
+Caruana R, Lou Y, Gehrke J, Koch P, Sturm M, Elhadad N. Intelligible models for healthcare: Predicting pneumonia risk and hospital 30-day readmission. Proc Conf Knowl Disc Data Mining: 1721-30. (2015). doi: [10.1145/2783258.2788613](https://doi.org/10.1145/2783258.2788613)
+:::
+
+These factors that contribute to how we label if an algorithm is interpretable often vary due to a number of factors:
 
 1. **Difficulty of the Task**: Algorithms trained to perform complex, domain-specific tasks are inherently less interpretable by the average user due to the nature of the task itself.
 2. **Expertise of the User**: A domain expert may require less explanation in order to call an algorithm interpretable compared to someone with less experience in the field.
@@ -64,9 +84,15 @@ Is this equation still interpretable? From the equation above, we still clearly 
 
 Suppose we now have a ML algorithm that predicts a patient's risk of breast cancer given their genomic data. Such algorithms are often referred to as ***black-box algorithms*** because the algorithm's user cannot see the inner workings of the algorithm. However, is such an algorithm truly "black-box"? Similar to the MELD Score, I can exactly write down the specific formula for the algorithm, with all of its inputs, internal functions, decimal coefficients, etc. It would be an incredibly long and complex equation, but *any* ML algorithm can be written down exactly just like the MELD score and MAP calculations above.
 
+::: {.callout-tip collapse="true" icon="false"}
+#### Does being able to write down a mathematical formula for an algorithm (even if it's extraordinarily complex as with machine learning models) mean that the algorithm is interpretable? Why or why not?
+
+Unfortunately, we don't have a "right" answer to share with you here. Comparing the above three scenarios, some experts may describe them as interpretable and humans just lack the ability to understand them. In other cases, some might claim that this is not sufficient. Is it the algorithm's "job" to explain itself to humans when we lack the ability to understand how they work?
+:::
+
 **A Probabilistic Algorithm**
 
-Finally, consider the following algorithm that utilizes a fair two-sided coin: if I flip the coin and it lands heads, then I admit a patient from the ED. Otherwise, I discharge them and send the patient home. Is this an "interpretable" algorithm?
+Finally, consider the following algorithm that utilizes a fair two-sided coin: if I flip the coin and it lands heads, then I admit a patient from the ED. Otherwise, I discharge them and send the patient home. Is this algorithm (or any probability-based algorithm) "interpretable"?
 
 **An Accurate Algorithm Trained on An Unknown Dataset**
 
@@ -79,10 +105,10 @@ A key insight that we hope you take away from considering the discussion questio
 ::: {.callout-note icon=false}
 ### The Accuracy-Interpretability Tradeoff
 
-The more accurate an algorithm model is, the less likely it is to be interpretable.[^2]
+The more accurate an algorithm model is, the less likely it is to be interpretable.[^3]
 :::
 
-[^2]: There's a great blog post discussing the accuracy-interpretability tradeoff in more detail here: Ndungula S. Model accuracy and interpretability. Medium. (2022). [Link to article](https://samuelndungula.medium.com/model-accuracy-and-interpretability-3d875439942c)
+[^3]: There's a great blog post discussing the accuracy-interpretability tradeoff in more detail here: Ndungula S. Model accuracy and interpretability. Medium. (2022). [Link to article](https://samuelndungula.medium.com/model-accuracy-and-interpretability-3d875439942c)
 
 ## Evidence-Based Medicine Discussion
 

@@ -53,10 +53,11 @@ There are a lot of machine learning resources out there already - what makes *Et
 
 1. [**Mark Yatskar, PhD**](https://www.cis.upenn.edu/~myatskar/) is an Assistant Professor of Computer and Information Science at the University of Pennsylvania. His lab studies the interplay between visual and language systems in machine learning, and how such systems can inherit human biases.
 2. [**Walter Witschey, PhD**](https://www.med.upenn.edu/corlab/current.html) is an Associate Professor of Radiology at the University of Pennsylvania. He leads an interdisciplinary lab studying MRI imaging techniques and machine learning for clinical radiology.
+3. [**James Gee, PhD**](https://www.med.upenn.edu/apps/faculty/index.php/g5455356/p10656) is Professor of Radiologic Science in Radiology at the University of Pennsylvania. His lab conducts research in biomedical imaging analysis and computational methods for both ex-vivo and in-vivo medical imaging.
 
 ## Institutional Partners
 
-::: {layout="[[2,2,1,1.7]]"}
+::: {layout="[[1.7,1.7,0.8,1.4,1.9]]"}
 ![](/images/penn-med.png)
 
 ![](/images/penn-seas.png)
@@ -64,4 +65,6 @@ There are a lot of machine learning resources out there already - what makes *Et
 ![](/images/mdplus.png)
 
 ![](/images/apsa.png)
+
+![](/images/pennhealthx.png)
 :::

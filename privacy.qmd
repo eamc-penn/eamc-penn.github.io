@@ -1,6 +1,6 @@
 ---
 title: Privacy and Anonymization
-author: Michael Yao, Allison Chae
+author: Michael Yao, Allison Chae, Tessa Cook MD PhD
 ---
 
 ## Learning Objectives

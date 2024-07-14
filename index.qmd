@@ -53,7 +53,8 @@ There are a lot of machine learning resources out there already - what makes *Et
 
 1. [**Mark Yatskar, PhD**](https://www.cis.upenn.edu/~myatskar/) is an Assistant Professor of Computer and Information Science at the University of Pennsylvania. His lab studies the interplay between visual and language systems in machine learning, and how such systems can inherit human biases.
 2. [**Walter Witschey, PhD**](https://www.med.upenn.edu/corlab/current.html) is an Associate Professor of Radiology at the University of Pennsylvania. He leads an interdisciplinary lab studying MRI imaging techniques and machine learning for clinical radiology.
-3. [**James Gee, PhD**](https://www.med.upenn.edu/apps/faculty/index.php/g5455356/p10656) is Professor of Radiologic Science in Radiology at the University of Pennsylvania. His lab conducts research in biomedical imaging analysis and computational methods for both ex-vivo and in-vivo medical imaging.
+3. [**Tessa Cook, MD, PhD**](https://www.med.upenn.edu/apps/faculty/index.php/g275/p18472) is an Associated Professor of Radiology at the University of Pennsylvania. Her research investigates how machine learning can be used for imaging informatics and clinical practice transformation across multiple clinical fields.
+4. [**James Gee, PhD**](https://www.med.upenn.edu/apps/faculty/index.php/g5455356/p10656) is Professor of Radiologic Science in Radiology at the University of Pennsylvania. His lab conducts research in biomedical imaging analysis and computational methods for both ex-vivo and in-vivo medical imaging.
 
 ## Institutional Partners
 

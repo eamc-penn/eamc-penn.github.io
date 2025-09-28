@@ -316,12 +316,20 @@ Each dot is a patient &mdash; **blue** dots correspond to patients you have accu
 ```
 
 ::: {.callout-note collapse="false" icon="false"}
-#### Thinking it Through
+#### Thinking It Through
 
   1. A common threshold for hypoxemia used in medicine is a pulse oximetry reading less than 88%. Using this threshold, what is our diagnostic accuracy for White patients? How about for Black patients?
   2. What is the lowest threshold that maximizes the sensitivity for White patients? What is the sensitivity for Black patients using the same threshold?
   3. What is the highest threshold that maximizes the specificity for <em>Black</em> patients? What is the corresponding specificity for White patients using the same threshold?
   4. Can you achieve 100% sensitivity for both White and Black patients? How?
+:::
+
+::: {.callout-note collapse="false" icon="false"}
+#### Let's Discuss
+
+  1. Is using different thresholds for patients of skin tones "racist", even if it leads to better outcomes? Why or why not?
+  2. Thanks to recent research, we know the mechanism behind how skin color affects pulse oximetry accuracy. Would your answer to the previous question change if we *did not* know the mechanism, and could only rely on observational data?
+  3. Thankfully, the cost of supplemental oxygen is relatively small&mdash;even for healthy patients. But this isn't always true! For example, suppose you have a diagnostic test for diagnosing a very serious cancer that requires expensive and intensive medications to treat. How might your decision making change?
 :::
 
 ::: column-margin

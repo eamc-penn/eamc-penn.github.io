@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Michael Yao, Allison Chae, Mark Yatskar PhD">
-<meta name="dcterms.date" content="2024-05-24">
+<meta name="dcterms.date" content="2025-09-27">
 
-<title>Ethical Algorithms for the Modern Clinician - Bias and Fairness</title>
+<title>Bias and Fairness – Ethical Algorithms for the Modern Clinician</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,17 +33,21 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href=".//images/favicon.ico" rel="icon">
-<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-51e7e5a88173e532c768177f4872d90c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-ad7569649950b40d7bb529349cb0754b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-51e7e5a88173e532c768177f4872d90c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -52,7 +56,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -61,6 +71,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -69,61 +80,227 @@ ul.task-list li input[type="checkbox"] {
 <style>html{ scroll-behavior: smooth; }</style>
 
 
+<link rel="stylesheet" href="styles/oximetry.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Ethical Algorithms for the Modern Clinician</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-modules" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-modules" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Modules</span>
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-modules">    
         <li>
-    <a class="dropdown-item" href="./ml.html" rel="" target="">
+    <a class="dropdown-item" href="./ml.html">
  <span class="dropdown-text">Intro to Machine Learning</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./bias.html" rel="" target="">
+    <a class="dropdown-item" href="./bias.html">
  <span class="dropdown-text">Bias and Fairness</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./privacy.html" rel="" target="">
+    <a class="dropdown-item" href="./privacy.html">
  <span class="dropdown-text">Privacy and Anonymization</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./interpretability.html" rel="" target="">
+    <a class="dropdown-item" href="./interpretability.html">
  <span class="dropdown-text">Algorithmic Interpretability</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./genai.html" rel="" target="">
+    <a class="dropdown-item" href="./genai.html">
  <span class="dropdown-text">Generative AI</span></a>
   </li>  
     </ul>
   </li>
 </ul>
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
     <div class="dropdown">
-      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label=""><i class="bi bi-github"></i></a>
-      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="quarto-navigation-tool-dropdown-0">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-github"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
           <li>
             <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/eamc-penn/eamc">
             Source Code
@@ -138,7 +315,6 @@ ul.task-list li input[type="checkbox"] {
     </div>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -161,10 +337,11 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#additional-readings" id="toc-additional-readings" class="nav-link" data-scroll-target="#additional-readings">Additional Readings</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/eamc-penn/eamc-penn.github.io/issues/new" class="toc-action">Report an issue</a></p></div></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="bias.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/eamc-penn/eamc-penn.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
+
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -185,7 +362,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 24, 2024</p>
+      <p class="date">September 27, 2025</p>
     </div>
   </div>
   
@@ -193,7 +370,9 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
+
 </header>
+
 
 <section id="learning-objectives" class="level2">
 <h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
@@ -247,8 +426,8 @@ As with any clinical task, algorithms rarely get 100% accuracy. We may mistakenl
 <p><i class="fa-solid fa-lightbulb" aria-label="lightbulb"></i> Other than the sources listed below, what are some other potential causes of bias that algorithms might suffer from?</p>
 </div></div><p><strong>Availability of Data</strong></p>
 <p>Especially for machine learning algorithms, it is important for models to be trained on diverse datasets from many different patient populations. If the dataset used to train a model is composed of 90% White patients and only 10% Black patients, then the resulting algorithm will likely perform inaccurately on Black patients.</p>
-<div class="page-columns page-full"><p>This is a common problem not just for machine learning algorithms, but also in insights from randomized control trials! For example, take a look at the 2023 ISCHEMIA Trial<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> from the American Heart Association. According to <a href="https://www.ahajournals.org/action/downloadSupplement?doi=10.1161%2FCIRCULATIONAHA.120.047987&amp;file=CIRC_CIRCULATIONAHA-2020-047987_supp1.pdf">Supplementary Table 1</a>, approximately 77% of the patients in the study were male. Would you trust the insights from the trial for your female patients?</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;Hochman JS, Anthopolos R, Reynolds HR, et al.&nbsp;Survival after invasive or conservative management of stable coronary disease. Circulation 147(1): 8-19. (2022). doi: <a href="https://doi.org/10.1161/CIRCULATIONAHA.122.062714">10.1161/CIRCULATIONA HA.122.062714</a>. PMID: 36335918</p></li></div></div>
-<p><strong>Pathophysiology</strong></p>
+<p>This is a common problem not just for machine learning algorithms, but also in insights from randomized control trials! For example, take a look at the 2023 ISCHEMIA Trial<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> from the American Heart Association. According to <a href="https://www.ahajournals.org/action/downloadSupplement?doi=10.1161%2FCIRCULATIONAHA.120.047987&amp;file=CIRC_CIRCULATIONAHA-2020-047987_supp1.pdf">Supplementary Table 1</a>, approximately 77% of the patients in the study were male. Would you trust the insights from the trial for your female patients?</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Hochman JS, Anthopolos R, Reynolds HR, et al.&nbsp;Survival after invasive or conservative management of stable coronary disease. Circulation 147(1): 8-19. (2022). doi: <a href="https://doi.org/10.1161/CIRCULATIONAHA.122.062714">10.1161/CIRCULATIONA HA.122.062714</a>. PMID: 36335918</p></div></div><p><strong>Pathophysiology</strong></p>
 <p>Different patient populations may have different underlying mechanisms of disease, and so lumping patients together using a single predictive algorithm may limit that algorithm’s ability to represent all the different mechanisms of disease.</p>
 <p><strong>Quality of Data</strong></p>
 <p>Suppose we have two CT scanners in the hospital: Scanner 1 and Scanner 2. Scanner 1 was made in 1970 and Scanner 2 was made in 2020; as a result, Scanner 1 produces very low-quality, low-resolution images compared to Scanner 2. If we learn an algorithm to diagnose a disease from CT scans, then the algorithm will likely perform worse on input scans from Scanner 1. This is because lower quality scans contain less information about the patient, and so patients imaged with Scanner 1 will be inherently less predictable.</p>
@@ -264,8 +443,8 @@ As with any clinical task, algorithms rarely get 100% accuracy. We may mistakenl
 <p><u><strong>Pulmonary Function Testing (PFT)</strong></u></p>
 <p><strong>PFTs</strong> are used in clinical practice to evaluate lung health. The patient’s measured lung values are compared with the expected lung values given the patient’s age, height, sex assigned at birth, and ethnicity among other factors.</p>
 <p>Researchers have found that using a patient’s <em>race</em> as input into the expected lung value calculation can result in different PFT results, with implications for access to certain disease treatments and disability benefits. However, they also report that using race has also allowed patients to <strong>benefit</strong> from treatment options that they would have otherwise not had access to based on societal guidelines.</p>
-<div class="page-columns page-full"><p>The <a href="https://www.atsjournals.org/doi/10.1164/rccm.201908-1590ST">2019 American Thoracic Society (ATS) guidelines</a> currently offer both race-specific and race-neutral algorithms, leaving it up to the discretion of the provider to determine how PFTs are used in clinical practice. Other historical examples of bias in clinical medicine include <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9495470/">eGFR calculations</a>, <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3090430/">opioid risk mitigation</a>, and care assessment evaluation as functions of race and other patient demographic information. To learn more, check out the Health Equity article from List et al.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;List JM, Palevsky P, Tamang S, et al.&nbsp;Eliminating algorithmic racial bias in clinical decision support algorithms: Use cases from the Veterans Health Administration. Health Equity 7(1): 809-16. (2023). doi: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10698768/">10.1089/heq.2023.0037</a>. PMID: 38076213</p></li></div></div>
-<p><u><strong>COMPAS/ProPublica</strong></u></p>
+<p>The <a href="https://www.atsjournals.org/doi/10.1164/rccm.201908-1590ST">2019 American Thoracic Society (ATS) guidelines</a> currently offer both race-specific and race-neutral algorithms, leaving it up to the discretion of the provider to determine how PFTs are used in clinical practice. Other historical examples of bias in clinical medicine include <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9495470/">eGFR calculations</a>, <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3090430/">opioid risk mitigation</a>, and care assessment evaluation as functions of race and other patient demographic information. To learn more, check out the Health Equity article from List et al.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;List JM, Palevsky P, Tamang S, et al.&nbsp;Eliminating algorithmic racial bias in clinical decision support algorithms: Use cases from the Veterans Health Administration. Health Equity 7(1): 809-16. (2023). doi: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10698768/">10.1089/heq.2023.0037</a>. PMID: 38076213</p></div></div><p><u><strong>COMPAS/ProPublica</strong></u></p>
 <p>In 1998, a private company built the <strong>COMPAS algorithm</strong>, which is an algorithm that takes in information about arrested/incarcerated individuals and returns a prediction of how likely the individual will commit future crimes. Inputs into the COMPAS algorithm include individual demographics, criminal history, personal and family history, and the nature of the charged crime among others.</p>
 <p>The COMPAS algorithm is used in the real world to help the judiciary system set bonds and evaluate arrested individuals. High (low) COMPAS scores mean more (less) likely to commit future crimes.</p>
 <p><strong>ProPublica</strong> is a nonprofit journalism organization that conducted an independent evaluation of the COMPAS tool in 2016. Their main finding was that <a href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing">COMPAS is biased</a>.</p>
@@ -274,12 +453,12 @@ As with any clinical task, algorithms rarely get 100% accuracy. We may mistakenl
 <li>Looking at historical data, the false positive rate (FPR) was significantly higher for black individuals than white individuals. In other words, COMPAS was more likely to incorrectly predict that a black individual would commit a future crime.</li>
 </ul>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Does this mean that the COMPAS algorithm is racially biased (using the risk score as the definition of harm)? What are some potentially other reasons why white scores may be lower?
+<span class="screen-reader-only">Tip</span>Does this mean that the COMPAS algorithm is racially biased (using the risk score as the definition of harm)? What are some potentially other reasons why white scores may be lower?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -300,15 +479,15 @@ Does this mean that the COMPAS algorithm is racially biased (using the risk scor
 <li><a href="https://en.wikipedia.org/wiki/Receiver_operating_characteristic">Area under the receiver operating curve (AUROC)</a>, a metric of classifier “goodness,” for black and white subpopulations are equal. Therefore, COMPAS is not biased and we can make sure the FPR of both populations are equal by setting different classifier thresholds for the two subpopulations.</li>
 </ul>
 <p><u><strong>Image Generation Using Google Gemini</strong></u></p>
-<div class="page-columns page-full"><p>In late 2023, Google introduced a new generative AI model called <a href="https://blog.google/technology/ai/google-gemini-ai/">Gemini</a>, which is able to complete a variety of tasks such as generating images from input text descriptions. Gemini was released to the public, and users quickly found that Gemini stood out from prior generative models because it was able to generate more diverse sets of images, such as producing images of people of color when prompted for an “American woman” or producing images of women when prompted for historically male-dominated roles, such as a lawyer or an engineer. This was seen as a major step forward in tackling the bias associated with other generative models.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;Nicoletti L and Bass D. Humans are biased. Generative AI is even worse. Bloomberg. (2023). <a href="https://www.bloomberg.com/graphics/2023-generative-ai-bias/">Link to article</a></p></li></div></div>
-<p>However, an unintended side effect was that the model also generated historically inaccurate images when prompted for images of “1943 German soldiers” or “US senators from the 1800s.” In these settings, it would be inaccurate to generate images of people of color given these input prompts.</p>
+<p>In late 2023, Google introduced a new generative AI model called <a href="https://blog.google/technology/ai/google-gemini-ai/">Gemini</a>, which is able to complete a variety of tasks such as generating images from input text descriptions. Gemini was released to the public, and users quickly found that Gemini stood out from prior generative models because it was able to generate more diverse sets of images, such as producing images of people of color when prompted for an “American woman” or producing images of women when prompted for historically male-dominated roles, such as a lawyer or an engineer. This was seen as a major step forward in tackling the bias associated with other generative models.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;Nicoletti L and Bass D. Humans are biased. Generative AI is even worse. Bloomberg. (2023). <a href="https://www.bloomberg.com/graphics/2023-generative-ai-bias/">Link to article</a></p></div></div><p>However, an unintended side effect was that the model also generated historically inaccurate images when prompted for images of “1943 German soldiers” or “US senators from the 1800s.” In these settings, it would be inaccurate to generate images of people of color given these input prompts.</p>
 </section>
 <section id="how-can-we-reduce-bias" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="how-can-we-reduce-bias">How can we reduce bias?</h2>
 <p>The most common reason why bias occurs in machine learning is that we train models to be accurate on the “average” patient. In other words, if there are more patients from one subpopulation than another in the dataset used to learn an algorithm, then the algorithm will almost certainly be more accurate on the majority population. Naively learning algorithms in this fashion will result in accurate but biased models.</p>
 <p>On the other hand, we could instead implement a <em>completely random algorithm</em> - for example, deciding whether a patient should be admitted or not solely based on the flip of a coin. Such an algorithm would be completely unbiased, but not very accurate.</p>
-<div class="page-columns page-full"><p>These two examples demonstrate that in general, there is a tradeoff between <strong>accuracy and bias</strong>. As we train models to be more accurate, they often become more biased at the same time. Researchers are currently working on ways to overcome these limitations<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>, but this is an incredibly common empirical finding that we see in practice.</p><div class="no-row-height column-margin column-container"><li id="fn4"><p><sup>4</sup>&nbsp;Chouldechova A, Roth A. The frontiers of fairness in machine learning. arXiv Preprint. (2018). doi: <a href="https://arxiv.org/abs/1810.08810">10.48550/arXiv.1810.08810</a></p></li></div></div>
-<section id="fairness-doesnt-stack" class="level4 page-columns page-full">
+<p>These two examples demonstrate that in general, there is a tradeoff between <strong>accuracy and bias</strong>. As we train models to be more accurate, they often become more biased at the same time. Researchers are currently working on ways to overcome these limitations<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>, but this is an incredibly common empirical finding that we see in practice.</p>
+<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;Chouldechova A, Roth A. The frontiers of fairness in machine learning. arXiv Preprint. (2018). doi: <a href="https://arxiv.org/abs/1810.08810">10.48550/arXiv.1810.08810</a></p></div></div><section id="fairness-doesnt-stack" class="level4 page-columns page-full">
 <h4 class="anchored" data-anchor-id="fairness-doesnt-stack">Fairness Doesn’t Stack</h4>
 <p>Why is training both fair and accurate models hard? There are a lot of complex parts to the answer to this question, but one important reason is that <strong>fairness does not stack</strong>.</p>
 <p>Imagine that we have a screening tool that seeks to predict whether a patient has a disease with 50% prevalence in the population. Using lower sensitivity as our definition of harm, suppose that</p>
@@ -317,15 +496,19 @@ Does this mean that the COMPAS algorithm is racially biased (using the risk scor
 <li>Our screening tool is <em>also</em> unbiased with respect to patient race (i.e., “blue” vs.&nbsp;“green”).</li>
 </ol>
 <p><strong>Even though algorithm is unbiased against blue people and unbiased against females, <em>it can still be biased against blue female people</em>!</strong> Here’s an illustrative diagram of one possibility:</p>
-<div id="fig-bias" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="./images/bias.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;1: <strong>Fairness Gerrymandering.</strong> Red circles indicates positive individuals identified using a disease screening tool. For a disease with 50% prevalence in the population across all subgroups, the screening tool can be unbiased against both color and gender, and still yet still have a 0% sensitivity rate for blue females and green males! Adapted from Kearns M, Neel S, Roth A, Wu ZS. Preventing fairness gerrymandering: Auditing and learning for subgroup fairness. Proc Int Conf Mach Learn 80: 2564-72. (2018). <a href="https://proceedings.mlr.press/v80/kearns18a.html">Link to Paper</a></figcaption>
+<div id="fig-bias" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bias-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./images/bias.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bias-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: <strong>Fairness Gerrymandering.</strong> Red circles indicates positive individuals identified using a disease screening tool. For a disease with 50% prevalence in the population across all subgroups, the screening tool can be unbiased against both color and gender, and still yet still have a 0% sensitivity rate for blue females and green males! Adapted from Kearns M, Neel S, Roth A, Wu ZS. Preventing fairness gerrymandering: Auditing and learning for subgroup fairness. Proc Int Conf Mach Learn 80: 2564-72. (2018). <a href="https://proceedings.mlr.press/v80/kearns18a.html">Link to Paper</a>
+</figcaption>
 </figure>
 </div>
-<p>In <a href="#fig-bias">Figure&nbsp;1</a>, we can see that our screening tool is “fair” with respect to gender and color by only accepting individuals that are either both blue and male or both green and female. Ensuring that models are fair for certain subgroups doesn’t mean that those models are also fair for members of the <em>intersections</em> of those groups, or other entirely unrelated subgroups. In other words, fairness conditions do not compose. <strong>This is why fairness is such a hard problem to tackle!</strong></p>
-<div class="page-columns page-full"><p>In fact, the currently state of the fairness in machine learning literature is that <strong>experts don’t have a good singular definition of fairness</strong> for all applications. Many conditions that we might want to achieve fairness (e.g., fair with respect to gender <em>and</em> race) may be <em>provably impossible</em> to achieve in certain cases!<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> This is an active area of research, and it’s important to acknolwedge these challenges when discussing bias and fairness in algorithmic systems.</p><div class="no-row-height column-margin column-container"><li id="fn5"><p><sup>5</sup>&nbsp;Formal proofs of this statement do exist but are well-outside the scope of this course. If this is an interesting topic to you, we recommend this quick (non-technical) read by <a href="https://mauriziosantamicone.medium.com/you-cant-be-fair-to-everyone-560d09639bd5">Santamicone M. (2021).</a> A slightly more technical blog post that covers more of the details is also available by <a href="https://blog.ml.cmu.edu/2020/02/28/inherent-tradeoffs-in-learning-fair-representations/">Zhao H. (2020).</a> at CMU.</p></li></div></div>
-</section>
+<p>In <a href="#fig-bias" class="quarto-xref">Figure&nbsp;1</a>, we can see that our screening tool is “fair” with respect to gender and color by only accepting individuals that are either both blue and male or both green and female. Ensuring that models are fair for certain subgroups doesn’t mean that those models are also fair for members of the <em>intersections</em> of those groups, or other entirely unrelated subgroups. In other words, fairness conditions do not compose. <strong>This is why fairness is such a hard problem to tackle!</strong></p>
+<p>In fact, the currently state of the fairness in machine learning literature is that <strong>experts don’t have a good singular definition of fairness</strong> for all applications. Many conditions that we might want to achieve fairness (e.g., fair with respect to gender <em>and</em> race) may be <em>provably impossible</em> to achieve in certain cases!<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> This is an active area of research, and it’s important to acknolwedge these challenges when discussing bias and fairness in algorithmic systems.</p>
+<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;Formal proofs of this statement do exist but are well-outside the scope of this course. If this is an interesting topic to you, we recommend this quick (non-technical) read by <a href="https://mauriziosantamicone.medium.com/you-cant-be-fair-to-everyone-560d09639bd5">Santamicone M. (2021).</a> A slightly more technical blog post that covers more of the details is also available by <a href="https://blog.ml.cmu.edu/2020/02/28/inherent-tradeoffs-in-learning-fair-representations/">Zhao H. (2020).</a> at CMU.</p></div></div></section>
 <section id="what-can-we-do-about-this-as-clinicians" class="level4">
 <h4 class="anchored" data-anchor-id="what-can-we-do-about-this-as-clinicians">What can we do about this as clinicians?</h4>
 <p>The most important thing to help reduce bias is recognize that <strong><em>all real-world algorithms are biased</em></strong>! How algorithms are biased and to what extent depend on your definition of harm and the patient attribute(s) that you’re focusing on. These definitions inherently differ between persons and scenarios. Recognizing our own biases in the algorithms used by both computers and humans is critical so that we make the best decisions for each individual patient.</p>
@@ -333,60 +516,171 @@ Does this mean that the COMPAS algorithm is racially biased (using the risk scor
 </section>
 <section id="hands-on-tutorial" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="hands-on-tutorial">Hands-On Tutorial</h2>
-<p>To better understand how bias can impact algorithms, let’s take a look at a simple example of a <em>binary classifier</em> algorithm that seeks to predict whether a loan applicant will either (1) pay back the loan or (2) default on the loan.</p>
+<p>To better understand how bias can impact algorithms, let’s take a look at a simple example of a <em>binary classifier</em> algorithm that seeks to predict whether a patient (1) requires or (2) does not require supplementary oxygen therapy.</p>
+<section id="what-are-pulse-oximeters" class="level4">
+<h4 class="anchored" data-anchor-id="what-are-pulse-oximeters">What are pulse oximeters?</h4>
+<p><strong>Pulse oximeters</strong> are small devices that measure the oxygen levels in our blood. Clinicians use them to check for <strong>hypoxemia</strong>, which is a dangerous drop in our body’s oxygen levels. Most healthy patients have an oxygen level of 95 to 100%.</p>
+<p>It’s important to recognize that pulse oximeters only <em>estimate</em> our oxygen levels. The gold standard is to obtain an <strong>arterial blood gas (ABG)</strong> measurement, which requires sticking a needle in the patient and drawing blood.</p>
+</section>
+<section id="are-pulse-oximeters-biased" class="level4 page-columns page-full">
+<h4 class="anchored" data-anchor-id="are-pulse-oximeters-biased">Are pulse oximeters biased?</h4>
+<p>Research has shown that compared to ABG measurements, <strong>pulse oximeters can be less accurate for patients with darker skin tones</strong>.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> Specifically, they can overestimate oxygen levels for Black patients, leading to systemic delays in giving treatments like supplemental oxygen. This happens because pulse oximeters use light to detect the oxygen in our finger, and skin pigmentation can affect how that light is absorbed and reflected.</p>
+<div class="no-row-height column-margin column-container"><div id="fn6"><p><sup>6</sup>&nbsp;Sjoding MW, Dickson RP, Iwashyna TJ, et al.&nbsp;Racial bias in pulse oximetry measurement. N Eng J Med 383(25). (2020). doi: <a href="https://doi.org/10.1056/NEJMc2029240">10.1056/NEJMc2029240</a></p></div><div class="">
+<i class="fa-solid fa-info-circle" aria-label="info-circle"></i> For accessibility, we use “White” and “Black” as shorthand for individuals with lighter and darker skin tones, respectively. However, <a href="http://doi.org/10.1056/NEJMms2029562">race is a social construct</a>; while there may be a correlation between self-reported race and skin tone, it’s important to recognize that these are distinct concepts. Skin tone varies widely within any racial group, and the terms should not always be used interchangeably.
+<p></p>
+<p><i class="fa-solid fa-lightbulb" aria-label="lightbulb"></i> <strong>Weighing the tradeoffs</strong>: In most cases, it’s hard to have a test that is perfectly sensitive <em>and</em> specific. When diagnosing and treating hypoxemia, is it more important to have a high sensitivity, or a high specificity? Why?</p>
+</div><div id="fn7"><p><sup>7</sup>&nbsp;Fong N, Lipnick MS, Behnke E, et al.&nbsp;Open access dataset and common data model for pulse oximeter performance data. Sci Data 12(570). (2025). doi: <a href="https://doi.org/10.1038/s41597-025-04870-8">10.1038/s41597-025-04870-8</a></p></div></div>
+<p>In a few minutes, we’ll take a look at a <a href="https://physionet.org/content/openox-repo/1.1.1/">dataset of <strong>real patients</strong></a> from a research team at UCSF.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> The dataset consists of <strong>108</strong> unique patients, <strong>100</strong> of which are hypoxemic. There’s a relatively even split in terms of self-reported race: <strong>59</strong> identify as White and <strong>49</strong> identify as Black.</p>
+</section>
+<section id="how-to-measure-bias" class="level4">
+<h4 class="anchored" data-anchor-id="how-to-measure-bias">How to measure bias</h4>
+<p>We’ll primarily look at 3 different metrics:</p>
+<ol type="1">
+<li><strong>Sensitivity</strong>: If the patient does actually have low blood oxygen, did we actually find it with the pulse oximeter? A high sensitivity means we catch all the true cases of hypoxemia.</li>
+<li><strong>Specificity</strong>: If the patient does <em>not</em> have low blood oxygen, did we correctly identify them as healthy? A high specificity means we don’t unnecessarily raise false alarms.</li>
+<li><strong>Accuracy</strong>: Overall, how good is the pulse oximeter in giving us the right answer?</li>
+</ol>
+</section>
+<section id="start-treating-patients" class="level4 page-columns page-full">
+<h4 class="anchored">Start treating patients!</h4>
+<p>As a doctor, your goal is to identify which patients have true hypoxemia and which do not. If a patient has a pulse oximetry reading less than a certain cutoff, then you will start them on supplemental oxygen. In the <strong>Threshold Strategy</strong> section below, use your clinical skills to adjust this threshold of when to start oxygen therapy. You will choose between 2 strategies:</p>
+<ul>
+<li><strong>Race Unaware</strong>: use the same threshold for all patients regardless of race.</li>
+<li><strong>Race Aware</strong>: use different thresholds for patients depending on their race.</li>
+</ul>
+<p>Each dot is a patient — <strong>blue</strong> dots correspond to patients you have accurately diagnosed, and <strong>gray</strong> dots correspond to incorrect diagnoses.</p>
+<b>Threshold Strategy</b>
+<hr class="oximetry">
+<div class="threshold-mode">
+  <div class="mode-buttons">
+    <button class="mode-btn active" data-mode="global">Race Unaware</button>
+    <button class="mode-btn" data-mode="class-wise">Race Aware</button>
+  </div>
+</div>
+
+<div class="threshold-controls">
+  <div id="global-controls">
+    <div class="slider-container">
+      <div class="slider-span">Global Pulse Ox Threshold</div>
+      <input type="range" id="global-threshold-slider" class="slider" min="81" max="93" value="92" step="0.1">
+      <div class="threshold-value">
+        <span id="global-threshold-display">92.0</span>%
+      </div>
+    </div>
+  </div>
+
+  <div id="class-wise-controls" class="class-wise-controls">
+    <div class="slider-container">
+      <div class="slider-span">White Patients Threshold</div>
+      <input type="range" id="white-threshold-slider" class="slider" min="81" max="93" value="92" step="0.1">
+      <div class="threshold-value">
+        <span id="white-threshold-display">92.0</span>%
+      </div>
+    </div>
+
+    <div class="slider-container">
+      <div class="slider-span">Black Patients Threshold</div>
+      <input type="range" id="black-threshold-slider" class="slider" min="81" max="93" value="90" step="0.1">
+      <div class="threshold-value">
+        <span id="black-threshold-display">90.0</span>%
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="display: none;">
+  <h3 style="margin-top: 50px;" class="anchored" data-anchor-id="start-treating-patients">Data Summary</h3>
+  <hr class="oximetry">
+  <div>
+    <div class="summary-stat">
+      <span id="global-sensitivity"></span>
+      <span class="label">Sensitivity</span>
+    </div>
+    <div class="summary-stat">
+      <span id="global-specificity"></span>
+      <span class="label">Specificity</span>
+    </div>
+    <div class="summary-stat">
+      <span id="global-accuracy"></span>
+      <span class="label">Accuracy</span>
+    </div>
+  </div>
+</div>
+
+<div id="histogram-container">
+  <div class="histogram" id="histogram-White"></div>
+  <div class="metrics-section">
+    <h4 class="oximetry anchored">White patients</h4>
+    <div class="metrics-grid">
+      <div class="metric-card white-metrics">
+        <span class="label">Sensitivity</span>
+        <span id="white-sensitivity"></span>
+      </div>
+      <div class="metric-card white-metrics">
+        <span class="label">Specificity</span>
+        <span id="white-specificity"></span>
+      </div>
+      <div class="metric-card white-metrics">
+        <span class="label">Accuracy</span>
+        <span id="white-accuracy"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="histogram" id="histogram-Black"></div>
+  <div class="metrics-section">
+    <h4 class="oximetry anchored">Black patients</h4>
+    <div class="metrics-grid">
+      <div class="metric-card black-metrics">
+        <span class="label">Sensitivity</span>
+        <span id="black-sensitivity"></span>
+      </div>
+      <div class="metric-card black-metrics">
+        <span class="label">Specificity</span>
+        <span id="black-specificity"></span>
+      </div>
+      <div class="metric-card black-metrics">
+        <span class="label">Accuracy</span>
+        <span id="black-accuracy"></span>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="styles/oximetry.const.js"></script>
+<script type="text/javascript" src="styles/oximetry.calc.js"></script>
+<script type="text/javascript" src="styles/oximetry.ui.js"></script>
+<script type="text/javascript" src="styles/oximetry.init.js"></script>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Will a loan applicant pay back the loan?
+<span class="screen-reader-only">Note</span>Thinking it Through
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Go to <a href="https://research.google.com/bigpicture/attacking-discrimination-in-ml/">this study</a> from Wattenberg et al.&nbsp;at Google. Read through the article.</li>
-<li>Play around with setting different thresholds for the algorithm to better understand the tradeoffs between the different metrics, such as accuracy, positive rate, and profit.</li>
-<li>Simulate different loan decisions and different thresholds for two different groups: the blue and orange subpopulations. What happens when we use different conditions to set the different thresholds, like maximizing the bank’s profit, using a group-unaware strategy, and ensuring equal opportunity?</li>
+<li>A common threshold for hypoxemia used in medicine is a pulse oximetry reading less than 88%. Using this threshold, what is our diagnostic accuracy for White patients? How about for Black patients?</li>
+<li>What is the lowest threshold that maximizes the sensitivity for White patients? What is the sensitivity for Black patients using the same threshold?</li>
+<li>What is the highest threshold that maximizes the specificity for <em>Black</em> patients? What is the corresponding specificity for White patients using the same threshold?</li>
+<li>Can you achieve 100% sensitivity for both White and Black patients? How?</li>
 </ol>
 </div>
 </div>
 </div>
-<p>In the above example, we looked at distributing loans. However, we can imagine a similar, more clinically relevant scenario: our own clinical algorithms for determining if a patient needs supplemental oxygen. For simplicity, let’s assume that this decision is solely based on the patient’s O2 saturation. Here are two potential strategies we can use:</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Does a patient need supplemental oxygen?
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
-<p><strong>Important Context</strong>: O<sub>2</sub> saturation measurements are less accurate for Black individuals.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> More specifically, pulse oximeters often <em>overestimate</em> true O<sub>2</sub> saturation for Black patients.</p>
-<p><strong>Two Strategies to Consider</strong>:</p>
-<ol type="1">
-<li><u>Group-Unaware Strategy</u>: For all patients irregardless of skin color, we only start supplemental oxygen if SpO2 &lt; 92%.</li>
-<li><u>Equal Opportunity Strategy</u>: The same fraction of Black and White patients should be on supplemental oxygen, so we will use the SpO2 &lt; 92% cutoff for White patients and use a separate SpO2 &lt; 94% cutoff for Black patients.</li>
-</ol>
-<p>Which strategy is more biased? Is using race as an input into algorithms (as in the equal opportunity strategy) “good”? Why or why not?</p>
-</div>
-</div>
-</div>
-<div class="no-row-height column-margin column-container"><li id="fn6"><p><sup>6</sup>&nbsp;Al-Halawani R, Charlton PH, Qassem M, et al.&nbsp;A review of the effect of skin pigmentation on pulse oximeter accuracy. Physiol Meas 44(5): 05TR01. (2023). doi: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10391744/">10.1088/1361-6579/acd51a</a>. PMID: 37172609</p></li><div class="">
-<p><i class="fa-solid fa-lightbulb" aria-label="lightbulb"></i> How would your answer to this question change (or not) if instead we were deciding whether a patient was a lung transplant candidate? How about if we were deciding whether to start losartan therapy for newly diagnosed hypertension?</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
 <p><i class="fa-solid fa-info-circle" aria-label="info-circle"></i> Another way to think about the supplemental oxygen problem is how <strong><em>equity</em></strong> and <strong><em>equality</em></strong> differ from one another. What do these two terms mean to you?</p>
-</div></div>
+</div></div></section>
 </section>
 <section id="discussion-questions" class="level2">
 <h2 class="anchored" data-anchor-id="discussion-questions">Discussion Questions</h2>
 <ol type="1">
 <li>Who do you agree with: ProPublica or the COMPAS developers? In other words, do you believe that the COMPAS algorithm is biased based on the evidence presented? Would you be comfortable having it used to determine the outcomes of the judicial system for close friends or family?</li>
-<li>In the hands-on tutorial, we explored how even simple binary classifiers can be biased in scenarios such as determining loan repayment and supplemental oxygen requirements. What other analogous “binary classifier” clinical situations have you encountered? How did you decide your strategy on how to set your own “threshold” for positive and negative labels? Did your strategy vary between different patients?</li>
+<li>In the hands-on tutorial, we explored how even simple binary classifiers can be biased in scenarios such as determining supplemental oxygen requirements. What other analogous “binary classifier” clinical situations have you encountered? How did you decide your strategy on how to set your own “threshold” for positive and negative labels? Did your strategy vary between different patients?</li>
 </ol>
 </section>
 <section id="summary" class="level2">
@@ -408,161 +702,74 @@ Does a patient need supplemental oxygen?
 
 
 <p style="text-align: center;margin-top: 20px;">
-Made with ❤ by the EAMC Team ©2024.
+Made with ❤ by the EAMC Team ©2025.
 </p></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
     }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
-      }
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
         }
       }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
       return false;
     }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  let localAlternateSentinel = 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
       }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
     }
-    return false;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
@@ -570,197 +777,350 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
       return codeEl.innerText;
     }
-  });
-  clipboard.on('success', function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  });
-  function tippyHover(el, contentFn) {
-    const config = {
-      allowHTML: true,
-      content: contentFn,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start'
-    };
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      return note.innerHTML;
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
     });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
     }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
           }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
       });
     }
-  }
-});
-</script>
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 </div> <!-- /content -->
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/eamc-penn/eamc-penn.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer><script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

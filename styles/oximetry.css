@@ -1,0 +1,154 @@
+:root {
+  --FONT: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu; 
+  --FONT-COLOR: #1f1f1f;
+  --LIGHT-DARK-TOGGLE: #7a5cce;
+  --BLUE: #0066b2;
+  --FADED-COLOR: rgb(31, 31, 31, 0.7);
+  --BACKGROUND-COLOR: #fdfdfd;
+  --X-SMALL: 12px;
+  --SMALL: 14px;
+  --MEDIUM: 18px;
+  --LARGE: 24px;
+  --THIN: 300;
+  --NORMAL: 500;
+  --THICK: 600;
+}
+
+hr.oximetry {
+  border: 0.5px solid var(--FONT-COLOR);
+  margin-bottom: 20px;
+}
+
+.threshold-mode {
+  margin: 20px auto;
+  width: 80%;
+}
+
+.mode-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.mode-btn {
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid #e1e5e9;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: var(--NORMAL);
+}
+
+.mode-btn:hover, .mode-btn.active {
+  background: var(--BLUE);
+  color: #f1f1f1;
+  border-color: var(--BLUE);
+}
+
+.slider-container {
+  margin: 15px auto;
+  width: 80%;
+}
+
+.slider-label {
+  text-align: center;
+  font-weight: var(--NORMAL);
+  margin-bottom: 8px;
+}
+
+.slider {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: #ddd;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--BLUE);
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--BLUE);
+  cursor: pointer;
+  border: none;
+}
+
+.threshold-value {
+  text-align: center;
+  font-weight: var(--NORMAL);
+  color: var(--BLUE);
+  font-size: var(--MEDIUM);
+  margin-top: 8px;
+}
+
+.class-wise-controls {
+  display: none;
+}
+
+.class-wise-controls.active {
+  display: block;
+}
+
+h4.oximetry {
+  margin: 0;
+  font-weight: var(--NORMAL);
+}
+
+.metrics-section {
+  margin-bottom: 30px;
+}
+
+.metrics-grid {
+  margin-bottom: 20px;
+}
+
+.metric-card > span {
+  font-size: var(--SMALL);
+  font-weight: var(--THIN);
+}
+
+.metric-card > span.label {
+  font-weight: var(--NORMAL);
+  color: var(--BLUE);
+  margin: 5px 8px;
+}
+
+.summary-stat {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.summary-stat > span {
+  display: block;
+  font-size: var(--LARGE);
+  font-weight: var(--NORMAL);
+  color: var(--BLUE);
+}
+
+.summary-stat > span.label {
+  font-size: var(--SMALL);
+  font-weight: var(--THIN);
+}
+
+.stat {
+  font-weight: var(--NORMAL);
+  color: var(--BLUE);
+}
+
+#histogram-container {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: auto auto;
+}

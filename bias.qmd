@@ -1,6 +1,9 @@
 ---
 title: Bias and Fairness
 author: Michael Yao, Allison Chae, Mark Yatskar PhD
+format:
+  html:
+    css: styles/oximetry.css
 ---
 
 ## Learning Objectives
@@ -167,43 +170,168 @@ The most important thing to help reduce bias is recognize that ***all real-world
 
 ## Hands-On Tutorial
 
-To better understand how bias can impact algorithms, let's take a look at a simple example of a *binary classifier* algorithm that seeks to predict whether a loan applicant will either (1) pay back the loan or (2) default on the loan.
+To better understand how bias can impact algorithms, let's take a look at a simple example of a *binary classifier* algorithm that seeks to predict whether a patient (1) requires or (2) does not require supplementary oxygen therapy.
 
-::: {.callout-note collapse="false" icon="false"}
-#### Will a loan applicant pay back the loan?
+#### What are pulse oximeters?
 
-1. Go to [this study](https://research.google.com/bigpicture/attacking-discrimination-in-ml/) from Wattenberg et al. at Google. Read through the article.
-2. Play around with setting different thresholds for the algorithm to better understand the tradeoffs between the different metrics, such as accuracy, positive rate, and profit.
-3. Simulate different loan decisions and different thresholds for two different groups: the blue and orange subpopulations. What happens when we use different conditions to set the different thresholds, like maximizing the bank's profit, using a group-unaware strategy, and ensuring equal opportunity?
+**Pulse oximeters** are small devices that measure the oxygen levels in our blood. Clinicians use them to check for **hypoxemia**, which is a dangerous drop in our body's oxygen levels. Most healthy patients have an oxygen level of 95 to 100%.
+
+It's important to recognize that pulse oximeters only *estimate* our oxygen levels. The gold standard is to obtain an **arterial blood gas (ABG)** measurement, which requires sticking a needle in the patient and drawing blood.
+
+#### Are pulse oximeters biased?
+
+Research has shown that compared to ABG measurements, **pulse oximeters can be less accurate for patients with darker skin tones**.[^6] Specifically, they can overestimate oxygen levels for Black patients, leading to systemic delays in giving treatments like supplemental oxygen. This happens because pulse oximeters use light to detect the oxygen in our finger, and skin pigmentation can affect how that light is absorbed and reflected.
+
+::: column-margin
+{{< fa info-circle >}} For accessibility, we use "White" and "Black" as shorthand for individuals with lighter and darker skin tones, respectively. However, [race is a social construct](http://doi.org/10.1056/NEJMms2029562); while there may be a correlation between self-reported race and skin tone, it's important to recognize that these are distinct concepts. Skin tone varies widely within any racial group, and the terms should not always be used interchangeably.</p>
+
+{{< fa lightbulb >}} **Weighing the tradeoffs**: In most cases, it's hard to have a test that is perfectly sensitive *and* specific. When diagnosing and treating hypoxemia, is it more important to have a high sensitivity, or a high specificity? Why?
 :::
 
-In the above example, we looked at distributing loans. However, we can imagine a similar, more clinically relevant scenario: our own clinical algorithms for determining if a patient needs supplemental oxygen. For simplicity, let's assume that this decision is solely based on the patient's O2 saturation. Here are two potential strategies we can use:
+[^6]: Sjoding MW, Dickson RP, Iwashyna TJ, et al. Racial bias in pulse oximetry measurement. N Eng J Med 383(25). (2020). doi: [10.1056/NEJMc2029240](https://doi.org/10.1056/NEJMc2029240)
+
+In a few minutes, we'll take a look at a [dataset of **real patients**](https://physionet.org/content/openox-repo/1.1.1/) from a research team at UCSF.[^7] The dataset consists of **108** unique patients, **100** of which are hypoxemic. There's a relatively even split in terms of self-reported race: **59** identify as White and **49** identify as Black.
+
+[^7]: Fong N, Lipnick MS, Behnke E, et al. Open access dataset and common data model for pulse oximeter performance data. Sci Data 12(570). (2025). doi: [10.1038/s41597-025-04870-8](https://doi.org/10.1038/s41597-025-04870-8)
+
+#### How to measure bias
+
+We'll primarily look at 3 different metrics:
+
+  1. **Sensitivity**: If the patient does actually have low blood oxygen, did we actually find it with the pulse oximeter? A high sensitivity means we catch all the true cases of hypoxemia.
+  2. **Specificity**: If the patient does *not* have low blood oxygen, did we correctly identify them as healthy? A high specificity means we don't unnecessarily raise false alarms.
+  3. **Accuracy**: Overall, how good is the pulse oximeter in giving us the right answer?
+
+#### Start treating patients!
+
+As a doctor, your goal is to identify which patients have true hypoxemia and which do not. If a patient has a pulse oximetry reading less than a certain cutoff, then you will start them on supplemental oxygen. In the **Threshold Strategy** section below, use your clinical skills to adjust this threshold of when to start oxygen therapy. You will choose between 2 strategies:
+
+  - **Race Unaware**: use the same threshold for all patients regardless of race.
+  - **Race Aware**: use different thresholds for patients depending on their race.
+
+Each dot is a patient &mdash; **blue** dots correspond to patients you have accurately diagnosed, and **gray** dots correspond to incorrect diagnoses.
+
+```{=html}
+<b>Threshold Strategy</b>
+<hr class="oximetry" />
+<div class="threshold-mode">
+  <div class="mode-buttons">
+    <button class="mode-btn active" data-mode="global">Race Unaware</button>
+    <button class="mode-btn" data-mode="class-wise">Race Aware</button>
+  </div>
+</div>
+
+<div class="threshold-controls">
+  <div id="global-controls">
+    <div class="slider-container">
+      <div class="slider-span">Global Pulse Ox Threshold</div>
+      <input type="range" id="global-threshold-slider" class="slider" min="81" max="93" value="92" step="0.1">
+      <div class="threshold-value">
+        <span id="global-threshold-display">92.0</span>%
+      </div>
+    </div>
+  </div>
+
+  <div id="class-wise-controls" class="class-wise-controls">
+    <div class="slider-container">
+      <div class="slider-span">White Patients Threshold</div>
+      <input type="range" id="white-threshold-slider" class="slider" min="81" max="93" value="92" step="0.1">
+      <div class="threshold-value">
+        <span id="white-threshold-display">92.0</span>%
+      </div>
+    </div>
+
+    <div class="slider-container">
+      <div class="slider-span">Black Patients Threshold</div>
+      <input type="range" id="black-threshold-slider" class="slider" min="81" max="93" value="90" step="0.1">
+      <div class="threshold-value">
+        <span id="black-threshold-display">90.0</span>%
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="display: none;">
+  <h3 style="margin-top: 50px;">Data Summary</h3>
+  <hr class="oximetry" />
+  <div>
+    <div class="summary-stat">
+      <span id="global-sensitivity"></span>
+      <span class="label">Sensitivity</span>
+    </div>
+    <div class="summary-stat">
+      <span id="global-specificity"></span>
+      <span class="label">Specificity</span>
+    </div>
+    <div class="summary-stat">
+      <span id="global-accuracy"></span>
+      <span class="label">Accuracy</span>
+    </div>
+  </div>
+</div>
+
+<div id="histogram-container">
+  <div class="histogram" id="histogram-White"></div>
+  <div class="metrics-section">
+    <h4 class="oximetry">White patients</h4>
+    <div class="metrics-grid">
+      <div class="metric-card white-metrics">
+        <span class="label">Sensitivity</span>
+        <span id="white-sensitivity"></span>
+      </div>
+      <div class="metric-card white-metrics">
+        <span class="label">Specificity</span>
+        <span id="white-specificity"></span>
+      </div>
+      <div class="metric-card white-metrics">
+        <span class="label">Accuracy</span>
+        <span id="white-accuracy"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="histogram" id="histogram-Black"></div>
+  <div class="metrics-section">
+    <h4 class="oximetry">Black patients</h4>
+    <div class="metrics-grid">
+      <div class="metric-card black-metrics">
+        <span class="label">Sensitivity</span>
+        <span id="black-sensitivity"></span>
+      </div>
+      <div class="metric-card black-metrics">
+        <span class="label">Specificity</span>
+        <span id="black-specificity"></span>
+      </div>
+      <div class="metric-card black-metrics">
+        <span class="label">Accuracy</span>
+        <span id="black-accuracy"></span>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="styles/oximetry.const.js"></script>
+<script type="text/javascript" src="styles/oximetry.calc.js"></script>
+<script type="text/javascript" src="styles/oximetry.ui.js"></script>
+<script type="text/javascript" src="styles/oximetry.init.js"></script>
+```
 
 ::: {.callout-note collapse="false" icon="false"}
-#### Does a patient need supplemental oxygen?
+#### Thinking it Through
 
-**Important Context**: O~2~ saturation measurements are less accurate for Black individuals.[^6] More specifically, pulse oximeters often *overestimate* true O~2~ saturation for Black patients.
-
-[^6]: Al-Halawani R, Charlton PH, Qassem M, et al. A review of the effect of skin pigmentation on pulse oximeter accuracy. Physiol Meas 44(5): 05TR01. (2023). doi: [10.1088/1361-6579/acd51a](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10391744/). PMID: 37172609
-
-**Two Strategies to Consider**:
-
-1. <u>Group-Unaware Strategy</u>: For all patients irregardless of skin color, we only start supplemental oxygen if SpO2 < 92%.
-2. <u>Equal Opportunity Strategy</u>: The same fraction of Black and White patients should be on supplemental oxygen, so we will use the SpO2 < 92% cutoff for White patients and use a separate SpO2 < 94% cutoff for Black patients.
-
-Which strategy is more biased? Is using race as an input into algorithms (as in the equal opportunity strategy) "good"? Why or why not?
+  1. A common threshold for hypoxemia used in medicine is a pulse oximetry reading less than 88%. Using this threshold, what is our diagnostic accuracy for White patients? How about for Black patients?
+  2. What is the lowest threshold that maximizes the sensitivity for White patients? What is the sensitivity for Black patients using the same threshold?
+  3. What is the highest threshold that maximizes the specificity for <em>Black</em> patients? What is the corresponding specificity for White patients using the same threshold?
+  4. Can you achieve 100% sensitivity for both White and Black patients? How?
 :::
 
 ::: column-margin
-{{< fa lightbulb >}} How would your answer to this question change (or not) if instead we were deciding whether a patient was a lung transplant candidate? How about if we were deciding whether to start losartan therapy for newly diagnosed hypertension?
-
 {{< fa info-circle >}} Another way to think about the supplemental oxygen problem is how ***equity*** and ***equality*** differ from one another. What do these two terms mean to you?
 :::
 
 ## Discussion Questions
 
 1. Who do you agree with: ProPublica or the COMPAS developers? In other words, do you believe that the COMPAS algorithm is biased based on the evidence presented? Would you be comfortable having it used to determine the outcomes of the judicial system for close friends or family?
-2. In the hands-on tutorial, we explored how even simple binary classifiers can be biased in scenarios such as determining loan repayment and supplemental oxygen requirements. What other analogous "binary classifier" clinical situations have you encountered? How did you decide your strategy on how to set your own "threshold" for positive and negative labels? Did your strategy vary between different patients?
+2. In the hands-on tutorial, we explored how even simple binary classifiers can be biased in scenarios such as determining supplemental oxygen requirements. What other analogous "binary classifier" clinical situations have you encountered? How did you decide your strategy on how to set your own "threshold" for positive and negative labels? Did your strategy vary between different patients?
 
 ## Summary
 

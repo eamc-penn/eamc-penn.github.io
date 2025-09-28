@@ -41,20 +41,29 @@ There are a lot of machine learning resources out there already - what makes *Et
 3. **A mathematically rigorous foundation for assessing algorithmic fairness and privacy**: If this is something you're interested in, we highly recommend checking out [The Ethical Algorithm](https://www.amazon.com/Ethical-Algorithm-Science-Socially-Design/dp/0190948205) and the [Ethical Algorithm Design](https://www.cis.upenn.edu/~mkearns/teaching/EADSpring24/) course offered at Penn every year.
 :::
 
+## Adoption and Feedback
+
+*Ethical Algorithms for the Modern Clinician* has been adapted as annual student-run elective courses at both the **University of Pennsylvania** and **Mt. Sinai** schools of medicine. Portions of the course have also been integrated into **[graduate seminar courses](https://www.med.upenn.edu/kbjohnsonlab/hhct/)** and the **Epidemiology** course for first-year medical students at Penn.
+
+The course has been presented at the **[2025 AAMC Annual Meeting](https://www.aamc.org/learn-network/learn-serve-lead)** and **[2025 NeurIPS Educational Program](https://openreview.net/forum?id=FIQeorc5z5)**.
+
+If you're interested in adapting the course for your own classroom, [get in touch with us](mailto:michael.yao@pennmedicine.upenn.edu)!
+
 ## About the Authors
 
-**[Michael Yao](https://www.michaelsyao.com)** is an MD-PhD candidate at the University of Pennsylvania, and has formerly worked at companies such as [Microsoft Research](https://www.microsoft.com/en-us/research/lab/microsoft-health-futures/), [Scale AI](https://scale.com/), [Glass Health](https://glass.health/), and [Hyperfine](https://hyperfine.io/). His current research is in trustworthiness and robustness for deep learning and offline optimization problems. Michael is broadly interested in developing methods that leverage prior knowledge to help algorithms better generalize to new distributions.
+**[Michael Yao](https://www.michaelsyao.com)** is an MD-PhD candidate at the University of Pennsylvania, and has formerly worked as an ML Scientist at companies such as [Genentech](https://www.gene.com/scientists/our-scientists/braid), [Microsoft Research](https://www.microsoft.com/en-us/research/lab/microsoft-health-futures/), and [Scale AI](https://scale.com/). His research focuses on trustworthy machine learning and how we can reliably build and use ML systems in clinical workflows. 
 
-**[Allison Chae](https://www.allisonchae.com)** is an MD candidate at the University of Pennsylvania researching how AI algorithms can be used in real-world clinical workflows. She currently works alongside radiologists to better understand how physicians and computer systems interact with one another. Allison's research is supported by the [A&Omega;A Society](https://www.alphaomegaalpha.org/programs/carolyn-l-kuckein-student-research-fellowship/) and the Perelman School of Medicine.
+**[Allison Chae](https://www.allisonchae.com)** is a PGY-1 internal medicine resident at Main Line Health researching how AI algorithms can be used in real-world clinical workflows. She currently works alongside radiologists to better understand how physicians and computer systems interact with one another.
 
 ## Expert Collaborators
 
 *Ethical Algorithms for the Modern Clinician* is backed by experts in both clinical medicine and machine learning.
 
-1. [**Mark Yatskar, PhD**](https://www.cis.upenn.edu/~myatskar/) is an Assistant Professor of Computer and Information Science at the University of Pennsylvania. His lab studies the interplay between visual and language systems in machine learning, and how such systems can inherit human biases.
-2. [**Walter Witschey, PhD**](https://www.med.upenn.edu/corlab/current.html) is an Associate Professor of Radiology at the University of Pennsylvania. He leads an interdisciplinary lab studying MRI imaging techniques and machine learning for clinical radiology.
-3. [**Tessa Cook, MD, PhD**](https://www.med.upenn.edu/apps/faculty/index.php/g275/p18472) is an Associated Professor of Radiology at the University of Pennsylvania. Her research investigates how machine learning can be used for imaging informatics and clinical practice transformation across multiple clinical fields.
-4. [**James Gee, PhD**](https://www.med.upenn.edu/apps/faculty/index.php/g5455356/p10656) is Professor of Radiologic Science in Radiology at the University of Pennsylvania. His lab conducts research in biomedical imaging analysis and computational methods for both ex-vivo and in-vivo medical imaging.
+1. [**Daniel Hashimoto, MD**](https://www.med.upenn.edu/pcaso/team.html) is an Assistant Professor of Surgery at the University of Pennsylvania. His research explores applications of computer vision to intraoperative surgical decision making.
+2. [**Mark Yatskar, PhD**](https://www.cis.upenn.edu/~myatskar/) is an Assistant Professor of Computer and Information Science at the University of Pennsylvania. His lab studies the interplay between visual and language systems in machine learning, and how such systems can inherit human biases.
+3. [**Walter Witschey, PhD**](https://www.med.upenn.edu/corlab/current.html) is an Associate Professor of Radiology at the University of Pennsylvania. He leads an interdisciplinary lab studying MRI imaging techniques and machine learning for clinical radiology.
+4. [**Tessa Cook, MD, PhD**](https://www.med.upenn.edu/apps/faculty/index.php/g275/p18472) is an Associated Professor of Radiology at the University of Pennsylvania. Her research investigates how machine learning can be used for imaging informatics and clinical practice transformation across multiple clinical fields.
+5. [**James Gee, PhD**](https://www.med.upenn.edu/apps/faculty/index.php/g5455356/p10656) is Professor of Radiologic Science in Radiology at the University of Pennsylvania. His lab conducts research in biomedical imaging analysis and computational methods for both ex-vivo and in-vivo medical imaging.
 
 ## Institutional Partners
 

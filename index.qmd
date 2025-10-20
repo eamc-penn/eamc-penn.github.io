@@ -3,17 +3,26 @@ title: Ethical Algorithms for the Modern Clinician
 toc: false
 ---
 
+**Faculty Director**:
+  [Daniel Hashimoto, MD, MSTR](mailto:daniel.hashimoto@pennmedicine.upenn.edu)
+
+**Student Course Leadership**:
+  [Sabrina Meng](mailto:sabrina.meng@pennmedicine.upenn.edu); [Morgan Purcell](mailto:morgan.purcell@pennmedicine.upenn.edu); and [Michael Yao](mailto:michael.yao@pennmedicine.upenn.edu)
+
 ## Overview
 
 *Ethical Algorithms for the Modern Clinician* is a short course intended to teach future clinicians the basics of machine learning (ML) and artificial intelligence (AI) as they pertain to clinical practice.
 
-This resource does ***not*** discuss how machine learning algorithms work or how to build ML models. Instead, we introduce ML from clinical practitioner's perspective and discuss what ML does right, where it falls short, and how it will impact patient care. We focus on five key aspects:
+This resource does ***not*** discuss how machine learning algorithms work or how to build ML models. Instead, we introduce ML from clinical practitioner's perspective and discuss what ML does right, where it falls short, and how it will impact patient care. 
+
+Ethical Algorithms for the Modern Clinician is intended as foundational knowledge for medical students of all backgrounds - prior experience with machine learning is not required. The course focuses on several key aspects:
 
 1. [**Introduction to Machine Learning**](/ml.html): What is machine learning? How is it similar to and different from conventional software?
 2. [**Bias and Fairness**](/bias.html): How can algorithms be biased against different patient groups? How can we quantify, detect, and reduce bias in clinical decision making algorithms?
 3. [**Privacy and Anonymization**](/privacy.html): How can we anonymize patient data? Why does anonymization often fall short in protecting patient identities? How can we ensure that clinicians maintain patient privacy?
 4. [**Algorithmic Interpretability**](/interpretability.html): What does mean for an algorithm to be interpretable? Is it important for us to be able to explain how an algorithm works in order to use it in clinical practice?
 5. [**Generative AI**](/genai.html): What is generative AI, and how might it be used for patient care? What are the new challenges and opportunities associated with generative AI models?
+6. **Clinical Applications of AI**: How is AI used in the clinical world today, and how can we apply AI in our future work? How is AI usage similar and/or different among specialties? What is the interplay between policy and AI, and how does it shape our practice as clinicians?
 
 ::: column-margin
 {{< fa info-circle >}} Additional (optional) context to help motivate interesting discussions will be marked by little information icons like this in each of the modules.
@@ -22,6 +31,18 @@ This resource does ***not*** discuss how machine learning algorithms work or how
 Just as epidemiology was introduced in medical school curricula alongside the rise of evidence-based guidelines[^1], **it is crucial for future clinicians to have a working understanding of machine learning algorithms** as they become increasingly prevalent in clinical practice. Much of the curriculum has been inspired by the (much longer) ethical algorithms course at Penn taught by [Michael Kearns](https://www.cis.upenn.edu/~mkearns/). *Ethical Algorithms for the Modern Clinician* is intended as foundational knowledge for medical students **of all backgrounds** - prior experience with machine learning is *not* required.
 
 [^1]: Optional citations for digging deeper into interesting topics will be included in the margin like this: Fowkes FG, Gehlbach SH, Farrow SC, et al. Epidemiology for medical students: A course relevant to clinical practice. Int J Epidemiol 13(4): 538-41. (1984). doi: [10.1093/ije/13.4.538](https://pubmed.ncbi.nlm.nih.gov/6519897/). PMID: 6519897
+
+## Course Attendance
+
+This course consists of eight sessions, each lasting one hour. Students are expected to attend **all sessions** to receive [HMET area of concentration (AOC)](https://www.med.upenn.edu/student/areas-of-concentration.html#accordion-7) credit. The course is intended to be an active, discussion-based class, and students are expected to engage in discussion with their peers.
+
+## Assessment and Grading
+
+The main assessment of the course is the **final capstone project**, consisting of a one-page essay on a prompt focusing on ethical AI implementation in healthcare. As part of this project, students will also be encouraged to utilize generative AI to aid in idea refinement, and the generative AI model and specific prompts used to do so will be submitted alongside the essay. The goal of this essay and usage of generative AI is to 1) apply the concepts learned in class; and 2) teach students how to effectively use and write prompts for generative AI.
+
+Ethical Algorithms for Modern Clinician is graded as **Pass-Fail** based on attendance and the final capstone project.
+
+Surveys will also be administered at the beginning and end of the course, as well as after each session, to gauge efficacy and solicit constructive feedback.
 
 ## How to Use This Book
 
@@ -51,7 +72,7 @@ If you're interested in adapting the course for your own classroom, [get in touc
 
 ## About the Authors
 
-**[Michael Yao](https://www.michaelsyao.com)** is an MD-PhD candidate at the University of Pennsylvania, and has formerly worked as an ML Scientist at companies such as [Genentech](https://www.gene.com/scientists/our-scientists/braid), [Microsoft Research](https://www.microsoft.com/en-us/research/lab/microsoft-health-futures/), and [Scale AI](https://scale.com/). His research focuses on trustworthy machine learning and how we can reliably build and use ML systems in clinical workflows. 
+**[Michael Yao](https://www.michaelsyao.com)** is an MD-PhD candidate at the University of Pennsylvania and ML Scientist at [Genentech](https://www.gene.com/scientists/our-scientists/braid), with prior experience as a researcher at [Microsoft Research](https://www.microsoft.com/en-us/research/lab/microsoft-health-futures/) and [Scale AI](https://scale.com/). His research focuses on trustworthy machine learning and how we can reliably build and use ML systems in clinical workflows. 
 
 **[Allison Chae](https://www.allisonchae.com)** is a PGY-1 internal medicine resident at Main Line Health researching how AI algorithms can be used in real-world clinical workflows. She currently works alongside radiologists to better understand how physicians and computer systems interact with one another.
 

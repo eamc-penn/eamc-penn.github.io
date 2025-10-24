@@ -1,0 +1,206 @@
+<div class="light-dark-toggle"><i id="light-dark-toggle-icon" class="fa fa-moon-o"></i></div>
+<main>
+  <div>
+    <nav style="top: 2121.2px;">
+      <h3>Threshold Strategy</h3>
+      <hr />
+      <div class="threshold-mode">
+        <div class="mode-buttons">
+          <button class="mode-btn active" data-mode="global">Race Unaware</button>
+          <button class="mode-btn" data-mode="class-wise">Race Aware</button>
+        </div>
+      </div>
+
+      <div class="threshold-controls">
+        <div id="global-controls">
+          <div class="slider-container">
+            <div class="slider-span">Global Pulse Ox Threshold</div>
+            <input type="range" id="global-threshold-slider" class="slider" min="81" max="93" value="92" step="0.1">
+            <div class="threshold-value">
+              <span id="global-threshold-display">92.0</span>%
+            </div>
+          </div>
+        </div>
+
+        <div id="class-wise-controls" class="class-wise-controls">
+          <div class="slider-container">
+            <div class="slider-span">White Patients Threshold</div>
+            <input type="range" id="white-threshold-slider" class="slider" min="81" max="93" value="92" step="0.1">
+            <div class="threshold-value">
+              <span id="white-threshold-display">92.0</span>%
+            </div>
+          </div>
+
+          <div class="slider-container">
+            <div class="slider-span">Black Patients Threshold</div>
+            <input type="range" id="black-threshold-slider" class="slider" min="81" max="93" value="90" step="0.1">
+            <div class="threshold-value">
+              <span id="black-threshold-display">90.0</span>%
+            </div>
+          </div>
+         </div>
+      </div>
+
+      <div style="display: none;">
+        <h3 style="margin-top: 50px;">Data Summary</h3>
+        <hr />
+        <div>
+          <div class="summary-stat">
+            <span id="global-sensitivity"></span>
+            <span class="label">Sensitivity</span>
+          </div>
+          <div class="summary-stat">
+            <span id="global-specificity"></span>
+            <span class="label">Specificity</span>
+          </div>
+          <div class="summary-stat">
+            <span id="global-accuracy"></span>
+            <span class="label">Accuracy</span>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div>
+    <h1 style="color: var(--BLUE);margin-bottom: 0;margin-top: 50px;">Shedding light on pulse oximeters</h1>
+    <p style="color: var(--FADED-COLOR);margin-top: 0;">A case study on decision-making bias in medicine</p>
+
+    <br />
+
+    <hr style="color: var(--FADED-COLOR);opacity: 0.05;border: 1px solid var(--FADED-COLOR);margin-bottom: 16px;" />
+    <span id="audio-label">Listen to article</span>
+    <audio controls>
+      <source src="public/oximetry.mp3" type="audio/mpeg">
+    </audio>
+
+    <br />
+
+    <h3>Learning objectives</h3>
+    <ol>
+      <li><b>Define</b> sensitivity, specificity, and accuracy, and <b>interpret</b> these metrics in the context of hypoxemia detection using pulse oximeters.</li>
+      <li><b>Analyze</b> how differences in skin tone can lead to systematic differences in pulse oximetry measurements.</li>
+      <li><b>Evaluate</b> the ethical and practical trade-offs of adjusting diagnostic thresholds based on patient characteristics to mitigate disparities in care.</li>
+    </ol>
+
+    <br />
+
+    <h3>What are pulse oximeters?</h3>
+    <p><b>Pulse oximeters</b> are small devices that measure the oxygen levels in our blood. Clinicians use them to check for <b>hypoxemia</b>, which is a dangerous drop in our body's oxygen levels. Most healthy patients have an oxygen level of 95 to 100%.</p>
+
+    <p>It's important to recognize that pulse oximeters only <em>estimate</em> our oxygen levels. The gold standard is to obtain an <b>arterial blood gas (ABG)</b> measurement, which requires sticking a needle in the patient and drawing blood.</p>
+
+    <br />
+
+    <h3>Are pulse oximeters biased?</h3>
+    <p>Research has shown that compared to ABG measurements, <b>pulse oximeters can be less accurate for patients with darker skin tones</b>.<sup class="ref"><a href="https://doi.org/10.1056/NEJMc2029240" target="_blank">1</a></sup> Specifically, they can overestimate oxygen levels for Black patients<sup style="font-size: 11px !important;">&dagger;</sup>, leading to systemic delays in giving treatments like supplemental oxygen. This happens because pulse oximeters use light to detect the oxygen in our finger, and skin pigmentation can affect how that light is absorbed and reflected.</p>
+
+    <p>In a few minutes, we'll take a look at a dataset of <b>real patients</b><sup class="ref"><a href="https://physionet.org/content/openox-repo/1.1.1/" target="_blank">3</a></sup> from a research team at UCSF<sup class="ref"><a href="https://doi.org/10.1038/s41597-025-04870-8" target="_blank">4</a></sup>. The dataset consists of <span class="stat" id="total-patients"></span> unique patients, <span class="stat" id="hypoxemic-patients"></span> of which are hypoxemic. There's a relatively even split in terms of self-reported race: <span class="stat" id="white-patients"></span> identify as White and <span class="stat" id="black-patients"></span> identify as Black.</p>
+
+    <p style="font-size: 11px !important;">&dagger;For accessibility, we use "White" and "Black" as shorthand for individuals with lighter and darker skin tones, respectively. However, race is a social construct<sup class="ref"><a href="http://doi.org/10.1056/NEJMms2029562" target="_blank">2</a></sup>; while there may be a correlation between self-reported race and skin tone, it's important to recognize that these are distinct concepts. Skin tone varies widely within any racial group, and the terms should not always be used interchangeably.</p>
+
+    <br />
+
+    <h3>How to measure bias</h3>
+    <p>We'll primarily look at 3 different metrics:</p>
+    <ol>
+      <li><b>Sensitivity</b>: If the patient does actually have low blood oxygen, did we actually find it with the pulse oximeter? A high sensitivity means we catch all the true cases of hypoxemia.</li>
+      <li><b>Specificity</b>: If the patient does <em>not</em> have low blood oxygen, did we correctly identify them as healthy? A high specificity means we don't unnecessarily raise false alarms.</li>
+      <li><b>Accuracy</b>: Overall, how good is the pulse oximeter in giving us the right answer?</li>
+    </ol>
+
+    <div class="question">
+      <i class="fa fa-question-circle-o"></i> <b>Weighing the tradeoffs</b>
+      <p>In most cases, it's hard to have a test that is perfectly sensitive <em>and</em> specific. When diagnosing and treating hypoxemia, is it more important to have a high sensitivity, or a high specificity? Why?</p>
+    </div>
+
+    <br />
+
+    <h3>Start treating patients!</h3>
+    <p>As a doctor, your goal is to identify which patients have true hypoxemia and which do not. If a patient has a pulse oximetry reading less than a certain cutoff, then you will start them on supplemental oxygen. In the <b>Threshold Strategy</b> section on the left, use your clinical skills to adjust this threshold of when to start oxygen therapy. You will choose between 2 strategies:</p>
+    <ol>
+      <li><b>Race Unaware</b>: use the same threshold for all patients regardless of race.
+      <li><b>Race Aware</b>: use different thresholds for patients depending on their race.
+    </ol>
+
+    <div class="question">
+      <i class="fa fa-question-circle-o"></i> <b>Check your understanding</b>
+      <p>What would happen if you set your threshold to 100% on the left (i.e., any patient with a pulse oximetry measurement less than 100% oxygen saturation is given supplemental oxygen)? What happens when you set it to 90%? To 80%?</p>
+    </div>
+
+    <p><i class="fa fa-bell-o" style="color: var(--BLUE);"></i> Each dot is a patient &mdash; <b>blue</b> dots correspond to patients you have accurately diagnosed, and <b style="color: var(--FADED-COLOR);">gray</b> dots correspond to incorrect diagnoses.</p>
+
+    <div id="histogram-container">
+      <div class="histogram" id="histogram-White"></div>
+      <div class="metrics-section">
+        <h4>White patients</h4>
+        <div class="metrics-grid">
+          <div class="metric-card white-metrics">
+            <span class="label">Sensitivity</span>
+            <span id="white-sensitivity"></span>
+          </div>
+          <div class="metric-card white-metrics">
+            <span class="label">Specificity</span>
+            <span id="white-specificity"></span>
+          </div>
+          <div class="metric-card white-metrics">
+            <span class="label">Accuracy</span>
+            <span id="white-accuracy"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="histogram" id="histogram-Black"></div>
+      <div class="metrics-section">
+        <h4>Black patients</h4>
+        <div class="metrics-grid">
+          <div class="metric-card black-metrics">
+            <span class="label">Sensitivity</span>
+            <span id="black-sensitivity"></span>
+          </div>
+          <div class="metric-card black-metrics">
+            <span class="label">Specificity</span>
+            <span id="black-specificity"></span>
+          </div>
+          <div class="metric-card black-metrics">
+            <span class="label">Accuracy</span>
+            <span id="black-accuracy"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question">
+      <i class="fa fa-question-circle-o"></i> <b>Thinking it through</b>
+      <ol>
+        <li>A common threshold for hypoxemia used in medicine is a pulse oximetry reading less than 88%. Using this threshold, what is our diagnostic accuracy for White patients? How about for Black patients?</li>
+        <li>What is the lowest threshold that maximizes the sensitivity for White patients? What is the sensitivity for Black patients using the same threshold?</li>
+        <li>What is the highest threshold that maximizes the specificity for <em>Black</em> patients? What is the corresponding specificity for White patients using the same threshold?</li>
+        <li>Can you achieve 100% sensitivity for both White and Black patients? How?</li>
+      </ol>
+    </div>
+
+    <br />
+
+    <h3>Let's discuss</h3>
+    <ol>
+      <li>Is using different thresholds for patients of skin tones "racist", even if it leads to better outcomes? Why or why not?</li>
+      <li>Thanks to recent research, we know the mechanism behind how skin color affects pulse oximetry accuracy. Would your answer to the previous question change if we <em>did not</em> know the mechanism, and could only rely on observational data?</li>
+      <li>Thankfully, the cost of supplemental oxygen is relatively small&mdash;even for healthy patients. But this isn't always true! For example, suppose you have a diagnostic test for diagnosing a very serious cancer that requires expensive and intensive medications to treat. How might your decision making change?</li>
+    </ol>
+
+    <br />
+
+    <p style="font-size: 11px !important;">This tutorial was largely inspired by an excellent prior piece from Google.<sup class="ref"><a href="https://research.google.com/bigpicture/attacking-discrimination-in-ml/" target="_blank">5</a></sup> Many thanks to their team for making such resources available to draw upon.</p>
+
+    <p style="font-size: 11px !important;">The audio version of this article was generated using ChatGPT; you can learn more here.<sup class="ref"><a href="https://platform.openai.com/docs/guides/text-to-speech" target="_blank">6</a></sup></p>
+  </div>
+</main>
+<footer>
+  &copy;<span id="year"></span> Ethical Algorithms for the Modern Clinician. All rights reserved.
+</footer>
+<script type="text/javascript" src="styles/oximetry-standalone/oximetry.const.js"></script>
+<script type="text/javascript" src="styles/oximetry-standalone/oximetry.calc.js"></script>
+<script type="text/javascript" src="styles/oximetry-standalone/oximetry.ui.js"></script>
+<script type="text/javascript" src="styles/oximetry-standalone/oximetry.color.js"></script>
+<script type="text/javascript" src="styles/oximetry-standalone/oximetry.init.js"></script>

@@ -1,0 +1,13 @@
+---
+title: "Shedding Light on Pulse Oximetry"
+format:
+  html:
+    css: styles/oximetry-standalone.css
+    include-in-header:
+      - file: includes/oximetry-head.html
+    include-after-body:
+      - file: includes/oximetry.html
+resources:
+  - styles.css
+  - myscript.js
+---

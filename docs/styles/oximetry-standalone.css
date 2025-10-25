@@ -305,15 +305,6 @@ h1 {
   line-height: 1.4;
 }
 
-@media screen and (max-width: 900px) {
-  h1 {
-    width: 85%;
-    margin: 25vh auto 15px auto;
-    text-align: center;
-    font-size: var(--MEDIUM);
-  }
-}
-
 h2 {
   font-weight: var(--THICK);
   font-size: var(--MEDIUM);
@@ -322,3 +313,23 @@ h2 {
   margin: 20px 0 2px 0;
   padding: 0;
 }
+
+.mobile-warning {
+  display: none;
+  width: 100vw;
+  background-color: #ff8e88;
+  color: var(--FONT-COLOR);
+  text-align: center;
+  padding: 14px 12px 6px 12px;
+  line-height: 1;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+@media (max-width: 800px) {
+  .mobile-warning {
+    display: block;
+  }
+}
+

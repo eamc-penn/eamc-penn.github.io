@@ -333,3 +333,48 @@ h2 {
   }
 }
 
+.feedback-container {
+  background: var(--BACKGROUND-COLOR);
+  width: max-content;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.rating-label {
+  display: block;
+  color: var(--FADED-COLOR);
+  font-weight: var(--NORMAL);
+  margin-bottom: 10px;
+  font-size: var(--SMALL);
+}
+
+.stars {
+  display: inline-flex;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.star {
+  font-size: 24px;
+  color: #ddd;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.star:hover,
+.star.active {
+  color: #ffc107;
+  transform: scale(1.1);
+}
+
+#success-message {
+  font-size: var(--X-SMALL) !important;
+  margin-top: 10px;
+  visibility: hidden;
+  color: #4caf50;
+  text-align: center;
+}
+
+#success-message.show {
+  visibility: visible;
+}

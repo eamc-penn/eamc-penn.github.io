@@ -11,18 +11,19 @@ for (var i = 0; i < stars.length; i++) {
   });
 
   stars[i].addEventListener("mouseenter", function() {
-    highlightStars(parseInt(this.dataset.rating));
+    rating = parseInt(this.dataset.rating);
+    highlightStars();
   });
 }
 
 document.getElementById("stars").addEventListener(
-  "mouseleave",
-  function() {
-    highlightStars(rating);
+  "mouseleave", function() {
+    rating = parseInt(this.dataset.rating);
+    highlightStars();
   }
 );
 
-function highlightStars() {
+function highlightStars(arg) {
   for (var i = 0; i < stars.length; i++) {
     if (i + 1 <= rating)
       stars[i].classList.add("active");

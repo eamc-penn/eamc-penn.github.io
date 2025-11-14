@@ -232,7 +232,7 @@ footer {
 }
 
 .question {
-  background-color: white;
+  background-color: transparent !important;
   border: 2px solid var(--BLUE);
   border-radius: 8px;
   margin: 8px auto;
